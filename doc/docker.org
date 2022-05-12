@@ -40,6 +40,10 @@ ENTRYPOINT ["bash", "/entrypoint.sh"]
 CMD ["/opt/sh.wrap/", "test/tests.sh"]
 #+end_src
 
+#+begin_src elisp :query
+(org-babel-tangle)
+#+end_src
+
 Build and tag an image.
 
 #+begin_src bash :results code
