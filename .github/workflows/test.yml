@@ -22,4 +22,8 @@ jobs:
       run:
         shell: bash
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - uses: ekotik/sh.wrap@actions-shellcheck
+        with:
+          script: "test/tests.sh"

@@ -35,14 +35,15 @@ FROM build
 
 RUN mkdir /opt/sh.wrap
 
-ENTRYPOINT ["bash", "/opt/sh.wrap/test/tests.sh"]
-CMD ["src", "test"]
+COPY entrypoint.sh entrypoint.sh
+ENTRYPOINT ["bash", "/entrypoint.sh"]
+CMD ["/opt/sh.wrap/", "test/tests.sh"]
 #+end_src
 
 Build and tag an image.
 
 #+begin_src bash :results code
-docker build -t "$DOCKER_IMAGE" -f "$DOCKER_FILE" ../
+docker build -t "$DOCKER_IMAGE" -f "$DOCKER_FILE" "$DOCKER_PATH"
 docker tag "$DOCKER_IMAGE" "$DOCKER_REPO"/"$DOCKER_IMAGE"
 #+end_src
 
@@ -55,5 +56,5 @@ docker push "$DOCKER_REPO"/"$DOCKER_IMAGE"
 ** Run tests
 
 #+begin_src bash
-docker run -it --rm --name shwrap-test --volume $(realpath `pwd`/..):/opt/sh.wrap "$DOCKER_REPO"/"$DOCKER_IMAGE"
+docker run -it --rm --name shwrap-test --volume $(realpath `pwd`/..):/opt/sh.wrap "$DOCKER_REPO"/"$DOCKER_IMAGE" "/opt/sh.wrap/" "test/tests.sh" test
 #+end_src
