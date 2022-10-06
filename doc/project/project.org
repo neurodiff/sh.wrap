@@ -1,0 +1,330 @@
+#+CATEGORY: ░ SH.WRAP ░
+#+FILETAGS: #project #task sh.wrap
+#+OPTIONS: ^:nil toc:nil num:nil author:nil timestamp:nil
+#+COLUMNS: %50ITEM TODO %3PRIORITY %Effort %Effort(Effort Children){:} %10CLOCKSUM
+#+OPTIONS: H:1 prop:t d:nil tags:nil p:t c:nil pri:t
+
+#+HUGO_BASE_DIR: ../site
+#+HUGO_SECTION: project
+#+HUGO_FRONT_MATTER_FORMAT: yaml
+#+HUGO_CUSTOM_FRONT_MATTER:
+#+HUGO_DRAFT: false
+
+#+begin_export yaml
+---
+title: sh.wrap pool of tasks
+date: <2022-05-21 Sat>
+---
+#+end_export
+
+#+TITLE: sh.wrap pool of tasks
+#+DATE: <2022-05-21 Sat>
+
+* sh.wrap (project tasks)
+  :PROPERTIES:
+  :CATEGORY: ░ SH.WRAP ░
+  :END:
+
+** Code: sh.wrap (project tasks)                                      :#CODE:
+
+*** Code: core (project tasks)
+
+**** NEXT Add function to scope
+
+**** NEXT Add module caching
+
+** Docs: sh.wrap (project tasks)                                      :#DOCS:
+
+*** NEXT Add README
+
+*** PROGRESS Add basic hugo templates and site config                :ACTIVE:
+    DEADLINE: <2022-05-21 Sat>
+    :LOGBOOK:
+    CLOCK: [2022-05-21 Sat 13:11]--[2022-05-21 Sat 13:37] =>  0:26
+    - State "PROGRESS"   from "PROGRESS"   [2022-05-21 Sat 13:04] \\
+      'project' section configured
+    CLOCK: [2022-05-21 Sat 12:35]--[2022-05-21 Sat 13:04] =>  0:29
+    - State "PROGRESS"   from "TODO"       [2022-05-21 Sat 12:27] \\
+      basic templates and config are taken from the hugo documentation
+    :END:
+    <2022-05-21 Sat>
+*** Docs: Documentation site generator (project tasks)
+
+**** PROGRESS Choose and describe documentation system for the project :ACTIVE:
+     SCHEDULED: <2022-05-21 Sat>
+     :LOGBOOK:
+     - State "PROGRESS"   from "PROGRESS"   [2022-10-06 Thu 19:25] \\
+       for project documentation we sort tasks by tag/name and remove CLOCK drawer
+     - State "PROGRESS"   from "NEXT"       [2022-05-21 Sat 02:02] \\
+       currently let it be
+       - pandoc for org->markdown conversion
+       - hugo for static site generation
+       - ?: how to stylize site
+     :END:
+** Infra: sh.wrap (project tasks)                                    :#INFRA:
+
+*** PROGRESS Actions to export project documentation to GH pages     :ACTIVE:
+    DEADLINE: <2022-05-21 Sat> SCHEDULED: <2022-05-21 Sat>
+    :PROPERTIES:
+    :Effort:   03:00
+    :END:
+    :LOGBOOK:
+    CLOCK: [2022-10-04 Tue 19:16]--[2022-10-04 Tue 19:47] =>  0:31
+    CLOCK: [2022-10-04 Tue 18:40]--[2022-10-04 Tue 18:43] =>  0:03
+    - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:32] \\
+      org: renamed
+    - State "PROGRESS"   from "NEXT"       [2022-06-05 Sun 23:31] \\
+      Tested working in antirs/test-docker-action with antirs/antirs.github.io repositories.
+    :END:
+
+**** DONE Create GH docker action to build hugo binary
+     CLOSED: [2022-06-05 Sun 23:37] SCHEDULED: <2022-05-21 Sat>
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2022-06-05 Sun 23:37]
+     - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:37] \\
+       tested working
+     CLOCK: [2022-06-05 Sun 23:35]--[2022-06-05 Sun 23:37] =>  0:02
+     CLOCK: [2022-05-31 Tue 18:57]--[2022-05-31 Tue 18:57] =>  0:00
+     CLOCK: [2022-05-31 Tue 18:55]--[2022-05-31 Tue 18:55] =>  0:00
+     CLOCK: [2022-05-25 Wed 02:04]--[2022-05-25 Wed 02:05] =>  0:01
+     - State "PROGRESS"   from "PROGRESS"   [2022-05-22 Sun 20:38] \\
+       next:
+       - add cache
+       - add GH error/notice reporting
+     - State "PROGRESS"   from "PROGRESS"   [2022-05-22 Sun 16:24] \\
+       successfully building hugo binary with gh action
+     - State "PROGRESS"   from "STARTED"    [2022-05-22 Sun 14:40] \\
+       making improvements and testing actions-shellcheck to merge with actions-hugo-*
+     CLOCK: [2022-05-22 Sun 14:40]--[2022-05-22 Sun 16:24] =>  1:44
+     CLOCK: [2022-05-22 Sun 10:58]--[2022-05-22 Sun 13:58] =>  3:00
+     CLOCK: [2022-05-22 Sun 00:02]--[2022-05-22 Sun 00:23] =>  0:21
+     CLOCK: [2022-05-21 Sat 22:08]--[2022-05-22 Sun 00:02] =>  1:54
+     CLOCK: [2022-05-21 Sat 20:49]--[2022-05-21 Sat 21:41] =>  0:52
+     CLOCK: [2022-05-21 Sat 16:41]--[2022-05-21 Sat 19:13] =>  2:32
+     - State "STARTED"    from "TODO"       [2022-05-21 Sat 20:48]
+     :END:
+
+***** DONE Add cache to hugo build action
+      CLOSED: [2022-06-05 Sun 23:37]
+      :LOGBOOK:
+      - State "DONE"       from "PROGRESS"   [2022-06-05 Sun 23:37]
+      - State "PROGRESS"   from "TODO"       [2022-06-05 Sun 23:37] \\
+        tested working
+      :END:
+
+**** DONE Create GH docker action to generate documentation
+     CLOSED: [2022-06-05 Sun 23:37] SCHEDULED: <2022-05-21 Sat>
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2022-06-05 Sun 23:37]
+     - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:37] \\
+       tested working
+     CLOCK: [2022-05-31 Tue 18:57]--[2022-05-31 Tue 18:57] =>  0:00
+     CLOCK: [2022-05-24 Tue 18:10]--[2022-05-24 Tue 18:11] =>  0:01
+     - State "PROGRESS"   from "TODO"       [2022-05-22 Sun 20:57] \\
+       done:
+       - composition of hugo build and hugo site generation steps in one action
+       - generation of site
+       next:
+       - publishing to site portal
+     :END:
+
+**** DONE Create a branch for GH docker action to build hugo binary
+     CLOSED: [2022-06-05 Sun 23:29] SCHEDULED: <2022-05-21 Sat>
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2022-06-05 Sun 23:29]
+     - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:29] \\
+       Let all actions are in the source repository.
+     - State "PROGRESS"   from "TODO"       [2022-05-22 Sun 20:59] \\
+       testing solution in the other repository
+     :END:
+
+**** DONE Create a branch for GH docker action to generate documentation
+     CLOSED: [2022-06-05 Sun 23:28] SCHEDULED: <2022-05-21 Sat>
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2022-06-05 Sun 23:28]
+     - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:27] \\
+       Let all actions are in the source repository.
+     - State "PROGRESS"   from "STARTED"    [2022-05-22 Sun 18:41] \\
+       testing solution in the other repository
+     CLOCK: [2022-05-22 Sun 17:48]--[2022-05-22 Sun 19:58] =>  2:10
+     CLOCK: [2022-05-22 Sun 16:26]--[2022-05-22 Sun 17:07] =>  0:41
+     - State "STARTED"    from "TODO"       [2022-05-22 Sun 16:26]
+     :END:
+
+*** PROGRESS Add docker image for hugo site generation               :ACTIVE:
+
+    DEADLINE: <2022-05-21 Sat>
+    :LOGBOOK:
+    CLOCK: [2022-05-21 Sat 11:55]--[2022-05-21 Sat 12:24] =>  0:29
+    CLOCK: [2022-05-21 Sat 02:34]--[2022-05-21 Sat 03:21] =>  0:47
+    - State "PROGRESS"   from "NEXT"       [2022-05-21 Sat 02:12] \\
+      basic images with hugo and pandoc for site generation are added
+    :END:
+    <2022-05-21 Sat>
+*** DONE Create a branch for project tracking
+    CLOSED: [2022-05-13 Fri 22:42] SCHEDULED: <2022-05-13 Fri>
+    :LOGBOOK:
+    - State "DONE"       from "PROGRESS"   [2022-05-13 Fri 22:42]
+    - State "PROGRESS"   from "STARTED"    [2022-05-13 Fri 22:42] \\
+      ekotik/project branch created
+    CLOCK: [2022-05-13 Fri 19:43]--[2022-05-13 Fri 21:10] =>  1:27
+    CLOCK: [2022-05-13 Fri 19:34]--[2022-05-13 Fri 19:35] =>  0:01
+    - State "STARTED"    from "NEXT"       [2022-05-13 Fri 19:27]
+    :END:
+
+** Plan: sh.wrap (project tasks)                                      :#PLAN:
+
+*** Plan: Milestone 0.0.1 (project tasks):
+
+**** NEXT Milestone 0.0.1: Select tasks from current active/backlog/stuck task pools
+
+*** Plan: Roadmap (project tasks)
+
+**** NEXT Write requirements for milestone 0.0.1
+
+** QA: sh.wrap (project tasks)                                          :#QA:
+
+*** NEXT [#A] Add issue/pr templates
+
+* sh.wrap (project backlog)                                        :#backlog:
+  :PROPERTIES:
+  :CATEGORY: ▪ SH.WRAP ▪
+  :END:
+
+** Code: sh.wrap (project backlog)                                    :#CODE:
+
+*** TODO Implement ccache module
+
+*** TODO Implement cert module
+
+*** TODO Implement config module
+
+*** TODO Implement git module
+
+*** TODO Implement path module
+
+*** TODO Implement repo module
+
+**** TODO Implement github module
+
+**** TODO Implement gitlab module
+
+*** TODO Implement scheduler module
+
+*** TODO Implement test module
+
+**** TODO Implement profile module
+
+*** Code: core (project backlog)
+
+**** NEXT Add script for bashrc
+
+** Docs: sh.wrap (project backlog)                                    :#DOCS:
+
+*** NEXT Add license
+
+*** TODO Choose knowledge system for the project
+
+*** TODO Describe useful workflows on the project
+
+*** TODO Fix: title and date parameters not exposed in in org->md export
+    <2022-05-21 Sat>
+*** Docs: Documentation site generator (project backlog)
+
+**** NEXT Add styling for hugo site
+     <2022-05-21 Sat>
+** Infra: sh.wrap (project backlog)                                  :#INFRA:
+
+*** NEXT Write script to sync working repositories with upstream
+*** TODO Add spell checker action for project documentation
+    <2022-05-22 Sun>
+
+** Plan: sh.wrap (project backlog)                                    :#PLAN:
+
+*** TODO Describe sh.wrap purpose and vision
+
+*** TODO Write project review/report templates
+
+*** Plan: Milestone 0.0.1 (project backlog):
+    :PROPERTIES:
+    :sort:     false
+    :END:
+
+**** NEXT Milestone 0.0.1: Estimate tasks effort
+
+**** TODO Milestone 0.0.1: Schedule tasks
+
+**** TODO Milestone 0.0.1: Update roadmap
+
+**** DEPENDENCY [[*Write requirements for milestone 0.0.1][Write requirements for milestone 0.0.1]]
+
+*** Plan: Roadmap (project backlog)
+
+**** NEXT Create roadmap diagram
+
+**** DEPENDENCY [[*Describe sh.wrap purpose and vision][Describe sh.wrap purpose and vision]]
+
+** QA: sh.wrap (project backlog)                                        :#QA:
+
+*** NEXT Exploratory testing of site generation action
+    <2022-05-21 Sat>
+
+*** NEXT Write tests for core functions
+
+*** TODO Describe GH issue/pr workflows (life-cycle)
+    <2022-05-21 Sat>
+*** TODO Describe issue/test/release verification processes
+    <2022-05-21 Sat>
+*** TODO Review pr#11
+
+*** TODO Review pr#9
+
+* sh.wrap (project stuck)                                            :#stuck:
+  :PROPERTIES:
+  :CATEGORY: □ SH.WRAP □
+  :END:
+
+* sh.wrap (habits)                                                   :#habit:
+  :PROPERTIES:
+  :CATEGORY: ■ SH.WRAP ■
+  :END:
+
+** Plan: sh.wrap (habits)                                             :#PLAN:
+   :PROPERTIES:
+   :sort:     false
+   :END:
+
+*** DAILY Task sorting
+<%%(identity date)>
+
+*** DAILY Task planning
+<%%(identity date)>
+
+*** DAILY Task review
+<%%(identity date)>
+
+*** DAILY Task report
+<%%(identity date)>
+
+* sh.wrap (project goals)                                      :ACTIVE:#list:
+  :PROPERTIES:
+  :CATEGORY: ▇ SH.WRAP ▇
+  :END:
+
+** Code: sh.wrap (project goals) :#CODE:
+
+*** GOAL Collection of useful shell scripts [0/2]
+
+    - [ ] gpg functions
+    - [ ] git functions
+
+*** GOAL Maintainable shell scripts repository [0/3]
+
+    - [ ] Shell scripts are at known locations
+    - [ ] Shell scripts are reusable
+    - [ ] Shell scripts have versions
+
+* sh.wrap (project archive)                                           :#list:
+  :PROPERTIES:
+  :CATEGORY: ╳ SH.WRAP ╳
+  :END:
