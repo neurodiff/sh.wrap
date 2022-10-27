@@ -2,7 +2,7 @@
 #+FILETAGS: #project #task sh.wrap
 #+OPTIONS: ^:nil toc:nil num:nil author:nil timestamp:nil
 #+COLUMNS: %50ITEM TODO %3PRIORITY %Effort %Effort(Effort Children){:} %10CLOCKSUM
-#+OPTIONS: H:1 prop:t d:nil tags:nil p:t c:nil pri:t
+#+OPTIONS: H:1 prop:nil d:nil tags:nil p:t c:nil pri:t
 
 #+HUGO_BASE_DIR: ../site
 #+HUGO_SECTION: project
@@ -10,22 +10,23 @@
 #+HUGO_CUSTOM_FRONT_MATTER:
 #+HUGO_DRAFT: false
 
-#+begin_export yaml
+#+begin_export markdown
 ---
-title: sh.wrap pool of tasks
-date: <2022-05-21 Sat>
+title: Pool of tasks
+date: 2022-05-21T04:04:13+03:00
+aliases:
+  - /project/todo/todo.md
+  - /project/todo/todo.org
+url: /project/todo/todo.html
 ---
 #+end_export
-
-#+TITLE: sh.wrap pool of tasks
-#+DATE: <2022-05-21 Sat>
 
 * sh.wrap (project tasks)
   :PROPERTIES:
   :CATEGORY: ░ SH.WRAP ░
   :END:
 
-** Code: sh.wrap (project tasks)                                      :#CODE:
+** Code: sh.wrap (project tasks)                                      :@CODE:
 
 *** Code: core (project tasks)
 
@@ -33,13 +34,16 @@ date: <2022-05-21 Sat>
 
 **** NEXT Add module caching
 
-** Docs: sh.wrap (project tasks)                                      :#DOCS:
+** Docs: sh.wrap (project tasks)                                      :@DOCS:
 
 *** NEXT Add README
 
 *** PROGRESS Add basic hugo templates and site config                :ACTIVE:
     DEADLINE: <2022-05-21 Sat>
     :LOGBOOK:
+    - State "PROGRESS"   from "PROGRESS"   [2022-10-27 Thu 04:09] \\
+      project uses docsy hugo theme
+      ready for review
     CLOCK: [2022-05-21 Sat 13:11]--[2022-05-21 Sat 13:37] =>  0:26
     - State "PROGRESS"   from "PROGRESS"   [2022-05-21 Sat 13:04] \\
       'project' section configured
@@ -48,6 +52,7 @@ date: <2022-05-21 Sat>
       basic templates and config are taken from the hugo documentation
     :END:
     <2022-05-21 Sat>
+
 *** Docs: Documentation site generator (project tasks)
 
 **** PROGRESS Choose and describe documentation system for the project :ACTIVE:
@@ -61,7 +66,18 @@ date: <2022-05-21 Sat>
        - hugo for static site generation
        - ?: how to stylize site
      :END:
-** Infra: sh.wrap (project tasks)                                    :#INFRA:
+
+*** DONE Delete org files from repositories
+    CLOSED: [2022-10-17 Mon 17:41] DEADLINE: <2022-10-17 Mon> SCHEDULED: <2022-10-17 Mon>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2022-10-17 Mon 17:41]
+    CLOCK: [2022-10-17 Mon 03:35]--[2022-10-17 Mon 04:17] =>  0:42
+    CLOCK: [2022-10-17 Mon 02:10]--[2022-10-17 Mon 03:19] =>  1:09
+    - State "STARTED"    from "TODO"       [2022-10-17 Mon 02:10]
+    :END:
+    <2022-10-17 Mon>
+
+** Infra: sh.wrap (project tasks)                                    :@INFRA:
 
 *** PROGRESS Actions to export project documentation to GH pages     :ACTIVE:
     DEADLINE: <2022-05-21 Sat> SCHEDULED: <2022-05-21 Sat>
@@ -69,6 +85,10 @@ date: <2022-05-21 Sat>
     :Effort:   03:00
     :END:
     :LOGBOOK:
+    - State "PROGRESS"   from "PROGRESS"   [2022-10-16 Sun 18:05] \\
+      actions are ready for review
+    CLOCK: [2022-10-13 Thu 21:53]--[2022-10-13 Thu 22:41] =>  0:48
+    CLOCK: [2022-10-13 Thu 16:19]--[2022-10-13 Thu 18:57] =>  2:38
     CLOCK: [2022-10-04 Tue 19:16]--[2022-10-04 Tue 19:47] =>  0:31
     CLOCK: [2022-10-04 Tue 18:40]--[2022-10-04 Tue 18:43] =>  0:03
     - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:32] \\
@@ -152,7 +172,6 @@ date: <2022-05-21 Sat>
      :END:
 
 *** PROGRESS Add docker image for hugo site generation               :ACTIVE:
-
     DEADLINE: <2022-05-21 Sat>
     :LOGBOOK:
     CLOCK: [2022-05-21 Sat 11:55]--[2022-05-21 Sat 12:24] =>  0:29
@@ -161,6 +180,7 @@ date: <2022-05-21 Sat>
       basic images with hugo and pandoc for site generation are added
     :END:
     <2022-05-21 Sat>
+
 *** DONE Create a branch for project tracking
     CLOSED: [2022-05-13 Fri 22:42] SCHEDULED: <2022-05-13 Fri>
     :LOGBOOK:
@@ -172,7 +192,7 @@ date: <2022-05-21 Sat>
     - State "STARTED"    from "NEXT"       [2022-05-13 Fri 19:27]
     :END:
 
-** Plan: sh.wrap (project tasks)                                      :#PLAN:
+** Plan: sh.wrap (project tasks)                                      :@PLAN:
 
 *** Plan: Milestone 0.0.1 (project tasks):
 
@@ -181,8 +201,9 @@ date: <2022-05-21 Sat>
 *** Plan: Roadmap (project tasks)
 
 **** NEXT Write requirements for milestone 0.0.1
+     <<wrfm001>>
 
-** QA: sh.wrap (project tasks)                                          :#QA:
+** QA: sh.wrap (project tasks)                                          :@QA:
 
 *** NEXT [#A] Add issue/pr templates
 
@@ -191,7 +212,7 @@ date: <2022-05-21 Sat>
   :CATEGORY: ▪ SH.WRAP ▪
   :END:
 
-** Code: sh.wrap (project backlog)                                    :#CODE:
+** Code: sh.wrap (project backlog)                                    :@CODE:
 
 *** TODO Implement ccache module
 
@@ -219,7 +240,7 @@ date: <2022-05-21 Sat>
 
 **** NEXT Add script for bashrc
 
-** Docs: sh.wrap (project backlog)                                    :#DOCS:
+** Docs: sh.wrap (project backlog)                             :@DOCS:ACTIVE:
 
 *** NEXT Add license
 
@@ -229,19 +250,23 @@ date: <2022-05-21 Sat>
 
 *** TODO Fix: title and date parameters not exposed in in org->md export
     <2022-05-21 Sat>
+
 *** Docs: Documentation site generator (project backlog)
 
 **** NEXT Add styling for hugo site
      <2022-05-21 Sat>
-** Infra: sh.wrap (project backlog)                                  :#INFRA:
+
+** Infra: sh.wrap (project backlog)                                  :@INFRA:
 
 *** NEXT Write script to sync working repositories with upstream
+
 *** TODO Add spell checker action for project documentation
     <2022-05-22 Sun>
 
-** Plan: sh.wrap (project backlog)                                    :#PLAN:
+** Plan: sh.wrap (project backlog)                                    :@PLAN:
 
 *** TODO Describe sh.wrap purpose and vision
+    <<dswpav>>
 
 *** TODO Write project review/report templates
 
@@ -256,15 +281,15 @@ date: <2022-05-21 Sat>
 
 **** TODO Milestone 0.0.1: Update roadmap
 
-**** DEPENDENCY [[*Write requirements for milestone 0.0.1][Write requirements for milestone 0.0.1]]
+***** DEPENDENCY [[wrfm001][Write requirements for milestone 0.0.1]]
 
 *** Plan: Roadmap (project backlog)
 
 **** NEXT Create roadmap diagram
 
-**** DEPENDENCY [[*Describe sh.wrap purpose and vision][Describe sh.wrap purpose and vision]]
+**** DEPENDENCY [[dswpav][Describe sh.wrap purpose and vision]]
 
-** QA: sh.wrap (project backlog)                                        :#QA:
+** QA: sh.wrap (project backlog)                                        :@QA:
 
 *** NEXT Exploratory testing of site generation action
     <2022-05-21 Sat>
@@ -273,8 +298,10 @@ date: <2022-05-21 Sat>
 
 *** TODO Describe GH issue/pr workflows (life-cycle)
     <2022-05-21 Sat>
+
 *** TODO Describe issue/test/release verification processes
     <2022-05-21 Sat>
+
 *** TODO Review pr#11
 
 *** TODO Review pr#9
@@ -284,12 +311,22 @@ date: <2022-05-21 Sat>
   :CATEGORY: □ SH.WRAP □
   :END:
 
-* sh.wrap (habits)                                                   :#habit:
+** Code: sh.wrap (project stuck)                                      :@CODE:
+
+** Docs: sh.wrap (project stuck)                                 :@DOCS:ACTIVE:
+
+** Infra: sh.wrap (project stuck)                                    :@INFRA:
+
+** Plan: sh.wrap (project stuck)                                      :@PLAN:
+
+** QA: sh.wrap (project stuck)                                          :@QA:
+
+* sh.wrap (habits)                                            :noexport:#habit:
   :PROPERTIES:
   :CATEGORY: ■ SH.WRAP ■
   :END:
 
-** Plan: sh.wrap (habits)                                             :#PLAN:
+** Plan: sh.wrap (habits)                                             :@PLAN:
    :PROPERTIES:
    :sort:     false
    :END:
@@ -311,7 +348,7 @@ date: <2022-05-21 Sat>
   :CATEGORY: ▇ SH.WRAP ▇
   :END:
 
-** Code: sh.wrap (project goals) :#CODE:
+** Code: sh.wrap (project goals) :@CODE:
 
 *** GOAL Collection of useful shell scripts [0/2]
 

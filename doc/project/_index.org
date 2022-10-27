@@ -1,0 +1,18 @@
+#+CATEGORY: ░ SH.WRAP ░
+#+FILETAGS: #note sh.wrap
+#+OPTIONS: ^:nil toc:nil num:nil author:nil timestamp:nil
+#+OPTIONS: H:4 prop:nil d:nil tags:nil p:t c:nil pri:t
+#+COLUMNS: %50ITEM TODO %3PRIORITY %Effort %Effort(Effort Children){:} %10CLOCKSUM
+
+#+begin_export markdown
+---
+title: Planning documentation
+date: 2022-10-28
+weight: 1
+url: /project/
+---
+#+end_export
+
+* Planning documentation                                             :ignore:
+
+[[file:todo/todo.org][Pool of tasks]] in sh.wrap project. For now it's updated eventually.
