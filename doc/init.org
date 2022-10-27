@@ -55,7 +55,7 @@
                                `(("ps#" stuck "Stuck (sh.wrap)"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-stuck-projects
-                                    '("+#project-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+#task-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+learning-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+reading-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity/-TODO-DEPENDENCY-SOMEDAY-FROZEN-WAITING-DONE-COMPLETE-CANCELLED-TRY-READ-WRITE-WATCH-GOTO-BUY-TALK-CHAT-POST-MAIL-PHONE-ACHIVED" ("NEXT" "STARTED" "PROGRESS") ("TODO") "\\<IGNORE\\>"))))
+                                    '("+#project-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+#task-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+learning-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+reading-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity/-TODO-DEPENDENCY-SOMEDAY-FROZEN-WAITING-DONE-COMPLETE-CANCELLED-TRY-READ-WRITE-WATCH-GOTO-BUY-TALK-CHAT-POST-MAIL-DAILY-WEEKLY-MONTHLY-PHONE-ACHIVED" ("NEXT" "STARTED" "PROGRESS") ("TODO") "\\<IGNORE\\>"))))
                                  ("ps@@" agenda "Agenda (sh.wrap)"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "-@mobile" "-#backlog" "-#journal" "-#list" "-#note"))))
