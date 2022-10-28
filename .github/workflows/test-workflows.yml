@@ -1,0 +1,48 @@
+name: "Test: Workflows"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-test-workflows"
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+  push:
+
+env:
+  DOCKERFILE_SCRIPTS_PATH: "./_actions/src"
+  DOCKERFILE_TEMPLATE: "./_actions/docker/git-tasks.Dockerfile"
+  DOCKERFILE: "git-tasks.Dockerfile"
+  WORK_DIR: "/github/workspace/_actions"
+  SCRIPT: "./test/workflow/test-workflows.sh"
+  GITHUB_REPO: "ekotik/sh.wrap"
+
+jobs:
+  test-workflows:
+    permissions:
+      actions: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: "Checkout actions"
+        uses: ekotik/sh.wrap@actions
+      - uses: ./_actions/.github/actions/prepare-dockerfile
+      - uses: ./_actions/.github/actions/test-workflows
+        with:
+          work_dir: "${{ env.WORK_DIR }}"
+          script: "${{ env.SCRIPT }}"
+          github_repo: "${{ env.GITHUB_REPO }}"
+          data_dirs: |
+            ./test/workflow/data/actions
+            ./test/workflow/data/gh-publish
+            ./test/workflow/data/go-build
+            ./test/workflow/data/hugo-site
+            ./test/workflow/data/test-shellcheck
+            ./test/workflow/data/update-submodules
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
