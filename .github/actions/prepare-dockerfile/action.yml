@@ -1,0 +1,14 @@
+name: "Run: Prepare dockerfile"
+description: "Substitute environment variables in a dockerfile template"
+
+permissions: {}
+
+runs:
+  using: composite
+  steps:
+    - name: "Generate dockerfile from template"
+      shell: bash
+      run: |
+        env bash ${{ env.DOCKERFILE_SCRIPTS_PATH }}/dockerfile.sh \
+                 ${{ env.DOCKERFILE_TEMPLATE }} \
+                 ${{ env.DOCKERFILE }}

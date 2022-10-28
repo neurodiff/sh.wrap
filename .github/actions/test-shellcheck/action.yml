@@ -1,0 +1,25 @@
+name: "Test: shellcheck (docker)"
+description: "Shellcheck tests for shell scripts (docker)"
+
+permissions: {}
+
+inputs:
+  work_dir:
+    description: "Working directory"
+    default: "/github/workspace"
+  script:
+    description: "Run script"
+    default: "./_actions/src/test-shellcheck.sh"
+  dirs:
+    description: "Source directories"
+    required: true
+
+runs:
+  using: docker
+  image: "../../../../test-shellcheck.Dockerfile"
+  args:
+    - "${{ inputs.work_dir }}"
+    - "${{ inputs.script }}"
+    - "${{ inputs.dirs }}"
+  env:
+    GH_MODE: 1
