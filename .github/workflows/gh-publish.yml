@@ -1,0 +1,144 @@
+name: "Run: Publish site"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-gh-publish-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  workflow_call:
+    inputs:
+      run_id:
+        description: "Run ID"
+        type: string
+        required: true
+      dockerfile_template:
+        description: "Dockerfile template file"
+        type: string
+        default: "./_actions/docker/git-tasks.Dockerfile"
+      dockerfile:
+        description: "Dockerfile to build and run"
+        type: string
+        default: "git-tasks.Dockerfile"
+      work_dir:
+        description: "Working directory"
+        type: string
+        default: "/github/workspace"
+      script:
+        description: "Run script"
+        type: string
+        default: "./_actions/src/gh-publish.sh"
+      gh_bin_source:
+        description: "gh binary (host)"
+        type: string
+        default: "./cli/bin/gh"
+      gh_bin_dest:
+        description: "gh binary (docker)"
+        type: string
+        default: "/go/gh"
+      gh_bin_path:
+        description: "gh binary directory (host)"
+        type: string
+        default: "./cli/bin"
+      gh_repo:
+        description: "gh repository"
+        type: string
+        default: "https://github.com/cli/cli"
+      gh_hash:
+        description: "gh repository commit"
+        type: string
+        default: "7d71f807c48600d0d8d9f393ef13387504987f1d"
+      gh_build_args:
+        description: "gh build arguments"
+        type: string
+        default: ""
+      gh_pages_repo:
+        description: "GH pages repository"
+        type: string
+        required: true
+      gh_pages_branch:
+        description: "GH pages branch"
+        type: string
+        required: true
+      public_dir:
+        description: "Publish directory"
+        type: string
+        required: true
+      public_cache:
+        description: "Publish cache"
+        type: string
+        default: ""
+
+env:
+  DOCKERFILE_SCRIPTS_PATH: "./_actions/src"
+  RUN_ID: "${{ inputs.run_id }}"
+  DOCKERFILE_TEMPLATE: "${{ inputs.dockerfile_template }}"
+  DOCKERFILE: "${{ inputs.dockerfile }}"
+  WORK_DIR: "${{ inputs.work_dir }}"
+  SCRIPT: "${{ inputs.script }}"
+  GH_BIN_SOURCE: "${{ inputs.gh_bin_source }}"
+  GH_BIN_DEST: "${{ inputs.gh_bin_dest }}"
+  GH_BIN_PATH: "${{ inputs.gh_bin_path }}"
+  GH_REPO: "${{ inputs.gh_repo }}"
+  GH_HASH: "${{ inputs.gh_hash }}"
+  GH_BUILD_ARGS: "${{ inputs.gh_build_args }}"
+  GH_PAGES_REPO: "${{ inputs.gh_pages_repo }}"
+  GH_PAGES_BRANCH: "${{ inputs.gh_pages_branch }}"
+  PUBLIC_DIR: "${{ inputs.public_dir }}"
+  PUBLIC_CACHE: "${{ inputs.public_cache }}"
+
+jobs:
+  gh-build:
+    concurrency:
+      group: "gh-publish/gh-build-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    uses: ekotik/sh.wrap/.github/workflows/go-build.yml@actions
+    with:
+      run_id: "gh-publish/gh-build-${{ inputs.run_id }}"
+      dockerfile_template: "./_actions/docker/go-build.Dockerfile"
+      dockerfile: "go-build.Dockerfile"
+      git_repo: "${{ inputs.gh_repo }}"
+      git_hash: "${{ inputs.gh_hash }}"
+      build_args: "${{ inputs.gh_build_args }}"
+      go_bin: "${{ inputs.gh_bin_source }}"
+      use_cache: true
+  gh-publish:
+    concurrency:
+      group: "gh-publish/gh-publish-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    needs:
+      - gh-build
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: "Checkout actions"
+        uses: ekotik/sh.wrap@actions
+      - name: "Retrieve gh binary cache"
+        uses: actions/cache@v3
+        with:
+          path: "${{ inputs.gh_bin_source }}"
+          key: "${{ runner.os }}-go-build-${{ inputs.gh_hash }}-${{ inputs.gh_build_args }}"
+      - if: ${{ inputs.public_cache != '' }}
+        name: "Retrieve site from cache"
+        uses: actions/download-artifact@v3
+        with:
+          name: "${{ inputs.public_cache }}"
+          path: "${{ inputs.public_dir }}"
+      - uses: ./_actions/.github/actions/prepare-dockerfile
+      - name: "Publish site"
+        uses: ./_actions/.github/actions/gh-publish
+        with:
+          work_dir: "${{ inputs.work_dir }}"
+          script: "${{ inputs.script }}"
+          gh_bin: "${{ inputs.gh_bin_dest }}"
+          gh_pages_repo: "${{ inputs.gh_pages_repo }}"
+          gh_pages_branch: "${{ inputs.gh_pages_branch }}"
+          public_dir: "${{ inputs.public_dir }}"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

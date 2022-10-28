@@ -1,0 +1,102 @@
+name: "Build go repository"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-go-build-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  workflow_call:
+    inputs:
+      run_id:
+        description: "Run ID"
+        type: string
+        required: true
+      dockerfile_template:
+        description: "Dockerfile template file"
+        type: string
+        default: "./_actions/docker/go-build.Dockerfile"
+      dockerfile:
+        description: "Dockerfile to build and run"
+        type: string
+        default: "go-build.Dockerfile"
+      work_dir:
+        description: "Working directory"
+        type: string
+        default: "/github/workspace"
+      script:
+        description: "Run script"
+        type: string
+        default: "./_actions/src/go-build.sh"
+      git_path:
+        description: "Git working directory"
+        type: string
+        default: "./"
+      git_repo:
+        description: "Git repository to build"
+        type: string
+        required: true
+      git_hash:
+        description: "Git repository commit"
+        type: string
+        required: true
+      build_args:
+        description: "Build arguments"
+        type: string
+        default: ""
+      go_bin:
+        description: "Go binary"
+        type: string
+        required: true
+      use_cache:
+        description: "Use go binary cache"
+        type: boolean
+        default: true
+
+env:
+  DOCKERFILE_SCRIPTS_PATH: "./_actions/src"
+  RUN_ID: "${{ inputs.run_id }}"
+  DOCKERFILE_TEMPLATE: "${{ inputs.dockerfile_template }}"
+  DOCKERFILE: "${{ inputs.dockerfile }}"
+  WORK_DIR: "${{ inputs.work_dir }}"
+  SCRIPT: "${{ inputs.script }}"
+  GIT_PATH: "${{ inputs.git_path }}"
+  GIT_REPO: "${{ inputs.git_repo }}"
+  GIT_HASH: "${{ inputs.git_hash }}"
+  BUILD_ARGS: "${{ inputs.build_args }}"
+  GO_BIN: "${{ inputs.go_bin }}"
+  USE_CACHE: ${{ inputs.use_cache }}
+
+jobs:
+  go-build:
+    concurrency:
+      group: "go-build-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: "Checkout actions"
+        uses: ekotik/sh.wrap@actions
+      - if: ${{ inputs.use_cache == true }}
+        id: go-cache
+        name: "Cache go binary"
+        uses: actions/cache@v3
+        with:
+          path: "${{ env.GO_BIN }}"
+          key: "${{ runner.os }}-go-build-${{ env.GIT_HASH }}-${{ env.BUILD_ARGS }}"
+      - if: ${{ (inputs.use_cache == 'false') || (steps.go-cache.outputs.cache-hit != 'true') }}
+        uses: ./_actions/.github/actions/prepare-dockerfile
+      - if: ${{ (inputs.use_cache == 'false') || (steps.go-cache.outputs.cache-hit != 'true') }}
+        name: "Build go repository"
+        uses: ./_actions/.github/actions/go-build
+        with:
+          work_dir: "${{ inputs.work_dir }}"
+          script: "${{ inputs.script }}"
+          git_path: "${{ inputs.git_path }}"
+          git_repo: "${{ inputs.git_repo }}"
+          git_hash: "${{ inputs.git_hash }}"
+          build_args: "${{ inputs.build_args }}"
