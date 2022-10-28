@@ -93,7 +93,7 @@ jobs:
     concurrency:
       group: "hugo-site/hugo-build-${{ inputs.run_id }}"
       cancel-in-progress: true
-    uses: ekotik/sh.wrap/.github/workflows/go-build.yml@actions
+    uses: ekotik/sh.wrap/.github/workflows/go-build.yml@v0.0.0-actions
     with:
       run_id: "hugo-site/hugo-build-${{ inputs.run_id }}"
       dockerfile_template: "./_actions/docker/go-build.Dockerfile"
@@ -116,7 +116,7 @@ jobs:
         with:
           submodules: recursive
       - name: "Checkout actions"
-        uses: ekotik/sh.wrap@actions
+        uses: ekotik/sh.wrap@v0.0.0-actions
       - name: "Retrieve hugo binary cache"
         uses: actions/cache@v3
         with:

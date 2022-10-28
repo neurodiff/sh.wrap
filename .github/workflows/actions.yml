@@ -150,7 +150,7 @@ jobs:
     concurrency:
       group: "actions/hugo-site-${{ inputs.run_id }}"
       cancel-in-progress: true
-    uses: ekotik/sh.wrap/.github/workflows/hugo-site.yml@actions
+    uses: ekotik/sh.wrap/.github/workflows/hugo-site.yml@v0.0.0-actions
     with:
       run_id: "${{ inputs.run_id }}"
       dockerfile_template: "${{ inputs.dockerfile_template_hugo_site }}"
@@ -175,7 +175,7 @@ jobs:
       cancel-in-progress: true
     needs:
       - hugo-site
-    uses: ekotik/sh.wrap/.github/workflows/gh-publish.yml@actions
+    uses: ekotik/sh.wrap/.github/workflows/gh-publish.yml@v0.0.0-actions
     with:
       run_id: "${{ inputs.run_id }}"
       dockerfile_template: "${{ inputs.dockerfile_template_gh_publish }}"

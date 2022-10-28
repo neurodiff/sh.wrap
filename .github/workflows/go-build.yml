@@ -80,7 +80,7 @@ jobs:
         with:
           submodules: recursive
       - name: "Checkout actions"
-        uses: ekotik/sh.wrap@actions
+        uses: ekotik/sh.wrap@v0.0.0-actions
       - if: ${{ inputs.use_cache == true }}
         id: go-cache
         name: "Cache go binary"

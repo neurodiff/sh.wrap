@@ -54,7 +54,7 @@ jobs:
         with:
           submodules: recursive
       - name: "Checkout actions"
-        uses: ekotik/sh.wrap@actions
+        uses: ekotik/sh.wrap@v0.0.0-actions
       - uses: ./_actions/.github/actions/prepare-dockerfile
       - uses: ./_actions/.github/actions/test-shellcheck
         with:
