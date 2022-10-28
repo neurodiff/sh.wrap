@@ -1,0 +1,194 @@
+name: "Build and publish hugo site"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-actions-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  workflow_call:
+    inputs:
+      run_id:
+        description: "Run ID"
+        type: string
+        required: true
+      dockerfile_template_hugo_site:
+        description: "Dockerfile template file (hugo-site)"
+        type: string
+        default: "./_actions/docker/hugo-site.Dockerfile"
+      dockerfile_hugo_site:
+        description: "Dockerfile to build and run (hugo-site)"
+        type: string
+        default: "hugo-site.Dockerfile"
+      dockerfile_template_gh_publish:
+        description: "Dockerfile template file (gh-publish)"
+        type: string
+        default: "./_actions/docker/git-tasks.Dockerfile"
+      dockerfile_gh_publish:
+        description: "Dockerfile to build and run (gh-publish)"
+        type: string
+        default: "git-tasks.Dockerfile"
+      work_dir:
+        description: "Working directory"
+        type: string
+        default: "/github/workspace"
+      script_hugo_site:
+        description: "Run script (hugo-site)"
+        type: string
+        default: "./_actions/src/hugo-site.sh"
+      script_gh_publish:
+        description: "Run script (gh-publish)"
+        type: string
+        default: "./_actions/src/gh-publish.sh"
+      gh_bin_source:
+        description: "gh binary (host)"
+        type: string
+        default: "./cli/bin/gh"
+      gh_bin_dest:
+        description: "gh binary (docker)"
+        type: string
+        default: "/go/gh"
+      gh_bin_path:
+        description: "gh binary directory (host)"
+        type: string
+        default: "./cli/bin"
+      gh_repo:
+        description: "gh repository"
+        type: string
+        default: "https://github.com/cli/cli"
+      gh_hash:
+        description: "gh repository commit"
+        type: string
+        default: "7d71f807c48600d0d8d9f393ef13387504987f1d"
+      gh_build_args:
+        description: "gh build arguments"
+        type: string
+        default: ""
+      hugo_bin_source:
+        description: "gh binary (host)"
+        type: string
+        default: "./hugo/hugo"
+      hugo_bin_dest:
+        description: "gh binary (docker)"
+        type: string
+        default: "/go/hugo"
+      hugo_bin_path:
+        description: "gh binary directory (host)"
+        type: string
+        default: "./hugo"
+      hugo_repo:
+        description: "gh repository"
+        type: string
+        default: "https://github.com/gohugoio/hugo"
+      hugo_hash:
+        description: "gh repository commit"
+        type: string
+        default: "bfebd8c02cfc0d4e4786e0f64932d832d3976e92"
+      hugo_build_args:
+        description: "hugo build arguments"
+        type: string
+        default: ""
+      docs_dir:
+        description: "Documentation directory"
+        type: string
+        default: "./doc"
+      site_dir:
+        description: "Site directory"
+        type: string
+        default: "./doc/site"
+      public_dir:
+        description: "Publish directory"
+        type: string
+        required: true
+      public_cache:
+        description: "Publish cache"
+        type: string
+        default: "hugo-site"
+      gh_pages_repo:
+        description: "GH pages repository"
+        type: string
+        required: true
+      gh_pages_branch:
+        description: "GH pages branch"
+        type: string
+        required: true
+
+env:
+  RUN_ID: "${{ inputs.run_id }}"
+  DOCKERFILE_TEMPLATE_HUGO_SITE: "${{ inputs.dockerfile_template_hugo_site }}"
+  DOCKERFILE_HUGO_SITE: "${{ inputs.dockerfile_hugo_site }}"
+  DOCKERFILE_TEMPLATE_GH_PUBLISH: "${{ inputs.dockerfile_template_gh_publish }}"
+  DOCKERFILE_GH_PUBLISH: "${{ inputs.dockerfile_gh_publish }}"
+  DOCKERFILE_SCRIPTS_PATH: "./_actions/src"
+  WORK_DIR: "${{ inputs.work_dir }}"
+  SCRIPT_HUGO_SITE: "${{ inputs.script_hugo_site }}"
+  SCRIPT_GH_PUBLISH: "${{ inputs.script_gh_publish }}"
+  GH_BIN_SOURCE: "${{ inputs.gh_bin_source }}"
+  GH_BIN_DEST: "${{ inputs.gh_bin_dest }}"
+  GH_BIN_PATH: "${{ inputs.gh_bin_path }}"
+  GH_REPO: "${{ inputs.gh_repo }}"
+  GH_HASH: "${{ inputs.gh_hash }}"
+  GH_BUILD_ARGS: "${{ inputs.gh_build_args }}"
+  HUGO_BIN_SOURCE: "${{ inputs.hugo_bin_source }}"
+  HUGO_BIN_DEST: "${{ inputs.hugo_bin_dest }}"
+  HUGO_BIN_PATH: "${{ inputs.hugo_bin_path }}"
+  HUGO_REPO: "${{ inputs.hugo_repo }}"
+  HUGO_HASH: "${{ inputs.hugo_hash }}"
+  HUGO_BUILD_ARGS: "${{ inputs.hugo_build_args }}"
+  DOCS_DIR: "${{ inputs.docs_dir }}"
+  SITE_DIR: "${{ inputs.site_dir }}"
+  PUBLIC_DIR: "${{ inputs.public_dir }}"
+  PUBLIC_CACHE: "${{ inputs.public_cache }}"
+  GH_PAGES_REPO: "${{ inputs.gh_pages_repo }}"
+  GH_PAGES_BRANCH: "${{ inputs.gh_pages_branch }}"
+
+jobs:
+  hugo-site:
+    permissions:
+      contents: write
+    concurrency:
+      group: "actions/hugo-site-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    uses: ekotik/sh.wrap/.github/workflows/hugo-site.yml@actions
+    with:
+      run_id: "${{ inputs.run_id }}"
+      dockerfile_template: "${{ inputs.dockerfile_template_hugo_site }}"
+      dockerfile: "${{ inputs.dockerfile_hugo_site }}"
+      work_dir: "${{ inputs.work_dir }}"
+      script: "${{ inputs.script_hugo_site }}"
+      hugo_bin_source: "${{ inputs.hugo_bin_source }}"
+      hugo_bin_dest: "${{ inputs.hugo_bin_dest }}"
+      hugo_bin_path: "${{ inputs.hugo_bin_path }}"
+      hugo_repo: "${{ inputs.hugo_repo }}"
+      hugo_hash: "${{ inputs.hugo_hash }}"
+      hugo_build_args: "${{ inputs.hugo_build_args }}"
+      docs_dir: "${{ inputs.docs_dir }}"
+      site_dir: "${{ inputs.site_dir }}"
+      public_dir: "${{ inputs.public_dir }}"
+      public_cache: "${{ inputs.public_cache }}"
+  gh-publish:
+    permissions:
+      contents: write
+    concurrency:
+      group: "actions/gh-publish-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    needs:
+      - hugo-site
+    uses: ekotik/sh.wrap/.github/workflows/gh-publish.yml@actions
+    with:
+      run_id: "${{ inputs.run_id }}"
+      dockerfile_template: "${{ inputs.dockerfile_template_gh_publish }}"
+      dockerfile: "${{ inputs.dockerfile_gh_publish }}"
+      work_dir: "${{ inputs.work_dir }}"
+      script: "${{ inputs.script_gh_publish }}"
+      gh_bin_source: "${{ inputs.gh_bin_source }}"
+      gh_bin_dest: "${{ inputs.gh_bin_dest }}"
+      gh_bin_path: "${{ inputs.gh_bin_path }}"
+      gh_repo: "${{ inputs.gh_repo }}"
+      gh_hash: "${{ inputs.gh_hash }}"
+      gh_build_args: "${{ inputs.gh_build_args }}"
+      gh_pages_repo: "${{ inputs.gh_pages_repo }}"
+      gh_pages_branch: "${{ inputs.gh_pages_branch }}"
+      public_dir: "${{ inputs.public_dir }}"
+      public_cache: "${{ inputs.public_cache }}"
