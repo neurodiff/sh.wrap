@@ -1,0 +1,38 @@
+name: "Publish site (docker)"
+description: "Publish GH pages site (docker)"
+
+permissions:
+  contents: write
+
+inputs:
+  work_dir:
+    description: "Working directory"
+    default: "/github/workspace"
+  script:
+    description: "Run script"
+    default: "./_actions/src/gh-publish.sh"
+  gh_bin:
+    description: "gh binary"
+    default: "/go/gh"
+  gh_pages_repo:
+    description: "GH pages repository"
+    required: true
+  gh_pages_branch:
+    description: "GH pages branch"
+    default: true
+  public_dir:
+    description: "Publish directory"
+    default: true
+
+runs:
+  using: docker
+  image: "../../../../git-tasks.Dockerfile"
+  args:
+    - "${{ inputs.work_dir }}"
+    - "${{ inputs.script }}"
+    - "${{ inputs.gh_bin }}"
+    - "${{ inputs.gh_pages_repo }}"
+    - "${{ inputs.gh_pages_branch }}"
+    - "${{ inputs.public_dir }}"
+  env:
+    GH_MODE: 1
