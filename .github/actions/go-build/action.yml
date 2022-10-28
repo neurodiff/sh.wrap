@@ -1,0 +1,37 @@
+name: "Run: Build go repository (docker)"
+description: "Build go binary from sources (docker)"
+
+permissions: {}
+
+inputs:
+  work_dir:
+    description: "Working directory"
+    default: "/github/workspace"
+  script:
+    description: "Run script"
+    default: "./_actions/src/go-build.sh"
+  git_path:
+    description: "Working path for go build"
+    default: "./"
+  git_repo:
+    description: "Go repository to build"
+    required: true
+  git_hash:
+    description: "Repository commit hash"
+    required: true
+  build_args:
+    description: "Build arguments"
+    default: ""
+
+runs:
+  using: docker
+  image: "../../../../go-build.Dockerfile"
+  args:
+    - "${{ inputs.work_dir }}"
+    - "${{ inputs.script }}"
+    - "${{ inputs.git_path }}"
+    - "${{ inputs.git_repo }}"
+    - "${{ inputs.git_hash }}"
+    - "${{ inputs.build_args }}"
+  env:
+    GH_MODE: 1
