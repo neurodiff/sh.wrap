@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2034
 
-export WORKFLOW_ID="37075163"
+export WORKFLOW_ID="38942439"
 export REF="actions"
 export RUN_ID="go-build/01/01"
 export DOCKERFILE_TEMPLATE="./_actions/docker/go-build.Dockerfile"

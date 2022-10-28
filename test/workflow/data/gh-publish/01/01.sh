@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2034
 
-export WORKFLOW_ID="37482756"
+export WORKFLOW_ID="38942442"
 export REF="actions"
 export RUN_ID="gh-publish/01/01"
 export DOCKERFILE_TEMPLATE="./_actions/docker/git-tasks.Dockerfile"

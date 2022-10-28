@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2034
 
-export WORKFLOW_ID="37251119"
+export WORKFLOW_ID="38942440"
 export REF="actions"
 export RUN_ID="update-submodules/01/01"
 export DOCKERFILE_TEMPLATE="./_actions/docker/git-tasks.Dockerfile"

@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=SC2034
 
-export WORKFLOW_ID="37469369"
+export WORKFLOW_ID="38942441"
 export REF="actions"
 export RUN_ID="hugo-site/01/01"
 export DOCKERFILE_TEMPLATE="./_actions/docker/hugo-site.Dockerfile"
