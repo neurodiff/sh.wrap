@@ -1,0 +1,37 @@
+name: "Run: Build hugo site (docker)"
+description: "Build hugo site (docker)"
+
+permissions: {}
+
+inputs:
+  work_dir:
+    description: "Working directory"
+    default: "/github/workspace"
+  script:
+    description: "Run script"
+    default: "./_actions/src/hugo-site.sh"
+  hugo_bin:
+    description: "Hugo binary path"
+    default: "/go/hugo"
+  docs_dir:
+    description: "Documentation directory"
+    required: true
+  site_dir:
+    description: "Site directory"
+    required: true
+  public_dir:
+    description: "Publish directory"
+    required: true
+
+runs:
+  using: docker
+  image: "../../../../hugo-site.Dockerfile"
+  args:
+    - "${{ inputs.work_dir }}"
+    - "${{ inputs.script }}"
+    - "${{ inputs.hugo_bin }}"
+    - "${{ inputs.docs_dir }}"
+    - "${{ inputs.site_dir }}"
+    - "${{ inputs.public_dir }}"
+  env:
+    GH_MODE: 1
