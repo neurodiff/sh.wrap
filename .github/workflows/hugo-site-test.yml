@@ -1,0 +1,44 @@
+name: "Test: Build hugo site (workflow)"
+run-name: "Test: Build hugo site - ${{ inputs.run_id }}"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-hugo-site-test-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run ID"
+        type: string
+        required: true
+      payload:
+        description: "Inputs payload"
+        type: string
+        required: true
+
+jobs:
+  hugo-site-test:
+    permissions:
+      contents: write
+    concurrency:
+      group: "hugo-site-test-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    uses: ekotik/sh.wrap/.github/workflows/hugo-site.yml@actions
+    with:
+      run_id: "${{ inputs.run_id }}"
+      dockerfile_template: "${{ fromJson(inputs.payload).dockerfile_template }}"
+      dockerfile: "${{ fromJson(inputs.payload).dockerfile }}"
+      work_dir: "${{ fromJson(inputs.payload).work_dir }}"
+      script: "${{ fromJson(inputs.payload).script }}"
+      hugo_bin_source: "${{ fromJson(inputs.payload).hugo_bin_source }}"
+      hugo_bin_dest: "${{ fromJson(inputs.payload).hugo_bin_dest }}"
+      hugo_bin_path: "${{ fromJson(inputs.payload).hugo_bin_path }}"
+      hugo_repo: "${{ fromJson(inputs.payload).hugo_repo }}"
+      hugo_hash: "${{ fromJson(inputs.payload).hugo_hash }}"
+      hugo_build_args: "${{ fromJson(inputs.payload).hugo_build_args }}"
+      docs_dir: "${{ fromJson(inputs.payload).docs_dir }}"
+      site_dir: "${{ fromJson(inputs.payload).site_dir }}"
+      public_cache: "${{ fromJson(inputs.payload).public_cache }}"

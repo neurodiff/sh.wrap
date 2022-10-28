@@ -1,0 +1,63 @@
+name: "Test: Publish site (workflow)"
+run-name: "Test: Publish site - ${{ inputs.run_id }}"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-gh-publish-test-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run ID"
+        type: string
+        required: true
+      payload:
+        description: "Inputs payload"
+        type: string
+        required: true
+
+jobs:
+  pre-gh-publish-test:
+    concurrency:
+      group: "pre-gh-publish-test-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Make site"
+        run: |
+          public_dir="${{ fromJson(inputs.payload).public_dir }}"
+          mkdir -p "$public_dir"
+          echo "It works!" > "$public_dir"/index.html
+      - name: "Archive site"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "${{ fromJson(inputs.payload).public_cache }}"
+          path: "${{ fromJson(inputs.payload).public_dir }}"
+  gh-publish-test:
+    permissions:
+      contents: write
+    concurrency:
+      group: "gh-publish-test-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    needs:
+      - pre-gh-publish-test
+    uses: ekotik/sh.wrap/.github/workflows/gh-publish.yml@actions
+    with:
+      run_id: "${{ fromJson(inputs.payload).run_id }}"
+      dockerfile_template: "${{ fromJson(inputs.payload).dockerfile_template }}"
+      dockerfile: "${{ fromJson(inputs.payload).dockerfile }}"
+      work_dir: "${{ fromJson(inputs.payload).work_dir }}"
+      script: "${{ fromJson(inputs.payload).script }}"
+      gh_bin_source: "${{ fromJson(inputs.payload).gh_bin_source }}"
+      gh_bin_dest: "${{ fromJson(inputs.payload).gh_bin_dest }}"
+      gh_bin_path: "${{ fromJson(inputs.payload).gh_bin_path }}"
+      gh_repo: "${{ fromJson(inputs.payload).gh_repo }}"
+      gh_hash: "${{ fromJson(inputs.payload).gh_hash }}"
+      gh_build_args: "${{ fromJson(inputs.payload).gh_build_args }}"
+      gh_pages_repo: "${{ fromJson(inputs.payload).gh_pages_repo }}"
+      gh_pages_branch: "${{ fromJson(inputs.payload).gh_pages_branch }}"
+      public_dir: "${{ fromJson(inputs.payload).public_dir }}"
+      public_cache: "${{ fromJson(inputs.payload).public_cache }}"

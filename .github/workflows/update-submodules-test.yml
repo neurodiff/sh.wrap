@@ -1,0 +1,44 @@
+name: "Test: Update git submodules (workflow)"
+run-name: "Test: Update git submodules (workflow) - ${{ inputs.run_id }}"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-update-submodules-test-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run ID"
+        type: string
+        required: true
+      payload:
+        description: "Inputs payload"
+        type: string
+        required: true
+
+jobs:
+  update-submodules-test:
+    permissions:
+      contents: write
+    concurrency:
+      group: "update-submodules-test-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    uses: ekotik/sh.wrap/.github/workflows/update-submodules.yml@actions
+    with:
+      run_id: "${{ fromJson(inputs.payload).run_id }}"
+      dockerfile_template: "${{ fromJson(inputs.payload).dockerfile_template }}"
+      dockerfile: "${{ fromJson(inputs.payload).dockerfile }}"
+      work_dir: "${{ fromJson(inputs.payload).work_dir }}"
+      script: "${{ fromJson(inputs.payload).script }}"
+      gh_bin_source: "${{ fromJson(inputs.payload).gh_bin_source }}"
+      gh_bin_dest: "${{ fromJson(inputs.payload).gh_bin_dest }}"
+      gh_bin_path: "${{ fromJson(inputs.payload).gh_bin_path }}"
+      gh_repo: "${{ fromJson(inputs.payload).gh_repo }}"
+      gh_hash: "${{ fromJson(inputs.payload).gh_hash }}"
+      gh_build_args: "${{ fromJson(inputs.payload).gh_build_args }}"
+      git_repo: "${{ fromJson(inputs.payload).git_repo }}"
+      git_branch: "${{ fromJson(inputs.payload).git_branch }}"
+      git_repo_dir: "${{ fromJson(inputs.payload).git_repo_dir }}"

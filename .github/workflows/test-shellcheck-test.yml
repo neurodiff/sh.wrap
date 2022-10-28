@@ -1,0 +1,34 @@
+name: "Test: shellcheck (workflow)"
+run-name: "Test: shellcheck (workflow) - ${{ inputs.run_id }}"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-test-shellcheck-test-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run ID"
+        type: string
+        required: true
+      payload:
+        description: "Inputs payload"
+        type: string
+        required: true
+
+jobs:
+  test-shellcheck-test:
+    concurrency:
+      group: "test-shellcheck-test-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    uses: ekotik/sh.wrap/.github/workflows/test-shellcheck.yml@actions
+    with:
+      run_id: "${{ inputs.run_id }}"
+      dockerfile_template: "${{ fromJson(inputs.payload).dockerfile_template }}"
+      dockerfile: "${{ fromJson(inputs.payload).dockerfile }}"
+      work_dir: "${{ fromJson(inputs.payload).work_dir }}"
+      script: "${{ fromJson(inputs.payload).script }}"
+      dirs: "${{ fromJson(inputs.payload).dirs }}"

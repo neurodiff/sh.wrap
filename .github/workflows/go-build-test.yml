@@ -1,0 +1,39 @@
+name: "Test: Build go repository (workflow)"
+run-name: "Test: Build go repository (workflow) - ${{ inputs.run_id }}"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-go-build-test-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run ID"
+        type: string
+        required: true
+      payload:
+        description: "Inputs payload"
+        type: string
+        required: true
+
+jobs:
+  go-build-test:
+    concurrency:
+      group: "go-build-test-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    uses: ekotik/sh.wrap/.github/workflows/go-build.yml@actions
+    with:
+      run_id: "${{ inputs.run_id }}"
+      dockerfile_template: "${{ fromJson(inputs.payload).dockerfile_template }}"
+      dockerfile: "${{ fromJson(inputs.payload).dockerfile }}"
+      work_dir: "${{ fromJson(inputs.payload).work_dir }}"
+      script: "${{ fromJson(inputs.payload).script }}"
+      git_path: "${{ fromJson(inputs.payload).git_path }}"
+      git_repo: "${{ fromJson(inputs.payload).git_repo }}"
+      git_hash: "${{ fromJson(inputs.payload).git_hash }}"
+      build_args: "${{ fromJson(inputs.payload).build_args }}"
+      go_bin: "${{ fromJson(inputs.payload).go_bin }}"
+      use_cache: ${{ fromJson(inputs.payload).use_cache }}

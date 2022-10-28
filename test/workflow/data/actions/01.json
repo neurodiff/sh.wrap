@@ -1,0 +1,35 @@
+{
+  "ref": "${REF}",
+  "inputs":
+  {
+    "run_id": "${RUN_ID}",
+    "payload":
+    {
+      "dockerfile_template_hugo_site": "${DOCKERFILE_TEMPLATE_HUGO_SITE}",
+      "dockerfile_hugo_site": "${DOCKERFILE_HUGO_SITE}",
+      "dockerfile_template_gh_publish": "${DOCKERFILE_TEMPLATE_GH_PUBLISH}",
+      "dockerfile_gh_publish": "${DOCKERFILE_GH_PUBLISH}",
+      "work_dir": "${WORK_DIR}",
+      "script_hugo_site": "${SCRIPT_HUGO_SITE}",
+      "script_gh_publish": "${SCRIPT_GH_PUBLISH}",
+      "gh_bin_source": "${GH_BIN_SOURCE}",
+      "gh_bin_dest": "${GH_BIN_DEST}",
+      "gh_bin_path": "${GH_BIN_PATH}",
+      "gh_repo": "${GH_REPO}",
+      "gh_hash": "${GH_HASH}",
+      "gh_build_args": "${GH_BUILD_ARGS}",
+      "hugo_bin_source": "${HUGO_BIN_SOURCE}",
+      "hugo_bin_dest": "${HUGO_BIN_DEST}",
+      "hugo_bin_path": "${HUGO_BIN_PATH}",
+      "hugo_repo": "${HUGO_REPO}",
+      "hugo_hash": "${HUGO_HASH}",
+      "hugo_build_args": "${HUGO_BUILD_ARGS}",
+      "docs_dir": "${DOCS_DIR}",
+      "site_dir": "${SITE_DIR}",
+      "public_dir": "${PUBLIC_DIR}",
+      "public_cache": "${PUBLIC_CACHE}",
+      "gh_pages_repo": "${GH_PAGES_REPO}",
+      "gh_pages_branch": "${GH_PAGES_BRANCH}"
+    }
+  }
+}

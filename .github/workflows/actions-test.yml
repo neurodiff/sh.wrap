@@ -1,0 +1,56 @@
+name: "Test: Build and publish hugo site (workflow)"
+run-name: "Test: Build and publish hugo site - ${{ inputs.run_id }}"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-actions-test-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run ID"
+        type: string
+        required: true
+      payload:
+        description: "Inputs payload"
+        type: string
+        required: true
+
+jobs:
+  actions-test:
+    permissions:
+      contents: write
+    concurrency:
+      group: "actions-test-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    uses: ekotik/sh.wrap/.github/workflows/actions.yml@actions
+    with:
+      run_id: "${{ inputs.run_id }}"
+      dockerfile_template_hugo_site: "${{ fromJson(inputs.payload).dockerfile_template_hugo_site }}"
+      dockerfile_hugo_site: "${{ fromJson(inputs.payload).dockerfile_hugo_site }}"
+      dockerfile_template_gh_publish: "${{ fromJson(inputs.payload).dockerfile_template_gh_publish }}"
+      dockerfile_gh_publish: "${{ fromJson(inputs.payload).dockerfile_gh_publish }}"
+      work_dir: "${{ fromJson(inputs.payload).work_dir }}"
+      script_hugo_site: "${{ fromJson(inputs.payload).script_hugo_site }}"
+      script_gh_publish: "${{ fromJson(inputs.payload).script_gh_publish }}"
+      gh_bin_source: "${{ fromJson(inputs.payload).gh_bin_source }}"
+      gh_bin_dest: "${{ fromJson(inputs.payload).gh_bin_dest }}"
+      gh_bin_path: "${{ fromJson(inputs.payload).gh_bin_path }}"
+      gh_repo: "${{ fromJson(inputs.payload).gh_repo }}"
+      gh_hash: "${{ fromJson(inputs.payload).gh_hash }}"
+      gh_build_args: "${{ fromJson(inputs.payload).gh_build_args }}"
+      hugo_bin_source: "${{ fromJson(inputs.payload).hugo_bin_source }}"
+      hugo_bin_dest: "${{ fromJson(inputs.payload).hugo_bin_dest }}"
+      hugo_bin_path: "${{ fromJson(inputs.payload).hugo_bin_path }}"
+      hugo_repo: "${{ fromJson(inputs.payload).hugo_repo }}"
+      hugo_hash: "${{ fromJson(inputs.payload).hugo_hash }}"
+      hugo_build_args: "${{ fromJson(inputs.payload).hugo_build_args }}"
+      docs_dir: "${{ fromJson(inputs.payload).docs_dir }}"
+      site_dir: "${{ fromJson(inputs.payload).site_dir }}"
+      public_dir: "${{ fromJson(inputs.payload).public_dir }}"
+      public_cache: "${{ fromJson(inputs.payload).public_cache }}"
+      gh_pages_repo: "${{ fromJson(inputs.payload).gh_pages_repo }}"
+      gh_pages_branch: "${{ fromJson(inputs.payload).gh_pages_branch }}"
