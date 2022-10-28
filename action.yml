@@ -1,0 +1,12 @@
+name: "sh.wrap actions"
+description: "Collection of actions for sh.wrap project"
+
+permissions: {}
+
+runs:
+  using: composite
+  steps:
+    - name: "Copy actions repository to actions directory"
+      shell: bash
+      run: |
+        cp -rT "$GITHUB_ACTION_PATH" "$GITHUB_WORKSPACE"/_actions
