@@ -1,0 +1,46 @@
+name: "Run: Build documentation"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-doc-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    paths:
+      - 'doc/**'
+  push:
+    paths:
+      - 'doc/**'
+
+jobs:
+  doc:
+    permissions:
+      contents: write
+    concurrency:
+      group: "doc-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    uses: antirs/sh.wrap/.github/workflows/actions.yml@actions
+    with:
+      run_id: "doc/actions"
+      script_hugo_site: "./_actions/src/docsy-site.sh"
+      hugo_build_args: "--tags\\nextended"
+      docs_dir: "./doc/content"
+      site_dir: "./doc"
+      public_dir: "./public"
+      public_cache: "doc-${{ github.run_id }}"
+      gh_pages_repo: "https://github.com/ekotik/sh.wrap"
+      gh_pages_branch: "gh-pages/sh.wrap"
+  update-submodules:
+    permissions:
+      contents: write
+    needs:
+      - doc
+    uses: antirs/sh.wrap/.github/workflows/update-submodules.yml@actions
+    with:
+      run_id: "doc/update-submodules"
+      git_repo: "https://github.com/ekotik/sh.wrap"
+      git_branch: "gh-pages/sh.wrap"
+      git_repo_dir: "./sh.wrap"

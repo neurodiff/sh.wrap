@@ -1,0 +1,99 @@
+languageCode: "en-us"
+title: "sh.wrap"
+theme: ["docsy"]
+
+disableKinds: [RSS,sitemap]
+
+imaging:
+  anchor: smart
+  quality: 75
+  resampleFilter: CatmullRom
+
+taxonomies:
+  tags: "tags"
+  category: "categories"
+
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    parser:
+      autoHeadingID: true
+      autoHeadingIDType: github
+    renderer:
+      unsafe: true
+  tableOfContents:
+    endLevel: 2
+    ordered: false
+    startLevel: 1
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    noClasses: true
+    style: tango
+    tabWidth: 4
+
+module:
+  imports:
+    - path: "github.com/ekotik/sh.wrap/doc/docs"
+      disabled: false
+      mounts:
+        - source: "./doc/"
+          target: "content/docs/"
+    - path: "github.com/ekotik/sh.wrap/doc/actions"
+      disabled: false
+      mounts:
+        - source: "./doc/actions/"
+          target: "content/docs/actions/"
+    - path: "github.com/ekotik/sh.wrap/doc/project"
+      disabled: false
+      mounts:
+        - source: "./doc/project/"
+          target: "content/docs/project/"
+    - path: "github.com/ekotik/sh.wrap/doc/wiki"
+      disabled: false
+      mounts:
+        - source: "./"
+          target: "content/wiki/"
+
+caches:
+  modules:
+    dir: ":cacheDir/modules"
+    maxAge: "2m"
+
+cascade:
+  - type: "docs"
+    tags: ["docs"]
+    _target:
+      kind: "*"
+      path: "/docs/**"
+  - type: "docs"
+    tags: ["wiki"]
+    _target:
+      kind: "*"
+      path: "/wiki/**"
+  - type: "docs"
+    tags: ["project"]
+    _target:
+      kind: "*"
+      path: "/docs/project/**"
+
+params:
+  copyright: sh.wrap
+  links:
+    user:
+      - name: "sh.wrap"
+        url: "https://github.com/ekotik/sh.wrap"
+        icon: fa-brands fa-github
+        desc: "sh.wrap"
+  ui:
+    sidebar_menu_compact: true
+    sidebar_menu_foldable: false
+    sidebar_search_disable: true
+    breadcrumb_disable: false
+    readingtime:
+      enable: false
+
+outputs:
+  home: [HTML]
+  page: [HTML]
+  section: [HTML]
