@@ -264,7 +264,7 @@ export ARGS="./src"
 #### Test
 
 ``` bash
-GITHUB_REPO="https://github.com/antirs/sh.wrap"
+GITHUB_REPO="antirs/sh.wrap"
 bash ../../../test/workflow/test-workflows.sh "$GITHUB_REPO" ../../../test/workflow/data/test-shellcheck
 ```
 
@@ -626,7 +626,7 @@ docker run -it --rm --name shwrap-gh-build \
 3.  Test
 
     ``` bash
-    GITHUB_REPO="https://github.com/antirs/sh.wrap"
+    GITHUB_REPO="antirs/sh.wrap"
     bash ../../../test/workflow/test-workflows.sh "$GITHUB_REPO" ../../../test/workflow/data/go-build
     ```
 
@@ -1013,7 +1013,7 @@ export PUBLIC_CACHE="hugo-site-01-01"
 #### Test
 
 ``` bash
-GITHUB_REPO="https://github.com/antirs/sh.wrap"
+GITHUB_REPO="antirs/sh.wrap"
 bash ../../../test/workflow/test-workflows.sh "$GITHUB_REPO" ../../../test/workflow/data/hugo-site
 ```
 
@@ -1483,7 +1483,7 @@ restore_xtrace
 3.  Test
 
     ``` bash
-    GITHUB_REPO="https://github.com/antirs/sh.wrap"
+    GITHUB_REPO="antirs/sh.wrap"
     bash ../../../test/workflow/test-workflows.sh "$GITHUB_REPO" ../../../test/workflow/data/gh-publish
     ```
 
@@ -1609,6 +1609,6 @@ restore_xtrace
 3.  Test
 
     ``` bash
-    GITHUB_REPO="https://github.com/antirs/sh.wrap"
+    GITHUB_REPO="antirs/sh.wrap"
     bash ../../../test/workflow/test-workflows.sh "$GITHUB_REPO" ../../../test/workflow/data/update-submodules
     ```
