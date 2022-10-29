@@ -38,14 +38,3 @@ jobs:
       public_cache: "doc-${{ github.run_id }}"
       gh_pages_repo: "https://github.com/ekotik/sh.wrap"
       gh_pages_branch: "gh-pages/sh.wrap"
-  update-submodules:
-    permissions:
-      contents: write
-    needs:
-      - doc
-    uses: ekotik/sh.wrap/.github/workflows/update-submodules.yml@v0.0.0-actions
-    with:
-      run_id: "doc/update-submodules"
-      git_repo: "https://github.com/ekotik/sh.wrap"
-      git_branch: "gh-pages/sh.wrap"
-      git_repo_dir: "./sh.wrap"
