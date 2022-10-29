@@ -46,7 +46,7 @@ restore_xtrace()
 }
 
 help-git-submodule() {
-	printf "Usage: %s: <GHBIN> <GITREPO> <GITBRANCH> <GITDIR>\n" "$0"
+	printf "Usage: %s: <GHBIN> <GITREPO> <GITBRANCH> <GITDIR> [GITAMEND]\n" "$0"
 	help "$@"
 }
 
@@ -77,6 +77,7 @@ gh_bin=$(realpath "$1")
 git_repo="$2"
 git_branch="$3"
 git_repo_dir=$(realpath "$4")
+git_amend="$5"
 reset_xtrace
 gh_token="${GITHUB_TOKEN}"
 restore_xtrace
@@ -111,7 +112,7 @@ git config user.name "git-submodule action"
 git config user.email "nobody@nowhere"
 git submodule update --init --force --remote --recursive
 git add .
-git commit --amend --allow-empty -m "actions: update git submodules" \
+git commit ${git_amend:+--amend} --allow-empty -m "actions: update git submodules" \
 	--author="git-submodule action <nobody@nowhere>" || $live_or_die
 git push "origin" "$git_branch" --force
 popd

@@ -23,6 +23,9 @@ inputs:
   git_repo_dir:
     description: "Git repository directory"
     required: true
+  git_amend:
+    description: "Git amend commit"
+    default: ""
 
 runs:
   using: docker
@@ -34,5 +37,6 @@ runs:
     - "${{ inputs.git_repo }}"
     - "${{ inputs.git_branch }}"
     - "${{ inputs.git_repo_dir }}"
+    - "${{ inputs.git_amend }}"
   env:
     GH_MODE: 1

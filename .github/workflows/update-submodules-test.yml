@@ -42,3 +42,4 @@ jobs:
       git_repo: "${{ fromJson(inputs.payload).git_repo }}"
       git_branch: "${{ fromJson(inputs.payload).git_branch }}"
       git_repo_dir: "${{ fromJson(inputs.payload).git_repo_dir }}"
+      git_amend: "${{ fromJson(inputs.payload).git_amend }}"

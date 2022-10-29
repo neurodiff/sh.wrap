@@ -17,7 +17,8 @@
       "gh_build_args": "${GH_BUILD_ARGS}",
       "git_repo": "${GIT_REPO}",
       "git_branch": "${GIT_BRANCH}",
-      "git_repo_dir": "${GIT_REPO_DIR}"
+      "git_repo_dir": "${GIT_REPO_DIR}",
+      "git_amend": "${GIT_AMEND}"
     }
   }
 }
