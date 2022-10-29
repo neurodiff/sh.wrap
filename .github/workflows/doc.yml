@@ -25,7 +25,7 @@ jobs:
     concurrency:
       group: "doc-${{ inputs.run_id }}"
       cancel-in-progress: true
-    uses: ekotik/sh.wrap/.github/workflows/actions.yml@actions
+    uses: ekotik/sh.wrap/.github/workflows/actions.yml@v0.0.0-actions
     with:
       run_id: "doc/actions"
       script_hugo_site: "./_actions/src/docsy-site.sh"
@@ -41,7 +41,7 @@ jobs:
       contents: write
     needs:
       - doc
-    uses: ekotik/sh.wrap/.github/workflows/update-submodules.yml@actions
+    uses: ekotik/sh.wrap/.github/workflows/update-submodules.yml@v0.0.0-actions
     with:
       run_id: "doc/update-submodules"
       git_repo: "https://github.com/ekotik/sh.wrap"
