@@ -1,10 +1,10 @@
-name: Test shellcheck
-
-concurrency:
-  group: ${{ github.ref }}
-  cancel-in-progress: true
+name: "Run: Test shellcheck"
 
 permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-test-${{ github.run_id }}"
+  cancel-in-progress: true
 
 on:
   pull_request:
@@ -16,14 +16,11 @@ on:
       - '**.sh'
 
 jobs:
-  test-shellcheck:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - uses: ekotik/sh.wrap@actions-shellcheck
-        with:
-          script: "test/tests.sh"
+  test:
+    concurrency:
+      group: "test-${{ github.ref }}"
+      cancel-in-progress: true
+    uses: ekotik/sh.wrap/.github/workflows/test-shellcheck.yml@actions
+    with:
+      run_id: "test-shellcheck-test-${{ github.ref }}"
+      dirs: "./src\n./test"
