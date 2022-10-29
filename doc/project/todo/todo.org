@@ -38,21 +38,6 @@ url: /project/todo/todo.html
 
 *** NEXT Add README
 
-*** PROGRESS Add basic hugo templates and site config                :ACTIVE:
-    DEADLINE: <2022-05-21 Sat>
-    :LOGBOOK:
-    - State "PROGRESS"   from "PROGRESS"   [2022-10-27 Thu 04:09] \\
-      project uses docsy hugo theme
-      ready for review
-    CLOCK: [2022-05-21 Sat 13:11]--[2022-05-21 Sat 13:37] =>  0:26
-    - State "PROGRESS"   from "PROGRESS"   [2022-05-21 Sat 13:04] \\
-      'project' section configured
-    CLOCK: [2022-05-21 Sat 12:35]--[2022-05-21 Sat 13:04] =>  0:29
-    - State "PROGRESS"   from "TODO"       [2022-05-21 Sat 12:27] \\
-      basic templates and config are taken from the hugo documentation
-    :END:
-    <2022-05-21 Sat>
-
 *** Docs: Documentation site generator (project tasks)
 
 **** PROGRESS Choose and describe documentation system for the project :ACTIVE:
@@ -67,6 +52,22 @@ url: /project/todo/todo.html
        - ?: how to stylize site
      :END:
 
+*** DONE Add basic hugo templates and site config
+    CLOSED: [2022-10-29 Sat 10:24] DEADLINE: <2022-05-21 Sat>
+    :LOGBOOK:
+    - State "DONE"       from "PROGRESS"   [2022-10-29 Sat 10:24]
+    - State "PROGRESS"   from "PROGRESS"   [2022-10-27 Thu 04:09] \\
+      project uses docsy hugo theme
+      ready for review
+    CLOCK: [2022-05-21 Sat 13:11]--[2022-05-21 Sat 13:37] =>  0:26
+    - State "PROGRESS"   from "PROGRESS"   [2022-05-21 Sat 13:04] \\
+      'project' section configured
+    CLOCK: [2022-05-21 Sat 12:35]--[2022-05-21 Sat 13:04] =>  0:29
+    - State "PROGRESS"   from "TODO"       [2022-05-21 Sat 12:27] \\
+      basic templates and config are taken from the hugo documentation
+    :END:
+    <2022-05-21 Sat>
+
 *** DONE Delete org files from repositories
     CLOSED: [2022-10-17 Mon 17:41] DEADLINE: <2022-10-17 Mon> SCHEDULED: <2022-10-17 Mon>
     :LOGBOOK:
@@ -79,12 +80,193 @@ url: /project/todo/todo.html
 
 ** Infra: sh.wrap (project tasks)                                    :@INFRA:
 
-*** PROGRESS Actions to export project documentation to GH pages     :ACTIVE:
-    DEADLINE: <2022-05-21 Sat> SCHEDULED: <2022-05-21 Sat>
+** Plan: sh.wrap (project tasks)                                      :@PLAN:
+
+*** Plan: Milestone 0.0.1 (project tasks):
+
+**** NEXT Milestone 0.0.1: Select tasks from current active/backlog/stuck task pools
+
+*** Plan: Roadmap (project tasks)
+
+**** NEXT Write requirements for milestone 0.0.1
+     <<wrfm001>>
+
+** QA: sh.wrap (project tasks)                                          :@QA:
+
+*** NEXT [#A] Add issue/pr templates
+
+* sh.wrap (project backlog)                                        :#backlog:
+  :PROPERTIES:
+  :CATEGORY: ▪ SH.WRAP ▪
+  :END:
+
+** Code: sh.wrap (project backlog)                                    :@CODE:
+
+*** TODO Implement ccache module
+
+*** TODO Implement cert module
+
+*** TODO Implement config module
+
+*** TODO Implement git module
+
+*** TODO Implement path module
+
+*** TODO Implement repo module
+
+**** TODO Implement github module
+
+**** TODO Implement gitlab module
+
+*** TODO Implement scheduler module
+
+*** TODO Implement test module
+
+**** TODO Implement profile module
+
+*** Code: core (project backlog)
+
+**** NEXT Add script for bashrc
+
+** Docs: sh.wrap (project backlog)                                    :@DOCS:
+
+*** NEXT Add license
+
+*** TODO Choose knowledge system for the project
+
+*** TODO Describe useful workflows on the project
+
+*** TODO Fix: title and date parameters not exposed in in org->md export
+    <2022-05-21 Sat>
+
+*** Docs: Documentation site generator (project backlog)
+
+**** NEXT Add styling for hugo site
+     <2022-05-21 Sat>
+
+** Infra: sh.wrap (project backlog)                                  :@INFRA:
+
+*** NEXT Write script to sync working repositories with upstream
+
+*** TODO Add spell checker action for project documentation
+    <2022-05-22 Sun>
+
+** Plan: sh.wrap (project backlog)                                    :@PLAN:
+
+*** TODO Describe sh.wrap purpose and vision
+    <<dswpav>>
+
+*** TODO Write project review/report templates
+
+*** Plan: Milestone 0.0.1 (project backlog):
+    :PROPERTIES:
+    :sort:     false
+    :END:
+
+**** NEXT Milestone 0.0.1: Estimate tasks effort
+
+**** TODO Milestone 0.0.1: Schedule tasks
+
+**** TODO Milestone 0.0.1: Update roadmap
+
+***** DEPENDENCY [[wrfm001][Write requirements for milestone 0.0.1]]
+
+*** Plan: Roadmap (project backlog)
+
+**** NEXT Create roadmap diagram
+
+**** DEPENDENCY [[dswpav][Describe sh.wrap purpose and vision]]
+
+** QA: sh.wrap (project backlog)                                        :@QA:
+
+*** NEXT Exploratory testing of site generation action
+    <2022-05-21 Sat>
+
+*** NEXT Write tests for core functions
+
+*** TODO Describe GH issue/pr workflows (life-cycle)
+    <2022-05-21 Sat>
+
+*** TODO Describe issue/test/release verification processes
+    <2022-05-21 Sat>
+
+*** TODO Review pr#11
+
+*** TODO Review pr#9
+
+* sh.wrap (project stuck)                                            :#stuck:
+  :PROPERTIES:
+  :CATEGORY: □ SH.WRAP □
+  :END:
+
+** Code: sh.wrap (project stuck)                                      :@CODE:
+
+** Docs: sh.wrap (project stuck)                                      :@DOCS:
+
+** Infra: sh.wrap (project stuck)                                    :@INFRA:
+
+** Plan: sh.wrap (project stuck)                                      :@PLAN:
+
+** QA: sh.wrap (project stuck)                                          :@QA:
+
+* sh.wrap (habits)                                            :noexport:#habit:
+  :PROPERTIES:
+  :CATEGORY: ■ SH.WRAP ■
+  :END:
+
+** Plan: sh.wrap (habits)                                             :@PLAN:
+   :PROPERTIES:
+   :sort:     false
+   :END:
+
+*** DAILY Task sorting
+<%%(identity date)>
+
+*** DAILY Task planning
+<%%(identity date)>
+
+*** DAILY Task review
+<%%(identity date)>
+
+*** DAILY Task report
+<%%(identity date)>
+
+* sh.wrap (project goals)                                      :ACTIVE:#list:
+  :PROPERTIES:
+  :CATEGORY: ▇ SH.WRAP ▇
+  :END:
+
+** Code: sh.wrap (project goals) :@CODE:
+
+*** GOAL Collection of useful shell scripts [0/2]
+
+    - [ ] gpg functions
+    - [ ] git functions
+
+*** GOAL Maintainable shell scripts repository [0/3]
+
+    - [ ] Shell scripts are at known locations
+    - [ ] Shell scripts are reusable
+    - [ ] Shell scripts have versions
+
+* sh.wrap (project archive)                                           :#list:
+  :PROPERTIES:
+  :CATEGORY: ╳ SH.WRAP ╳
+  :END:
+
+** Code: sh.wrap (project archive)                                    :@CODE:
+
+** Docs: sh.wrap (project archive)                                    :@DOCS:
+
+** Infra: sh.wrap (project archive)                                  :@INFRA:
+
+*** DONE Actions to export project documentation to GH pages
+    CLOSED: [2022-10-29 Sat 10:24] DEADLINE: <2022-05-21 Sat> SCHEDULED: <2022-05-21 Sat>
     :PROPERTIES:
     :Effort:   03:00
     :END:
     :LOGBOOK:
+    - State "DONE"       from "PROGRESS"   [2022-10-29 Sat 10:24]
     - State "PROGRESS"   from "PROGRESS"   [2022-10-16 Sun 18:05] \\
       actions are ready for review
     CLOCK: [2022-10-13 Thu 21:53]--[2022-10-13 Thu 22:41] =>  0:48
@@ -171,9 +353,10 @@ url: /project/todo/todo.html
      - State "STARTED"    from "TODO"       [2022-05-22 Sun 16:26]
      :END:
 
-*** PROGRESS Add docker image for hugo site generation               :ACTIVE:
-    DEADLINE: <2022-05-21 Sat>
+*** DONE Add docker image for hugo site generation
+    CLOSED: [2022-10-29 Sat 10:24] DEADLINE: <2022-05-21 Sat>
     :LOGBOOK:
+    - State "DONE"       from "PROGRESS"   [2022-10-29 Sat 10:24]
     CLOCK: [2022-05-21 Sat 11:55]--[2022-05-21 Sat 12:24] =>  0:29
     CLOCK: [2022-05-21 Sat 02:34]--[2022-05-21 Sat 03:21] =>  0:47
     - State "PROGRESS"   from "NEXT"       [2022-05-21 Sat 02:12] \\
@@ -192,176 +375,6 @@ url: /project/todo/todo.html
     - State "STARTED"    from "NEXT"       [2022-05-13 Fri 19:27]
     :END:
 
-** Plan: sh.wrap (project tasks)                                      :@PLAN:
+** Plan: sh.wrap (project archive)                                    :@PLAN:
 
-*** Plan: Milestone 0.0.1 (project tasks):
-
-**** NEXT Milestone 0.0.1: Select tasks from current active/backlog/stuck task pools
-
-*** Plan: Roadmap (project tasks)
-
-**** NEXT Write requirements for milestone 0.0.1
-     <<wrfm001>>
-
-** QA: sh.wrap (project tasks)                                          :@QA:
-
-*** NEXT [#A] Add issue/pr templates
-
-* sh.wrap (project backlog)                                        :#backlog:
-  :PROPERTIES:
-  :CATEGORY: ▪ SH.WRAP ▪
-  :END:
-
-** Code: sh.wrap (project backlog)                                    :@CODE:
-
-*** TODO Implement ccache module
-
-*** TODO Implement cert module
-
-*** TODO Implement config module
-
-*** TODO Implement git module
-
-*** TODO Implement path module
-
-*** TODO Implement repo module
-
-**** TODO Implement github module
-
-**** TODO Implement gitlab module
-
-*** TODO Implement scheduler module
-
-*** TODO Implement test module
-
-**** TODO Implement profile module
-
-*** Code: core (project backlog)
-
-**** NEXT Add script for bashrc
-
-** Docs: sh.wrap (project backlog)                             :@DOCS:ACTIVE:
-
-*** NEXT Add license
-
-*** TODO Choose knowledge system for the project
-
-*** TODO Describe useful workflows on the project
-
-*** TODO Fix: title and date parameters not exposed in in org->md export
-    <2022-05-21 Sat>
-
-*** Docs: Documentation site generator (project backlog)
-
-**** NEXT Add styling for hugo site
-     <2022-05-21 Sat>
-
-** Infra: sh.wrap (project backlog)                                  :@INFRA:
-
-*** NEXT Write script to sync working repositories with upstream
-
-*** TODO Add spell checker action for project documentation
-    <2022-05-22 Sun>
-
-** Plan: sh.wrap (project backlog)                                    :@PLAN:
-
-*** TODO Describe sh.wrap purpose and vision
-    <<dswpav>>
-
-*** TODO Write project review/report templates
-
-*** Plan: Milestone 0.0.1 (project backlog):
-    :PROPERTIES:
-    :sort:     false
-    :END:
-
-**** NEXT Milestone 0.0.1: Estimate tasks effort
-
-**** TODO Milestone 0.0.1: Schedule tasks
-
-**** TODO Milestone 0.0.1: Update roadmap
-
-***** DEPENDENCY [[wrfm001][Write requirements for milestone 0.0.1]]
-
-*** Plan: Roadmap (project backlog)
-
-**** NEXT Create roadmap diagram
-
-**** DEPENDENCY [[dswpav][Describe sh.wrap purpose and vision]]
-
-** QA: sh.wrap (project backlog)                                        :@QA:
-
-*** NEXT Exploratory testing of site generation action
-    <2022-05-21 Sat>
-
-*** NEXT Write tests for core functions
-
-*** TODO Describe GH issue/pr workflows (life-cycle)
-    <2022-05-21 Sat>
-
-*** TODO Describe issue/test/release verification processes
-    <2022-05-21 Sat>
-
-*** TODO Review pr#11
-
-*** TODO Review pr#9
-
-* sh.wrap (project stuck)                                            :#stuck:
-  :PROPERTIES:
-  :CATEGORY: □ SH.WRAP □
-  :END:
-
-** Code: sh.wrap (project stuck)                                      :@CODE:
-
-** Docs: sh.wrap (project stuck)                                 :@DOCS:ACTIVE:
-
-** Infra: sh.wrap (project stuck)                                    :@INFRA:
-
-** Plan: sh.wrap (project stuck)                                      :@PLAN:
-
-** QA: sh.wrap (project stuck)                                          :@QA:
-
-* sh.wrap (habits)                                            :noexport:#habit:
-  :PROPERTIES:
-  :CATEGORY: ■ SH.WRAP ■
-  :END:
-
-** Plan: sh.wrap (habits)                                             :@PLAN:
-   :PROPERTIES:
-   :sort:     false
-   :END:
-
-*** DAILY Task sorting
-<%%(identity date)>
-
-*** DAILY Task planning
-<%%(identity date)>
-
-*** DAILY Task review
-<%%(identity date)>
-
-*** DAILY Task report
-<%%(identity date)>
-
-* sh.wrap (project goals)                                      :ACTIVE:#list:
-  :PROPERTIES:
-  :CATEGORY: ▇ SH.WRAP ▇
-  :END:
-
-** Code: sh.wrap (project goals) :@CODE:
-
-*** GOAL Collection of useful shell scripts [0/2]
-
-    - [ ] gpg functions
-    - [ ] git functions
-
-*** GOAL Maintainable shell scripts repository [0/3]
-
-    - [ ] Shell scripts are at known locations
-    - [ ] Shell scripts are reusable
-    - [ ] Shell scripts have versions
-
-* sh.wrap (project archive)                                           :#list:
-  :PROPERTIES:
-  :CATEGORY: ╳ SH.WRAP ╳
-  :END:
+** QA: sh.wrap (project archive)                                        :@QA:
