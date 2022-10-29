@@ -10,10 +10,12 @@ on:
   pull_request:
     types: [ opened, synchronize, reopened ]
     paths:
-      - 'doc/**'
+      - "doc/**"
+      - ".github/workflows/doc.yml"
   push:
     paths:
-      - 'doc/**'
+      - "doc/**"
+      - ".github/workflows/doc.yml"
   schedule:
     - cron:  "0 0 * * *"
   workflow_dispatch:
