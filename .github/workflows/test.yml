@@ -10,10 +10,12 @@ on:
   pull_request:
     types: [ opened, synchronize, reopened ]
     paths:
-      - '**.sh'
+      - "**.sh"
+      - ".github/workflows/test.yml"
   push:
     paths:
-      - '**.sh'
+      - "**.sh"
+      - ".github/workflows/test.yml"
 
 jobs:
   test:
