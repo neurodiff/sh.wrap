@@ -103,10 +103,7 @@ echo '::group::Update git submodules' | gh_echo
 # update git submodules
 LAST_ERROR="git submodules update failed"
 git clone -b "$git_branch" "$git_repo" "$git_repo_dir" || $live_or_die
-pwd
-ls -al
 pushd "$git_repo_dir"
-ls -al
 git config --global --add safe.directory "$git_repo_dir" || $live_or_die
 git config user.name "git-submodule action"
 git config user.email "nobody@nowhere"
