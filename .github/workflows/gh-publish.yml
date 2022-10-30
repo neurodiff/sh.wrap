@@ -3,8 +3,8 @@ name: "Run: Publish site"
 permissions: {}
 
 concurrency:
-  group: "${{ github.workflow }}-${{ github.ref }}-gh-publish-${{ github.run_id }}"
-  cancel-in-progress: true
+  group: "${{ github.workflow }}-${{ github.ref }}-gh-publish-${{ github.run_id }}-${{ inputs.run_id }}"
+  cancel-in-progress: false
 
 on:
   workflow_call:

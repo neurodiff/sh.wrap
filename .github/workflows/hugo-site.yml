@@ -3,8 +3,8 @@ name: "Run: Build hugo site"
 permissions: {}
 
 concurrency:
-  group: "${{ github.workflow }}-${{ github.ref }}-hugo-site-${{ github.run_id }}"
-  cancel-in-progress: true
+  group: "${{ github.workflow }}-${{ github.ref }}-hugo-site-${{ github.run_id }}-${{ inputs.run_id }}"
+  cancel-in-progress: false
 
 on:
   workflow_call:
