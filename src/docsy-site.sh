@@ -38,8 +38,10 @@ help-docsy-site() {
 	help "$@"
 }
 
-# greetings for github runner
-echo '::notice::Docsy site export started!' | gh_echo
+help-hugo-site() {
+	printf "Usage: %s: <HUGOPATH> <DOCSDIR> <SITEDIR> <PUBLICDIR>\n" "$0"
+	help "$@"
+}
 
 # check parameters
 if [[ $# -eq 0 ]]; then
@@ -47,10 +49,6 @@ if [[ $# -eq 0 ]]; then
 	help-docsy-site "$@"
 fi
 
-help-hugo-site() {
-	printf "Usage: %s: <HUGOPATH> <DOCSDIR> <SITEDIR> <PUBLICDIR>\n" "$0"
-	help "$@"
-}
 # check parameters
 if [[ $# -eq 0 ]]; then
 	echo >&2 "No hugo binary path specified"
@@ -84,7 +82,7 @@ nvm &> /dev/null || git clone --depth=1 -b v0.39.2 https://github.com/nvm-sh/nvm
 source ~/.nvm/nvm.sh
 nvm use 18 || { nvm install 18; nvm use 18; } || $live_or_die
 # get npm modules
-pushd "${site_dir}/themes/docsy"
+pushd "${site_dir}"/themes/docsy
 npm install || $live_or_die
 popd
 npm install --save-dev autoprefixer postcss-cli postcss || $live_or_die

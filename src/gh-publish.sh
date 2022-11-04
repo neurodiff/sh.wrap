@@ -102,7 +102,7 @@ GIT_DIR=.nogit "$gh_bin" auth setup-git
 echo '::group::Push site to GH pages' | gh_echo
 
 # publish site
-if [[ "$GITHUB_EVENT_NAME" == "push" ]] || [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+if [[ "${GITHUB_EVENT_NAME}" == "push" ]] || [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
 	LAST_ERROR="publish site failed"
 	pushd "$public_dir"
 	git init

@@ -41,10 +41,10 @@ fi
 dockerfile=$(realpath "$1")
 dockerfile_out=$(realpath "$2")
 
-LAST_ERROR="Input and output dockerfiles are the same file"
+LAST_ERROR="input and output dockerfiles are the same file"
 [[ "$dockerfile" != "$dockerfile_out" ]] || $live_or_die
 
-LAST_ERROR="No dockerfile '${dockerfile}' found"
+LAST_ERROR="no dockerfile '${dockerfile}' found"
 [[ -f "$dockerfile" ]] || $live_or_die
 
 env envsubst < "$dockerfile" > "$dockerfile_out"

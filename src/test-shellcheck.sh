@@ -65,7 +65,7 @@ for src_dir in "${dirs[@]}"; do
 done
 
 # run shellcheck
-LAST_ERROR="No shell scripts for checking are found"
+LAST_ERROR="no shell scripts for checking are found"
 [[ "${#files[@]}" != 0 ]] || $live_or_die
 {
 	ret=$( shellcheck -f gcc "${files[@]}" >&3

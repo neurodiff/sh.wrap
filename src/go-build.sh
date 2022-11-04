@@ -86,7 +86,7 @@ else
 	build_args+=("$@")
 fi
 
-LAST_ERROR="Working directory is invalid"
+LAST_ERROR="working directory is invalid"
 [[ -d "$git_path" ]] || $live_or_die
 
 git_repo_dir=$(realpath "$git_path"/"${git_repo##*/}")
@@ -95,7 +95,7 @@ export GOCACHE="$git_repo_dir"/.cache
 
 echo '::group::Clone repository' | gh_echo
 
-LAST_ERROR="Git repository safe.directory configuration failed"
+LAST_ERROR="git repository safe.directory configuration failed"
 # fixes go build with -buildvcs option in unsafe git directories
 GIT_DIR=.nogit git config --global --add safe.directory "$git_repo_dir" || $live_or_die
 
@@ -110,10 +110,10 @@ echo '::endgroup::' | gh_echo
 echo '::group::Build go binary' | gh_echo
 
 # build hugo
-LAST_ERROR="Change directory to '${git_repo_dir}' failed"
+LAST_ERROR="change directory to '${git_repo_dir}' failed"
 pushd "$git_repo_dir" || $live_or_die
 
-LAST_ERROR="Go build failed"
+LAST_ERROR="go build failed"
 {
 	if [[ -f Makefile ]]; then
 		make -k -B

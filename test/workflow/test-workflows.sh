@@ -88,7 +88,7 @@ function test_workflow()
 	# shellcheck disable=SC1090
 	source "$datafile"
 	local API_WORKFLOW_DISPATCH="https://api.github.com/repos/${github_repo}/actions/workflows/${WORKFLOW_ID}/dispatches"
-	LAST_ERROR="${data_template} - test dispatch failed (${datafile})"
+	LAST_ERROR="${data_template} (${datafile}): test dispatch failed"
 	env envsubst < "$data_template" | \
 		jq '{ ref: .ref, inputs: { run_id: .inputs.run_id, payload: (.inputs.payload | tostring) }}' | \
 		curl -X POST "${API_WORKFLOW_DISPATCH}" --fail \
