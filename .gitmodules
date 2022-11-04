@@ -1,0 +1,4 @@
+[submodule "docsy"]
+	path = test/docsy-site/site/themes/docsy
+	url = https://github.com/ekotik/docsy
+	branch = v0.5.1
