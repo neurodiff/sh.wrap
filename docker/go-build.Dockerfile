@@ -1,6 +1,6 @@
 FROM ubuntu:latest as build
 
-RUN apt update
+RUN apt update && apt install --yes ca-certificates
 RUN apt install --yes bash
 RUN apt install --yes git
 RUN apt install --yes golang
