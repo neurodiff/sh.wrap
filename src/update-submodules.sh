@@ -95,8 +95,8 @@ restore_xtrace
 LAST_ERROR="authentication failed"
 chmod u+x "$gh_bin"
 unset GITHUB_TOKEN
-GIT_DIR=.nogit "$gh_bin" auth login --git-protocol https --with-token <<< "$gh_token"
-GIT_DIR=.nogit "$gh_bin" auth setup-git
+GIT_DIR=.nogit "$gh_bin" auth login --git-protocol https --with-token <<< "$gh_token" || $live_or_die
+GIT_DIR=.nogit "$gh_bin" auth setup-git || $live_or_die
 
 echo '::group::Update git submodules' | gh_echo
 
