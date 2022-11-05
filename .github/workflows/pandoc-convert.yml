@@ -61,6 +61,7 @@ env:
   OUT_DIR: "${{ inputs.out_dir }}"
   PANDOC_CLEAN: "${{ inputs.pandoc_clean }}"
   OUT_CACHE: "${{ inputs.out_cache }}"
+  OUT_CACHE_DIR: "${{ inputs.out_cache_dir }}"
 
 jobs:
   pandoc-convert:
