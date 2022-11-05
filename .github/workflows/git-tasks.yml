@@ -113,7 +113,7 @@ jobs:
         with:
           submodules: recursive
       - name: "Checkout actions"
-        uses: ekotik/sh.wrap@actions
+        uses: ekotik/sh.wrap@v0.0.0-actions
       - name: "Retrieve gh binary cache"
         uses: actions/cache@v3
         with:

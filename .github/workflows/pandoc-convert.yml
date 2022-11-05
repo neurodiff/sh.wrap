@@ -75,7 +75,7 @@ jobs:
         with:
           submodules: recursive
       - name: "Checkout actions"
-        uses: ekotik/sh.wrap@actions
+        uses: ekotik/sh.wrap@v0.0.0-actions
       - uses: ./_actions/.github/actions/prepare-dockerfile
       - name: "Convert documentation"
         uses: ./_actions/.github/actions/pandoc-convert
