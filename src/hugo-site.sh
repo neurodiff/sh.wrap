@@ -78,7 +78,7 @@ echo '::group::Generate hugo site' | gh_echo
 # hugo run
 chmod u+x "$hugo_bin"
 { pushd "$site_dir"; "$hugo_bin" mod get -u; popd; } || $live_or_die
-"$hugo_bin" -s "$site_dir" -d "$public_dir" || $live_or_die
+"$hugo_bin" -c "$docs_dir" -s "$site_dir" -d "$public_dir" || $live_or_die
 echo '::endgroup::' | gh_echo
 
 # goodbye

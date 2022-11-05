@@ -73,7 +73,7 @@ echo '::notice::Pandoc conversion action started!' | gh_echo
 echo '::group::Convert docs' | gh_echo
 LAST_ERROR="conversion failed"
 while IFS= read -d $'\0' -r path; do
-	dir=$(dirname $(realpath -m -s "$path" --relative-base "$in_dir"))
+	dir=$(dirname "$(realpath -m -s "$path" --relative-base "$in_dir")")
 	file=$(basename "$path")
 
 	mkdir -p "$out_dir"/"$dir" || true 2> /dev/null
