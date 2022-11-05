@@ -41,10 +41,18 @@ url: /project/todo/todo.html
 
 *** NEXT Add README
 
-*** STARTED Fix org-to-md output directory not found
-    :LOGBOOK:
-    CLOCK: [2022-11-05 Sat 15:00]
-    :END:
+*** NEXT Pass conversion options and command line arguments to pandoc-convert workflow
+    <2022-11-05 Sat>
+**** GOAL org-to-md.sh and pandoc-convert workflow [0/5]
+     - [ ] extensions sets
+       - [ ] clean set (-raw_attribute...)
+       - [ ] line break set (+hard_line_breaks...)
+     - [ ] command-line arguments
+       - [ ] --wrap=auto|none|preserve
+       - [ ] --shift-heading-level-by=NUMBER
+     - [ ] default sets of options enabled by default
+     - [ ] rest command line options (by user request)
+     - [ ] rest pandoc extensions (by user request)
 
 *** Docs: Documentation system (project tasks)
 
@@ -53,27 +61,6 @@ url: /project/todo/todo.html
      :Effort:   04:00
      :END:
      <2022-10-31 Mon>
-**** DONE Add auto-generation of project documentation
-     CLOSED: [2022-11-05 Sat 16:12] DEADLINE: <2022-10-31 Mon> SCHEDULED: <2022-10-31 Mon>
-     :PROPERTIES:
-     :Effort:   01:00
-     :END:
-     :LOGBOOK:
-     - State "DONE"       from "PROGRESS"   [2022-11-05 Sat 16:12]
-     CLOCK: [2022-11-05 Sat 14:09]--[2022-11-05 Sat 15:00] =>  0:51
-     - State "PROGRESS"   from "STARTED"    [2022-11-05 Sat 13:28] \\
-       passed review
-     CLOCK: [2022-11-02 Wed 12:48]--[2022-11-02 Wed 13:56] =>  1:08
-     - State "STARTED"    from "NEXT"       [2022-11-02 Wed 12:48]
-     :END:
-     <2022-10-31 Mon>
-
-***** COMPLETE [[rotmsaw][Rework org to markdown scripts and workflows]]
-      CLOSED: [2022-11-05 Sat 14:09]
-      :LOGBOOK:
-      - State "COMPLETE"   from "DEPENDENCY" [2022-11-05 Sat 14:09]
-      :END:
-
 ** Infra: sh.wrap (project tasks)                                    :@INFRA:
 
 *** NEXT Add repository_dispatch events to trigger documentation rebuild
@@ -84,49 +71,8 @@ url: /project/todo/todo.html
     :sort: false
     :END:
 
-**** NEXT Create GH actions to generate and push docker images
+**** NEXT Create GH actions to use docker images from docker hub
      <2022-10-31 Mon>
-
-*** DONE Rework org to markdown scripts and workflows <<rotmsaw>>
-    CLOSED: [2022-11-05 Sat 14:05] DEADLINE: <2022-10-31 Mon> SCHEDULED: <2022-10-31 Mon>
-    :PROPERTIES:
-    :Effort:   03:00
-    :END:
-    :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2022-11-05 Sat 14:05]
-    CLOCK: [2022-11-03 Thu 00:04]--[2022-11-03 Thu 02:52] =>  2:48
-    CLOCK: [2022-11-02 Wed 13:58]--[2022-11-02 Wed 14:10] =>  0:12
-    - State "STARTED"    from "NEXT"       [2022-11-02 Wed 13:58]
-    :END:
-    <2022-10-31 Mon>
-
-**** PASS Convert documentation from org to markdown [4/6]
-     CLOSED: [2022-11-05 Sat 14:05]
-     :LOGBOOK:
-     - State "PASS"       from "PROGRESS"   [2022-11-05 Sat 14:05]
-     - State "PROGRESS"   from "GOAL"       [2022-11-05 Sat 14:03] \\
-       partially complete
-     :END:
-    - [X] convert whole directory
-    - [-] pass wanted default convertion options
-      - [X] clean
-      - [ ] raw
-    - [ ] pass additional convertion options as rest arguments
-    - [X] docker image for pandoc conversions
-    - [X] GH reusable workflow that wraps this script
-    - [X] Change existing GH workflows to use new script
-
-**** DONE Remove conversion funcs from hugo-site workflow and script
-     CLOSED: [2022-11-05 Sat 13:58] SCHEDULED: <2022-11-05 Sat> DEADLINE: <2022-11-05 Sat>
-     :PROPERTIES:
-     :Effort:   00:30
-     :END:
-     :LOGBOOK:
-     - State "DONE"       from "STARTED"    [2022-11-05 Sat 13:58]
-     CLOCK: [2022-11-05 Sat 13:38]--[2022-11-05 Sat 13:58] =>  0:20
-     - State "STARTED"    from "NEXT"       [2022-11-05 Sat 13:38]
-     :END:
-     <2022-11-05 Sat>
 ** Plan: sh.wrap (project tasks)                                      :@PLAN:
 
 *** Plan: Milestone 0.0.1 (project tasks):
@@ -140,7 +86,7 @@ url: /project/todo/todo.html
 
 ** QA: sh.wrap (project tasks)                                          :@QA:
 
-*** NEXT [#A] Add issue/pr templates
+*** NEXT [#B] Add issue/pr templates
 
 * sh.wrap (project backlog)                                        :#backlog:
   :PROPERTIES:
@@ -194,19 +140,6 @@ url: /project/todo/todo.html
     <2022-11-05 Sat>
 *** TODO Fix hugo bug with flickering project/docs tag
     <2022-11-05 Sat>
-*** TODO Pass conversion options and command line arguments to pandoc-convert workflow
-    <2022-11-05 Sat>
-**** GOAL org-to-md.sh and pandoc-convert workflow [0/5]
-     - [ ] extensions sets
-       - [ ] clean set (-raw_attribute...)
-       - [ ] line break set (+hard_line_breaks...)
-     - [ ] command-line arguments
-       - [ ] --wrap=auto|none|preserve
-       - [ ] --shift-heading-level-by=NUMBER
-     - [ ] default sets of options enabled by default
-     - [ ] rest command line options (by user request)
-     - [ ] rest pandoc extensions (by user request)
-
 *** WRITE Describe knowledge system for the project
 
 *** WRITE Describe useful workflows on the project
@@ -218,8 +151,12 @@ url: /project/todo/todo.html
 
 ** Infra: sh.wrap (project backlog)                                  :@INFRA:
 
-*** NEXT Write script to sync working repositories with upstream
-
+*** NEXT Add repository_dispatch action to generate documentation on the fly
+    <2022-11-05 Sat>
+*** TODO Add nodejs workflow
+    <2022-11-05 Sat>
+**** TODO Cache node_modules in docsy site generation
+     <2022-11-05 Sat>
 *** TODO Add spell checker action for project documentation
     <2022-05-22 Sun>
 
@@ -231,13 +168,16 @@ url: /project/todo/todo.html
        - [ ] all parameters are serialized in one file (like workflow tests do)
        - [ ] no workaround when rest arguments are passed as string to parse
 
+*** TODO Write script to sync working repositories with upstream
+
 *** Use ready docker images in GH actions (project backlog)
     :PROPERTIES:
     :sort: false
     :END:
 
-**** NEXT Create GH actions to use docker images from docker hub
+**** NEXT Create GH actions to generate and push docker images
      <2022-10-31 Mon>
+
 ** Plan: sh.wrap (project backlog)                                    :@PLAN:
 
 *** TODO Describe sh.wrap purpose and vision
@@ -266,8 +206,7 @@ url: /project/todo/todo.html
 
 ** QA: sh.wrap (project backlog)                                        :@QA:
 
-*** NEXT Exploratory testing of site generation action
-    <2022-05-21 Sat>
+*** NEXT Review pr#9
 
 *** NEXT Write tests for core functions
 
@@ -277,7 +216,8 @@ url: /project/todo/todo.html
 *** TODO Describe issue/test/release verification processes
     <2022-05-21 Sat>
 
-*** TODO Review pr#9
+*** TODO [#C] Exploratory testing of site generation action
+    <2022-05-21 Sat>
 
 * sh.wrap (project stuck)                                            :#stuck:
   :PROPERTIES:
@@ -343,6 +283,27 @@ url: /project/todo/todo.html
 
 ** Docs: sh.wrap (project archive)                                    :@DOCS:
 
+*** DONE Add auto-generation of project documentation
+    CLOSED: [2022-11-05 Sat 16:12] DEADLINE: <2022-10-31 Mon> SCHEDULED: <2022-10-31 Mon>
+    :PROPERTIES:
+    :Effort:   01:00
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "PROGRESS"   [2022-11-05 Sat 16:12]
+    CLOCK: [2022-11-05 Sat 14:09]--[2022-11-05 Sat 15:00] =>  0:51
+    - State "PROGRESS"   from "STARTED"    [2022-11-05 Sat 13:28] \\
+      passed review
+    CLOCK: [2022-11-02 Wed 12:48]--[2022-11-02 Wed 13:56] =>  1:08
+    - State "STARTED"    from "NEXT"       [2022-11-02 Wed 12:48]
+    :END:
+    <2022-10-31 Mon>
+
+**** COMPLETE [[rotmsaw][Rework org to markdown scripts and workflows]]
+     CLOSED: [2022-11-05 Sat 14:09]
+     :LOGBOOK:
+     - State "COMPLETE"   from "DEPENDENCY" [2022-11-05 Sat 14:09]
+     :END:
+
 *** DONE Add basic hugo templates and site config
     CLOSED: [2022-10-29 Sat 10:24] DEADLINE: <2022-05-21 Sat>
     :LOGBOOK:
@@ -388,6 +349,13 @@ url: /project/todo/todo.html
     - State "STARTED"    from "TODO"       [2022-10-17 Mon 02:10]
     :END:
     <2022-10-17 Mon>
+
+*** DONE Fix org-to-md output directory not found
+    CLOSED: [2022-11-05 Sat 18:18]
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2022-11-05 Sat 18:18]
+    CLOCK: [2022-11-05 Sat 15:00]
+    :END:
 
 *** DONE Fix: title and date parameters not exposed in in org->md export
     CLOSED: [2022-10-31 Mon 11:34]
@@ -549,6 +517,46 @@ url: /project/todo/todo.html
     CLOCK: [2022-10-31 Mon 13:02]--[2022-10-31 Mon 15:12] =>  2:10
     :END:
     <2022-10-31 Mon>
+*** DONE Rework org to markdown scripts and workflows <<rotmsaw>>
+    CLOSED: [2022-11-05 Sat 14:05] DEADLINE: <2022-10-31 Mon> SCHEDULED: <2022-10-31 Mon>
+    :PROPERTIES:
+    :Effort:   03:00
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2022-11-05 Sat 14:05]
+    CLOCK: [2022-11-03 Thu 00:04]--[2022-11-03 Thu 02:52] =>  2:48
+    CLOCK: [2022-11-02 Wed 13:58]--[2022-11-02 Wed 14:10] =>  0:12
+    - State "STARTED"    from "NEXT"       [2022-11-02 Wed 13:58]
+    :END:
+    <2022-10-31 Mon>
+
+**** PASS Convert documentation from org to markdown [4/6]
+     CLOSED: [2022-11-05 Sat 14:05]
+     :LOGBOOK:
+     - State "PASS"       from "PROGRESS"   [2022-11-05 Sat 14:05]
+     - State "PROGRESS"   from "GOAL"       [2022-11-05 Sat 14:03] \\
+       partially complete
+     :END:
+    - [X] convert whole directory
+    - [-] pass wanted default convertion options
+      - [X] clean
+      - [ ] raw
+    - [ ] pass additional convertion options as rest arguments
+    - [X] docker image for pandoc conversions
+    - [X] GH reusable workflow that wraps this script
+    - [X] Change existing GH workflows to use new script
+
+**** DONE Remove conversion funcs from hugo-site workflow and script
+     CLOSED: [2022-11-05 Sat 13:58] SCHEDULED: <2022-11-05 Sat> DEADLINE: <2022-11-05 Sat>
+     :PROPERTIES:
+     :Effort:   00:30
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2022-11-05 Sat 13:58]
+     CLOCK: [2022-11-05 Sat 13:38]--[2022-11-05 Sat 13:58] =>  0:20
+     - State "STARTED"    from "NEXT"       [2022-11-05 Sat 13:38]
+     :END:
+     <2022-11-05 Sat>
 ** Plan: sh.wrap (project archive)                                    :@PLAN:
 
 *** DONE Fix project documentation not included in site generation
