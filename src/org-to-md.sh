@@ -26,7 +26,7 @@ help-org-to-md() {
 	help "$@"
 }
 
-# check github repository (OWNER/REPO format)
+# check org file
 if [[ $# -eq 0 ]]; then
 	echo >&2 "No org file specified"
 	help-org-to-md "$@"
