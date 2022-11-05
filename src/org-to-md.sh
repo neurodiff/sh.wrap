@@ -50,7 +50,7 @@ if [[ $# -eq 1 ]]; then
 fi
 
 in_dir=$(realpath "$1")
-out_dir=$(realpath "$2")
+out_dir=$(realpath -m "$2")
 clean="$3"
 
 function org_to_md()
