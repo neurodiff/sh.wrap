@@ -7,11 +7,6 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  pull_request:
-    types: [ opened, synchronize, reopened ]
-    paths:
-      - "doc/**"
-      - ".github/workflows/org-project.yml"
   push:
     paths:
       - "doc/**"
