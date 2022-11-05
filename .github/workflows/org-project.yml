@@ -61,7 +61,7 @@ jobs:
       cancel-in-progress: true
     needs:
       - gh-publish
-    uses: neurodiff/sh.wrap/.github/workflows/git-tasks.yml@dev/neurodiff/actions__git-tasks-action
+    uses: ekotik/sh.wrap/.github/workflows/git-tasks.yml@actions
     with:
       run_id: "org-project/tag-update"
       git_repo: "https://github.com/neurodiff/sh.wrap"
