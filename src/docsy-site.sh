@@ -88,7 +88,7 @@ popd
 npm install --save-dev autoprefixer postcss-cli postcss || $live_or_die
 echo '::endgroup::' | gh_echo
 
-bash "${DOCKERFILE_SCRIPTS_PATH}"/hugo-site.sh  "$hugo_bin" "$docs_dir" "$site_dir" "$public_dir"
+NODE_PATH=$(realpath "./node_modules") bash "${DOCKERFILE_SCRIPTS_PATH}"/hugo-site.sh "$hugo_bin" "$docs_dir" "$site_dir" "$public_dir"
 
 # goodbye
 echo '::notice::Docsy site export ended!' | gh_echo
