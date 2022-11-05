@@ -44,7 +44,8 @@ function org_to_md()
 	if [[ "$clean" == 1 ]]; then
 		extensions="-raw_attribute-raw_html-header_attributes-bracketed_spans"
 	fi
-	pandoc -s "$page" -t markdown"$extensions"
+	extensions+="+hard_line_breaks"
+	pandoc -s "$page" -t markdown"$extensions" --wrap=none
 }
 
 org_to_md "$org_file" "$clean" || $live_or_die
