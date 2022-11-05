@@ -1,0 +1,58 @@
+name: "Run: Build org project documentation"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-org-project-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    paths:
+      - "doc/**"
+      - ".github/workflows/org-project.yml"
+  push:
+    paths:
+      - "doc/**"
+      - ".github/workflows/org-project.yml"
+  workflow_dispatch:
+
+env:
+  RUN_ID: "org-project/actions"
+  IN_DIR: "./doc"
+  OUT_DIR: "./.doc-out/doc"
+  PANDOC_CLEAN: "1"
+  OUT_CACHE: "project-cache"
+  GH_PAGES_REPO: "https://github.com/neurodiff/sh.wrap"
+  GH_PAGES_BRANCH: "project"
+  PUBLIC_DIR: "./.doc-out"
+  PUBLIC_CACHE: "project-cache"
+
+jobs:
+  project:
+    concurrency:
+      group: "org-project/project-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    uses: ekotik/sh.wrap/.github/workflows/pandoc-convert.yml@actions
+    with:
+      run_id: "org-project/project"
+      in_dir: "./doc"
+      out_dir: "./.doc-out/doc"
+      pandoc_clean: "1"
+      out_cache: "project-cache"
+  gh-publish:
+    permissions:
+      contents: write
+    concurrency:
+      group: "org-project/gh-publish-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    needs:
+      - project
+    uses: ekotik/sh.wrap/.github/workflows/gh-publish.yml@v0.0.0-actions
+    with:
+      run_id: "org-project/gh-publish"
+      gh_pages_repo: "https://github.com/neurodiff/sh.wrap"
+      gh_pages_branch: "project"
+      public_dir: "./.doc-out"
+      public_cache: "project-cache"
