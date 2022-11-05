@@ -39,6 +39,7 @@ jobs:
           data_dirs: |
             ./test/workflow/data/actions
             ./test/workflow/data/gh-publish
+            ./test/workflow/data/git-tasks
             ./test/workflow/data/go-build
             ./test/workflow/data/hugo-site
             ./test/workflow/data/pandoc-convert
