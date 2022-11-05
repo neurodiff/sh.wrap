@@ -706,7 +706,7 @@ Parameters.
 
 ``` {.bash tangle="no"}
 in_dir=$(realpath "${SOURCE_PATH}"/doc)
-out_dir=$(realpath "./public")
+out_dir=$(realpath "./.doc-out")
 clean=1
 ```
 
@@ -714,7 +714,7 @@ Help and parameters check.
 
 ``` {.bash eval="no"}
 help-org-to-md() {
-    printf "Usage: %s: <SRCDIR> <DESTDIR> [CLEAN]\n" "$0"
+    printf "Usage: %s: <INDIR> <OUTDIR> [CLEAN]\n" "$0"
     help "$@"
 }
 
@@ -730,7 +730,7 @@ if [[ $# -eq 1 ]]; then
 fi
 
 in_dir=$(realpath "$1")
-out_dir=$(realpath "$2")
+out_dir=$(realpath -m "$2")
 clean="$3"
 ```
 
@@ -746,13 +746,14 @@ function org_to_md()
         extensions="-raw_attribute-raw_html-header_attributes-bracketed_spans"
     fi
     extensions+="+hard_line_breaks"
+    extensions+="-yaml_metadata_block-pandoc_title_block"
     pandoc -s "$page" -t markdown"$extensions" --wrap=none
 }
 ```
 
 ``` bash
 # greetings for github runner
-echo '::notice::Pandoc convection action started!' | gh_echo
+echo '::notice::Pandoc conversion action started!' | gh_echo
 ```
 
 Conversion.
@@ -760,13 +761,14 @@ Conversion.
 ``` bash
 # generate documentation
 echo '::group::Convert docs' | gh_echo
-LAST_ERROR="convertation failed"
+LAST_ERROR="conversion failed"
 while IFS= read -d $'\0' -r path; do
-    dir=$(dirname $(realpath -m -s "$path" --relative-base "$in_dir"))
+    dir=$(dirname "$(realpath -m -s "$path" --relative-base "$in_dir")")
     file=$(basename "$path")
 
     mkdir -p "$out_dir"/"$dir" || true 2> /dev/null
-    org_to_md "$file" 1 > "$out_dir"/"$dir"/"${file%.org}.md" || $live_or_die
+    org_to_md "$in_dir"/"$dir"/"$file" 1 > "$out_dir"/"$dir"/"${file%.org}.md" \
+        || $live_or_die
 done < <(find "$in_dir" -name '*.org' -print0)
 echo '::endgroup::' | gh_echo
 ```
@@ -799,18 +801,18 @@ read -s -p 'Enter token: ' gh_token
 
 ``` bash
 in_dir="${SOURCE_PATH}"/doc
-out_dir="./public"
-clean=1
+out_dir="./.doc-out"
+pandoc_clean=1
 ```
 
 ``` {.bash eval="query"}
 env -i LIVE_DEBUG=1 \
-    bash "${DOCKERFILE_SCRIPTS_PATH}"/org-to-md.sh "$in_dir" "$out_dir" "$clean"
+    bash "${DOCKERFILE_SCRIPTS_PATH}"/org-to-md.sh "$in_dir" "$out_dir" "$pandoc_clean"
 ```
 
 ``` {.bash eval="query"}
 env -i LIVE_DEBUG=1 LIVE_OR_DIE=live GH_MODE=1 \
-    bash "${DOCKERFILE_SCRIPTS_PATH}"/org-to-md.sh "$in_dir" "$out_dir" "$clean"
+    bash "${DOCKERFILE_SCRIPTS_PATH}"/org-to-md.sh "$in_dir" "$out_dir" "$pandoc_clean"
 ```
 
 ### Run docker
@@ -819,8 +821,8 @@ env -i LIVE_DEBUG=1 LIVE_OR_DIE=live GH_MODE=1 \
 work_dir="/github/workspace"
 script="$work_dir"/src/org-to-md.sh
 in_dir="$work_dir"/"doc"
-out_dir="./public"
-clean=1
+out_dir="./.doc-out"
+pandoc_clean=1
 ```
 
 ``` {.bash eval="query"}
@@ -828,7 +830,7 @@ docker run -it --rm --name shwrap-pandoc-convert \
        --volume "${SOURCE_PATH}":"$work_dir" \
        -eLIVE_DEBUG=1 \
        "${DOCKER_REPO}"/"${DOCKER_IMAGE}" \
-       "$work_dir" "$script" "$in_dir" "$out_dir" "$clean"
+       "$work_dir" "$script" "$in_dir" "$out_dir" "$pandoc_clean"
 ```
 
 ``` {.bash eval="query"}
@@ -836,7 +838,7 @@ docker run -it --rm --name shwrap-pandoc-convert \
        --volume "${SOURCE_PATH}":"$work_dir" \
        -eLIVE_DEBUG=1 -eLIVE_OR_DIE=live -eGH_MODE=1 \
        "${DOCKER_REPO}"/"${DOCKER_IMAGE}" \
-       "$work_dir" "$script" "$in_dir" "$out_dir" "$clean"
+       "$work_dir" "$script" "$in_dir" "$out_dir" "$pandoc_clean"
 ```
 
 ### Run action
@@ -857,7 +859,9 @@ docker run -it --rm --name shwrap-pandoc-convert \
       "script": "${SCRIPT}",
       "in_dir": "${IN_DIR}",
       "out_dir": "${OUT_DIR}",
-      "clean": "${CLEAN}"
+      "pandoc_clean": "${PANDOC_CLEAN}",
+      "out_cache": "${OUT_CACHE}",
+      "out_cache_dir": "${OUT_CACHE_DIR}"
     }
   }
 }
@@ -869,16 +873,18 @@ docker run -it --rm --name shwrap-pandoc-convert \
 #!/bin/bash
 # shellcheck disable=SC2034
 
-export WORKFLOW_ID="38942441"
+export WORKFLOW_ID="39688674"
 export REF="actions"
 export RUN_ID="pandoc-convert/01/01"
 export DOCKERFILE_TEMPLATE="./_actions/docker/pandoc-convert.Dockerfile"
 export DOCKERFILE="pandoc-convert.Dockerfile"
 export WORK_DIR="/github/workspace"
-export SCRIPT="./_actions/src/pandoc-convert.sh"
+export SCRIPT="./_actions/src/org-to-md.sh"
 export IN_DIR="./doc"
-export OUT_DIR="./public"
-export CLEAN="1"
+export OUT_DIR="./.doc-out"
+export PANDOC_CLEAN="1"
+export OUT_CACHE="pandoc-convert/01/01"
+export OUT_CACHE_DIR="./.doc-out"
 ```
 
 #### Test
@@ -912,7 +918,6 @@ RUN apt install --yes bash
 RUN apt install --yes curl
 RUN apt install --yes git
 RUN apt install --yes golang
-RUN apt install --yes pandoc
 RUN mkdir /go
 COPY "${HUGO_BIN_SOURCE}" "${HUGO_BIN_DEST}"
 
@@ -1028,36 +1033,15 @@ LAST_ERROR="documentation directory not found"
 [[ -d "$site_dir" ]] || $live_or_die
 ```
 
-Generate documentation.
-
-``` bash
-<<org-to-md>>
-```
+Hugo run.
 
 ``` bash
 # generate documentation
-LAST_ERROR="generating documentation failed"
-while IFS= read -d $'\0' -r page; do
-    page_out="${page/${docs_dir}\//}"
-    page_dir="${page_out%/*}"
-    section_dir=""
-    if [[ "$page_dir" != "$page_out" ]]; then
-        section_dir="$page_dir"
-    fi
-
-    mkdir -p "$site_dir"/content/"$section_dir" || true 2> /dev/null
-    org_to_md "$page" 1 > "$site_dir"/content/"${page_out%.org}".md
-done < <(find "$docs_dir" -name '*.org' -print0)
-```
-
-Hugo.
-
-``` bash
 echo '::group::Generate hugo site' | gh_echo
 # hugo run
 chmod u+x "$hugo_bin"
 { pushd "$site_dir"; "$hugo_bin" mod get -u; popd; } || $live_or_die
-"$hugo_bin" -s "$site_dir" -d "$public_dir" || $live_or_die
+"$hugo_bin" -c "$docs_dir" -s "$site_dir" -d "$public_dir" || $live_or_die
 echo '::endgroup::' | gh_echo
 ```
 
@@ -1172,8 +1156,8 @@ read -s -p 'Enter token: ' gh_token
 
 ``` bash
 hugo_bin="${SOURCE_PATH}"/hugo/hugo
-docs_dir="${SOURCE_PATH}"/test/hugo-site
-site_dir="$docs_dir"/site
+docs_dir="${SOURCE_PATH}"/test/hugo-site/site/content
+site_dir="${SOURCE_PATH}"/test/hugo-site/site
 public_dir="$site_dir"/public
 ```
 
@@ -1191,8 +1175,8 @@ env -i LIVE_DEBUG=1 LIVE_OR_DIE=live GH_MODE=1 \
 
 ``` bash
 hugo_bin="${SOURCE_PATH}"/hugo/hugo
-docs_dir="${SOURCE_PATH}"/test/docsy-site
-site_dir="$docs_dir"/site
+docs_dir="${SOURCE_PATH}"/test/docsy-site/site/content
+site_dir="${SOURCE_PATH}"/test/docsy-site/site
 public_dir="$site_dir"/public
 ```
 
@@ -1211,10 +1195,13 @@ env -i LIVE_DEBUG=1 LIVE_OR_DIE=live GH_MODE=1 DOCKERFILE_SCRIPTS_PATH="${DOCKER
 ``` bash
 work_dir="/github/workspace"
 script="$work_dir"/src/hugo-site.sh
-hugo_bin="$work_dir"/hugo/hugo
-hugo_docs_dir="$work_dir"/test/hugo-site
-hugo_site_dir="$hugo_docs_dir"/site
+hugo_bin=/go/hugo
+hugo_docs_dir="$work_dir"/test/hugo-site/site/content
+hugo_site_dir="$work_dir"/test/hugo-site/site
 hugo_public_dir="$hugo_site_dir"/public
+docsy_docs_dir="$work_dir"/test/docsy-site/site/content
+docsy_site_dir="$work_dir"/test/docsy-site/site
+docsy_public_dir="$docsy_site_dir"/public
 ```
 
 ``` {.bash eval="query"}
@@ -1223,12 +1210,6 @@ docker run -it --rm --name shwrap-hugo-site \
        -eLIVE_DEBUG=1 \
        "${DOCKER_REPO}"/"${DOCKER_IMAGE}" \
        "$work_dir" "$script" "$hugo_bin" "$hugo_docs_dir" "$hugo_site_dir" "$hugo_public_dir"
-```
-
-``` bash
-docsy_docs_dir="$work_dir"/test/docsy-site
-docsy_site_dir="$docsy_docs_dir"/site
-docsy_public_dir="$docsy_site_dir"/public
 ```
 
 ``` {.bash eval="query"}
@@ -1358,6 +1339,144 @@ Push to Docker Hub (optionally).
 docker push "${DOCKER_REPO}"/"${DOCKER_IMAGE}"
 ```
 
+## Git tasks
+
+``` {.bash tangle="no"}
+LIVE_OR_DIE=live
+LIVE_DEBUG=1
+```
+
+``` {.bash eval="no"}
+<<preamble>>
+
+<<options>>
+
+<<options-debug>>
+```
+
+``` bash
+<<help>>
+
+<<live-or-die-trap>>
+
+<<gh-mode>>
+
+<<xtrace>>
+```
+
+Help.
+
+``` bash
+help-git-tasks() {
+    printf "Usage: %s: <GHPATH> <GITREPO> <GITBRANCH> [COMMANDS]\n" "$0"
+    help "$@"
+}
+
+echo '::notice::Git tasks action started!' | gh_echo
+```
+
+Set up parameters.
+
+``` {.bash tangle="no"}
+gh_bin="${SOURCE_PATH}"/cli/bin/gh
+git_repo="https://github.com/ekotik/sh.wrap.git"
+git_branch="gh-pages/test"
+git_commands="git status
+git log"
+```
+
+Check parameters.
+
+``` {.bash eval="no"}
+# check parameters
+if [[ $# -eq 0 ]]; then
+    echo >&2 "No gh binary path specified"
+    help-git-tasks "$@"
+fi
+
+if [[ $# -eq 1 ]]; then
+    echo >&2 "No git repository specified"
+    help-git-tasks "$@"
+fi
+
+if [[ $# -eq 2 ]]; then
+    echo >&2 "No git branch specified"
+    help-git-tasks "$@"
+fi
+
+gh_bin=$(realpath "$1")
+git_repo="$2"
+git_branch="$3"
+shift 3
+git_commands="$*"
+```
+
+Authentication token for github.
+
+``` {.bash tangle="no"}
+read -s -p 'Enter token: ' gh_token
+```
+
+``` {.bash eval="no" padline="no"}
+reset_xtrace
+gh_token="${GITHUB_TOKEN}"
+restore_xtrace
+```
+
+``` bash
+# check paths
+LAST_ERROR="gh binary not found"
+[[ -f "$gh_bin" ]] || $live_or_die
+# check token
+LAST_ERROR="authentication token is empty"
+reset_xtrace
+[[ -n "$gh_token" ]] || $live_or_die
+restore_xtrace
+```
+
+Authenticate.
+
+``` bash
+# authenticate with token
+LAST_ERROR="authentication failed"
+chmod u+x "$gh_bin"
+unset GITHUB_TOKEN
+GIT_DIR=.nogit "$gh_bin" auth login --git-protocol https --with-token <<< "$gh_token" || $live_or_die
+GIT_DIR=.nogit "$gh_bin" auth setup-git || $live_or_die
+```
+
+``` bash
+echo '::group::Git tasks' | gh_echo
+```
+
+Run git tasks (on push on workflow_dispatch events).
+
+``` bash
+# publish site
+if [[ "${GITHUB_EVENT_NAME}" == "push" ]] || [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+    LAST_ERROR="git clone failed"
+    git_repo_dir=$(mktemp -u -p "./")
+    git clone -b "$git_branch" "$git_repo" "$git_repo_dir" || $live_or_die
+    pushd "$git_repo_dir"
+    git config --global --add safe.directory "$git_repo_dir" || $live_or_die
+    git config user.name "git-tasks action"
+    git config user.email "nobody@nowhere"
+    LAST_ERROR="git tasks failed"
+    git_commands_file=$(mktemp -u -p "./")
+    echo -e "$git_commands" > "$git_commands_file"
+    bash "$git_commands_file"
+    popd
+fi
+```
+
+``` bash
+echo '::endgroup::' | gh_echo
+```
+
+``` bash
+echo '::notice::Git tasks action ended!' | gh_echo
+```
+
 ## GH publish
 
 ``` {.bash tangle="no"}
@@ -1465,8 +1584,8 @@ Authenticate.
 LAST_ERROR="authentication failed"
 chmod u+x "$gh_bin"
 unset GITHUB_TOKEN
-GIT_DIR=.nogit "$gh_bin" auth login --git-protocol https --with-token <<< "$gh_token"
-GIT_DIR=.nogit "$gh_bin" auth setup-git
+GIT_DIR=.nogit "$gh_bin" auth login --git-protocol https --with-token <<< "$gh_token" || $live_or_die
+GIT_DIR=.nogit "$gh_bin" auth setup-git || $live_or_die
 ```
 
 ``` bash
@@ -1608,8 +1727,8 @@ Authenticate.
 LAST_ERROR="authentication failed"
 chmod u+x "$gh_bin"
 unset GITHUB_TOKEN
-GIT_DIR=.nogit "$gh_bin" auth login --git-protocol https --with-token <<< "$gh_token"
-GIT_DIR=.nogit "$gh_bin" auth setup-git
+GIT_DIR=.nogit "$gh_bin" auth login --git-protocol https --with-token <<< "$gh_token" || $live_or_die
+GIT_DIR=.nogit "$gh_bin" auth setup-git || $live_or_die
 ```
 
 ``` bash
@@ -1655,6 +1774,118 @@ read -s -p 'Enter token: ' gh_token
 <<dockerfile-git-tasks>>
 ```
 
+### Run git tasks
+
+#### Run script
+
+``` bash
+gh_bin="${SOURCE_PATH}"/cli/bin/gh
+git_repo="https://github.com/ekotik/sh.wrap.git"
+git_branch="gh-pages/test"
+git_commands="git status
+git log"
+```
+
+``` {.bash eval="query"}
+env LIVE_DEBUG=1 GITHUB_TOKEN="$gh_token" GITHUB_EVENT_NAME="push" \
+    bash "${DOCKERFILE_SCRIPTS_PATH}"/git-tasks.sh "$gh_bin" "$git_repo" "$git_branch" "$git_commands"
+```
+
+``` {.bash eval="query"}
+env LIVE_DEBUG=1 LIVE_OR_DIE=live GH_MODE=1 GITHUB_TOKEN="$gh_token" GITHUB_EVENT_NAME="push" \
+    bash "${DOCKERFILE_SCRIPTS_PATH}"/git-tasks.sh "$gh_bin" "$git_repo" "$git_branch" "$git_commands"
+```
+
+#### Run docker
+
+``` bash
+work_dir="/github/workspace"
+script="$work_dir"/src/git-tasks.sh
+gh_bin=/go/gh
+git_repo="https://github.com/ekotik/sh.wrap.git"
+git_branch="gh-pages/test"
+git_commands="git status
+git log"
+```
+
+``` {.bash eval="query"}
+docker run -it --rm --name shwrap-git-tasks \
+       --volume "${SOURCE_PATH}":"$work_dir" \
+       -eLIVE_DEBUG=1 -eGITHUB_TOKEN="$gh_token" -eGITHUB_EVENT_NAME="push" \
+       "${DOCKER_REPO}"/"${DOCKER_IMAGE}" \
+       "$work_dir" "$script" "$gh_bin" "$git_repo" "$git_branch" "$git_commands"
+```
+
+``` {.bash eval="query"}
+docker run -it --rm --name shwrap-git-tasks \
+       --volume "${SOURCE_PATH}":"$work_dir" \
+       -eLIVE_DEBUG=1 -eLIVE_OR_DIE=live -eGH_MODE=1 -eGITHUB_TOKEN="$gh_token" -eGITHUB_EVENT_NAME="push" \
+       "${DOCKER_REPO}"/"${DOCKER_IMAGE}" \
+       "$work_dir" "$script" "$gh_bin" "$git_repo" "$git_branch" "$git_commands"
+```
+
+#### Run action
+
+1.  Template
+
+    ``` {.json tangle="../../../test/workflow/data/git-tasks/01.json"}
+    {
+      "ref": "${REF}",
+      "inputs":
+      {
+        "run_id": "${RUN_ID}",
+        "payload":
+        {
+          "dockerfile_template": "${DOCKERFILE_TEMPLATE}",
+          "dockerfile": "${DOCKERFILE}",
+          "work_dir": "${WORK_DIR}",
+          "script": "${SCRIPT}",
+          "gh_bin_source": "${GH_BIN_SOURCE}",
+          "gh_bin_dest": "${GH_BIN_DEST}",
+          "gh_bin_path": "${GH_BIN_PATH}",
+          "gh_repo": "${GH_REPO}",
+          "gh_hash": "${GH_HASH}",
+          "gh_build_args": "${GH_BUILD_ARGS}",
+          "git_repo": "${GIT_REPO}",
+          "git_branch": "${GIT_BRANCH}",
+          "git_commands": "${GIT_COMMANDS}"
+        }
+      }
+    }
+    ```
+
+2.  Data
+
+    ``` {.bash tangle="../../../test/workflow/data/git-tasks/01/01.sh"}
+    #!/bin/bash
+    # shellcheck disable=SC2034
+
+    export WORKFLOW_ID="39712949"
+    export REF="actions"
+    export RUN_ID="git-tasks/01/01"
+    export DOCKERFILE_TEMPLATE="./_actions/docker/git-tasks.Dockerfile"
+    export DOCKERFILE="git-tasks.Dockerfile"
+    export WORK_DIR="/github/workspace"
+    export SCRIPT="./_actions/src/git-tasks.sh"
+    export GH_BIN_SOURCE="./cli/bin/gh"
+    export GH_BIN_DEST="/go/gh"
+    export GH_BIN_PATH="./cli/bin"
+    export GH_REPO="https://github.com/cli/cli"
+    export GH_HASH="7d71f807c48600d0d8d9f393ef13387504987f1d"
+    export GH_BUILD_ARGS=""
+    export GIT_REPO="https://github.com/ekotik/sh.wrap"
+    export GIT_BRANCH="gh-pages/test"
+    export GIT_COMMANDS="git status\\ngit log"
+    ```
+
+3.  Test
+
+    ``` bash
+    GITHUB_REPO="ekotik/sh.wrap"
+    env GITHUB_TOKEN="$gh_token" \
+        bash "${SOURCE_PATH}"/test/workflow/test-workflows.sh "${GITHUB_REPO}" "${SOURCE_PATH}"/test/workflow/data/git-tasks
+    ```
+
 ### Run gh publish
 
 #### Run script
@@ -1681,20 +1912,18 @@ env LIVE_DEBUG=1 LIVE_OR_DIE=live GH_MODE=1 GITHUB_TOKEN="$gh_token" GITHUB_EVEN
 ``` bash
 work_dir="/github/workspace"
 script="$work_dir"/src/gh-publish.sh
-gh_bin="$work_dir"/cli/bin/gh
+gh_bin=/go/gh
 gh_repo="https://github.com/ekotik/sh.wrap.git"
 gh_branch="gh-pages/test"
 public_dir="$work_dir"/test/hugo-site/site/public
 ```
 
 ``` {.bash eval="query"}
-reset_xtrace
 docker run -it --rm --name shwrap-gh-publish \
        --volume "${SOURCE_PATH}":"$work_dir" \
        -eLIVE_DEBUG=1 -eGITHUB_TOKEN="$gh_token" -eGITHUB_EVENT_NAME="push" \
        "${DOCKER_REPO}"/"${DOCKER_IMAGE}" \
        "$work_dir" "$script" "$gh_bin" "$gh_repo" "$gh_branch" "$public_dir"
-restore_xtrace
 ```
 
 ``` {.bash eval="query"}
@@ -1802,7 +2031,7 @@ env LIVE_OR_DIE=live GH_MODE=1 GITHUB_TOKEN="$gh_token" GITHUB_EVENT_NAME="push"
 ``` bash
 work_dir="/github/workspace"
 script="$work_dir"/src/update-submodules.sh
-gh_bin="$work_dir"/cli/bin/gh
+gh_bin=/go/gh
 git_repo="https://github.com/ekotik/ekotik.github.io"
 git_branch="gh-pages/site"
 git_path="./ekotik.github.io"
