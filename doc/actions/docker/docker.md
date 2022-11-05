@@ -883,7 +883,7 @@ export SCRIPT="./_actions/src/org-to-md.sh"
 export IN_DIR="./test/pandoc-convert"
 export OUT_DIR="./.doc-out"
 export PANDOC_CLEAN="1"
-export OUT_CACHE="pandoc-convert/01/01"
+export OUT_CACHE="pandoc-convert-01-01"
 export OUT_CACHE_DIR="./.doc-out"
 ```
 
