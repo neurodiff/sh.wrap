@@ -86,19 +86,6 @@ function org_to_md()
 }
 
 # generate documentation
-LAST_ERROR="generating documentation failed"
-while IFS= read -d $'\0' -r page; do
-	page_out="${page/${docs_dir}\//}"
-	page_dir="${page_out%/*}"
-	section_dir=""
-	if [[ "$page_dir" != "$page_out" ]]; then
-		section_dir="$page_dir"
-	fi
-
-	mkdir -p "$site_dir"/content/"$section_dir" || true 2> /dev/null
-	org_to_md "$page" 1 > "$site_dir"/content/"${page_out%.org}".md
-done < <(find "$docs_dir" -name '*.org' -print0)
-
 echo '::group::Generate hugo site' | gh_echo
 # hugo run
 chmod u+x "$hugo_bin"
