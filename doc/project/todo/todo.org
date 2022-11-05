@@ -30,56 +30,103 @@ url: /project/todo/todo.html
 
 *** Code: core (project tasks)
 
-**** NEXT Add function to scope
-
-**** NEXT Add module caching
+**** NEXT [#A] Add PoC prototype with somewhat core functionality
+     DEADLINE: <2022-11-05 Sat> SCHEDULED: <2022-11-01 Tue>
+     :PROPERTIES:
+     :Effort:   08:00
+     :END:
+     <2022-10-31 Mon>
 
 ** Docs: sh.wrap (project tasks)                                      :@DOCS:
 
 *** NEXT Add README
 
-*** Docs: Documentation site generator (project tasks)
+*** STARTED Fix org-to-md output directory not found
+    :LOGBOOK:
+    CLOCK: [2022-11-05 Sat 15:00]
+    :END:
 
-**** PROGRESS Choose and describe documentation system for the project :ACTIVE:
-     SCHEDULED: <2022-05-21 Sat>
-     :LOGBOOK:
-     - State "PROGRESS"   from "PROGRESS"   [2022-10-06 Thu 19:25] \\
-       for project documentation we sort tasks by tag/name and remove CLOCK drawer
-     - State "PROGRESS"   from "NEXT"       [2022-05-21 Sat 02:02] \\
-       currently let it be
-       - pandoc for org->markdown conversion
-       - hugo for static site generation
-       - ?: how to stylize site
+*** Docs: Documentation system (project tasks)
+
+**** NEXT [#C] Describe documentation system
+     :PROPERTIES:
+     :Effort:   04:00
      :END:
+     <2022-10-31 Mon>
+**** DONE Add auto-generation of project documentation
+     CLOSED: [2022-11-05 Sat 16:12] DEADLINE: <2022-10-31 Mon> SCHEDULED: <2022-10-31 Mon>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2022-11-05 Sat 16:12]
+     CLOCK: [2022-11-05 Sat 14:09]--[2022-11-05 Sat 15:00] =>  0:51
+     - State "PROGRESS"   from "STARTED"    [2022-11-05 Sat 13:28] \\
+       passed review
+     CLOCK: [2022-11-02 Wed 12:48]--[2022-11-02 Wed 13:56] =>  1:08
+     - State "STARTED"    from "NEXT"       [2022-11-02 Wed 12:48]
+     :END:
+     <2022-10-31 Mon>
 
-*** DONE Add basic hugo templates and site config
-    CLOSED: [2022-10-29 Sat 10:24] DEADLINE: <2022-05-21 Sat>
-    :LOGBOOK:
-    - State "DONE"       from "PROGRESS"   [2022-10-29 Sat 10:24]
-    - State "PROGRESS"   from "PROGRESS"   [2022-10-27 Thu 04:09] \\
-      project uses docsy hugo theme
-      ready for review
-    CLOCK: [2022-05-21 Sat 13:11]--[2022-05-21 Sat 13:37] =>  0:26
-    - State "PROGRESS"   from "PROGRESS"   [2022-05-21 Sat 13:04] \\
-      'project' section configured
-    CLOCK: [2022-05-21 Sat 12:35]--[2022-05-21 Sat 13:04] =>  0:29
-    - State "PROGRESS"   from "TODO"       [2022-05-21 Sat 12:27] \\
-      basic templates and config are taken from the hugo documentation
-    :END:
-    <2022-05-21 Sat>
-
-*** DONE Delete org files from repositories
-    CLOSED: [2022-10-17 Mon 17:41] DEADLINE: <2022-10-17 Mon> SCHEDULED: <2022-10-17 Mon>
-    :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2022-10-17 Mon 17:41]
-    CLOCK: [2022-10-17 Mon 03:35]--[2022-10-17 Mon 04:17] =>  0:42
-    CLOCK: [2022-10-17 Mon 02:10]--[2022-10-17 Mon 03:19] =>  1:09
-    - State "STARTED"    from "TODO"       [2022-10-17 Mon 02:10]
-    :END:
-    <2022-10-17 Mon>
+***** COMPLETE [[rotmsaw][Rework org to markdown scripts and workflows]]
+      CLOSED: [2022-11-05 Sat 14:09]
+      :LOGBOOK:
+      - State "COMPLETE"   from "DEPENDENCY" [2022-11-05 Sat 14:09]
+      :END:
 
 ** Infra: sh.wrap (project tasks)                                    :@INFRA:
 
+*** NEXT Add repository_dispatch events to trigger documentation rebuild
+    <2022-10-30 Sun>
+
+*** Use ready docker images in GH actions (project tasks)
+    :PROPERTIES:
+    :sort: false
+    :END:
+
+**** NEXT Create GH actions to generate and push docker images
+     <2022-10-31 Mon>
+
+*** DONE Rework org to markdown scripts and workflows <<rotmsaw>>
+    CLOSED: [2022-11-05 Sat 14:05] DEADLINE: <2022-10-31 Mon> SCHEDULED: <2022-10-31 Mon>
+    :PROPERTIES:
+    :Effort:   03:00
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2022-11-05 Sat 14:05]
+    CLOCK: [2022-11-03 Thu 00:04]--[2022-11-03 Thu 02:52] =>  2:48
+    CLOCK: [2022-11-02 Wed 13:58]--[2022-11-02 Wed 14:10] =>  0:12
+    - State "STARTED"    from "NEXT"       [2022-11-02 Wed 13:58]
+    :END:
+    <2022-10-31 Mon>
+
+**** PASS Convert documentation from org to markdown [4/6]
+     CLOSED: [2022-11-05 Sat 14:05]
+     :LOGBOOK:
+     - State "PASS"       from "PROGRESS"   [2022-11-05 Sat 14:05]
+     - State "PROGRESS"   from "GOAL"       [2022-11-05 Sat 14:03] \\
+       partially complete
+     :END:
+    - [X] convert whole directory
+    - [-] pass wanted default convertion options
+      - [X] clean
+      - [ ] raw
+    - [ ] pass additional convertion options as rest arguments
+    - [X] docker image for pandoc conversions
+    - [X] GH reusable workflow that wraps this script
+    - [X] Change existing GH workflows to use new script
+
+**** DONE Remove conversion funcs from hugo-site workflow and script
+     CLOSED: [2022-11-05 Sat 13:58] SCHEDULED: <2022-11-05 Sat> DEADLINE: <2022-11-05 Sat>
+     :PROPERTIES:
+     :Effort:   00:30
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2022-11-05 Sat 13:58]
+     CLOCK: [2022-11-05 Sat 13:38]--[2022-11-05 Sat 13:58] =>  0:20
+     - State "STARTED"    from "NEXT"       [2022-11-05 Sat 13:38]
+     :END:
+     <2022-11-05 Sat>
 ** Plan: sh.wrap (project tasks)                                      :@PLAN:
 
 *** Plan: Milestone 0.0.1 (project tasks):
@@ -126,23 +173,48 @@ url: /project/todo/todo.html
 
 *** Code: core (project backlog)
 
+**** NEXT Add function to scope
+
 **** NEXT Add script for bashrc
 
 ** Docs: sh.wrap (project backlog)                                    :@DOCS:
 
 *** NEXT Add license
 
-*** TODO Choose knowledge system for the project
+*** NEXT Fix code blocks not colored properly with hugo renderer
+   <2022-10-31 Mon>
+*** NEXT Rework gh-publish workflow
+    <2022-11-05 Sat>
+**** GOAL Add features to gh-publish script [0/3]
+     - [ ] pass commit message as argument
+     - [ ] add option to keep commits history
+     - [ ] add tag to commit
 
-*** TODO Describe useful workflows on the project
+*** TODO Add option to exclude path patterns from conversion in pandoc-convert workflow
+    <2022-11-05 Sat>
+*** TODO Fix hugo bug with flickering project/docs tag
+    <2022-11-05 Sat>
+*** TODO Pass conversion options and command line arguments to pandoc-convert workflow
+    <2022-11-05 Sat>
+**** GOAL org-to-md.sh and pandoc-convert workflow [0/5]
+     - [ ] extensions sets
+       - [ ] clean set (-raw_attribute...)
+       - [ ] line break set (+hard_line_breaks...)
+     - [ ] command-line arguments
+       - [ ] --wrap=auto|none|preserve
+       - [ ] --shift-heading-level-by=NUMBER
+     - [ ] default sets of options enabled by default
+     - [ ] rest command line options (by user request)
+     - [ ] rest pandoc extensions (by user request)
 
-*** TODO Fix: title and date parameters not exposed in in org->md export
-    <2022-05-21 Sat>
+*** WRITE Describe knowledge system for the project
 
-*** Docs: Documentation site generator (project backlog)
+*** WRITE Describe useful workflows on the project
 
-**** NEXT Add styling for hugo site
-     <2022-05-21 Sat>
+*** Docs: Documentation system (project backlog)
+
+**** NEXT Describe documentation generation
+     <2022-10-31 Mon>
 
 ** Infra: sh.wrap (project backlog)                                  :@INFRA:
 
@@ -151,6 +223,21 @@ url: /project/todo/todo.html
 *** TODO Add spell checker action for project documentation
     <2022-05-22 Sun>
 
+*** TODO Make universal docker workflow and action
+    <2022-11-05 Sat>
+**** GOAL Docker workflows and actions [0/2]
+     - [ ] one universal workflow and action to all tasks
+     - [ ] workflow/action parameters
+       - [ ] all parameters are serialized in one file (like workflow tests do)
+       - [ ] no workaround when rest arguments are passed as string to parse
+
+*** Use ready docker images in GH actions (project backlog)
+    :PROPERTIES:
+    :sort: false
+    :END:
+
+**** NEXT Create GH actions to use docker images from docker hub
+     <2022-10-31 Mon>
 ** Plan: sh.wrap (project backlog)                                    :@PLAN:
 
 *** TODO Describe sh.wrap purpose and vision
@@ -190,8 +277,6 @@ url: /project/todo/todo.html
 *** TODO Describe issue/test/release verification processes
     <2022-05-21 Sat>
 
-*** TODO Review pr#11
-
 *** TODO Review pr#9
 
 * sh.wrap (project stuck)                                            :#stuck:
@@ -209,7 +294,7 @@ url: /project/todo/todo.html
 
 ** QA: sh.wrap (project stuck)                                          :@QA:
 
-* sh.wrap (habits)                                            :noexport:#habit:
+* sh.wrap (habits)                                          :noexport:#habit:
   :PROPERTIES:
   :CATEGORY: ■ SH.WRAP ■
   :END:
@@ -236,7 +321,7 @@ url: /project/todo/todo.html
   :CATEGORY: ▇ SH.WRAP ▇
   :END:
 
-** Code: sh.wrap (project goals) :@CODE:
+** Code: sh.wrap (project goals)                                      :@CODE:
 
 *** GOAL Collection of useful shell scripts [0/2]
 
@@ -257,6 +342,59 @@ url: /project/todo/todo.html
 ** Code: sh.wrap (project archive)                                    :@CODE:
 
 ** Docs: sh.wrap (project archive)                                    :@DOCS:
+
+*** DONE Add basic hugo templates and site config
+    CLOSED: [2022-10-29 Sat 10:24] DEADLINE: <2022-05-21 Sat>
+    :LOGBOOK:
+    - State "DONE"       from "PROGRESS"   [2022-10-29 Sat 10:24]
+    - State "PROGRESS"   from "PROGRESS"   [2022-10-27 Thu 04:09] \\
+      project uses docsy hugo theme
+      ready for review
+    CLOCK: [2022-05-21 Sat 13:11]--[2022-05-21 Sat 13:37] =>  0:26
+    - State "PROGRESS"   from "PROGRESS"   [2022-05-21 Sat 13:04] \\
+      'project' section configured
+    CLOCK: [2022-05-21 Sat 12:35]--[2022-05-21 Sat 13:04] =>  0:29
+    - State "PROGRESS"   from "TODO"       [2022-05-21 Sat 12:27] \\
+      basic templates and config are taken from the hugo documentation
+    :END:
+    <2022-05-21 Sat>
+
+*** DONE Add styling for hugo site
+    CLOSED: [2022-10-31 Mon 05:17]
+    :LOGBOOK:
+    - State "DONE"       from "NEXT"       [2022-10-31 Mon 05:17]
+    :END:
+    <2022-05-21 Sat>
+
+*** DONE Choose and describe documentation system for the project
+    CLOSED: [2022-10-31 Mon 05:14] SCHEDULED: <2022-05-21 Sat>
+    :LOGBOOK:
+    - State "DONE"       from "PROGRESS"   [2022-10-31 Mon 05:14]
+    - State "PROGRESS"   from "PROGRESS"   [2022-10-06 Thu 19:25] \\
+      for project documentation we sort tasks by tag/name and remove CLOCK drawer
+    - State "PROGRESS"   from "NEXT"       [2022-05-21 Sat 02:02] \\
+      currently let it be
+      - pandoc for org->markdown conversion
+      - hugo for static site generation
+      - ?: how to stylize site
+    :END:
+
+*** DONE Delete org files from repositories
+    CLOSED: [2022-10-17 Mon 17:41] DEADLINE: <2022-10-17 Mon> SCHEDULED: <2022-10-17 Mon>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2022-10-17 Mon 17:41]
+    CLOCK: [2022-10-17 Mon 03:35]--[2022-10-17 Mon 04:17] =>  0:42
+    CLOCK: [2022-10-17 Mon 02:10]--[2022-10-17 Mon 03:19] =>  1:09
+    - State "STARTED"    from "TODO"       [2022-10-17 Mon 02:10]
+    :END:
+    <2022-10-17 Mon>
+
+*** DONE Fix: title and date parameters not exposed in in org->md export
+    CLOSED: [2022-10-31 Mon 11:34]
+    :LOGBOOK:
+    - State "DONE"       from "TODO"       [2022-10-31 Mon 11:34]
+    :END:
+    <2022-05-21 Sat>
 
 ** Infra: sh.wrap (project archive)                                  :@INFRA:
 
@@ -353,6 +491,18 @@ url: /project/todo/todo.html
      - State "STARTED"    from "TODO"       [2022-05-22 Sun 16:26]
      :END:
 
+*** DONE Add actions docker images to docker hub
+    CLOSED: [2022-11-02 Wed 10:51] DEADLINE: <2022-11-01 Tue> SCHEDULED: <2022-10-31 Mon>
+    :PROPERTIES:
+    :Effort:   02:00
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2022-11-02 Wed 10:51]
+    - State "STARTED"    from "NEXT"       [2022-11-01 Tue 11:29]
+    CLOCK: [2022-11-01 Tue 11:29]--[2022-11-01 Tue 13:32] =>  2:03
+    :END:
+    <2022-10-31 Mon>
+
 *** DONE Add docker image for hugo site generation
     CLOSED: [2022-10-29 Sat 10:24] DEADLINE: <2022-05-21 Sat>
     :LOGBOOK:
@@ -363,6 +513,17 @@ url: /project/todo/todo.html
       basic images with hugo and pandoc for site generation are added
     :END:
     <2022-05-21 Sat>
+
+*** DONE Check scripts and images in docker.org file                 :ACTIVE:
+    CLOSED: [2022-10-30 Sun 16:02] DEADLINE: <2022-10-30 Sun> SCHEDULED: <2022-10-30 Sun>
+    :PROPERTIES:
+    :Effort:   01:00
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2022-10-30 Sun 16:02]
+    - State "STARTED"    from "NEXT"       [2022-10-30 Sun 12:50]
+    :END:
+    <2022-10-30 Sun>
 
 *** DONE Create a branch for project tracking
     CLOSED: [2022-05-13 Fri 22:42] SCHEDULED: <2022-05-13 Fri>
@@ -375,6 +536,36 @@ url: /project/todo/todo.html
     - State "STARTED"    from "NEXT"       [2022-05-13 Fri 19:27]
     :END:
 
+*** DONE Create infra account on docker hub
+    CLOSED: [2022-11-01 Tue 10:01] DEADLINE: <2022-11-01 Tue> SCHEDULED: <2022-10-31 Mon>
+    :PROPERTIES:
+    :Effort:   01:00
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "PROGRESS"   [2022-11-01 Tue 10:01]
+    CLOCK: [2022-11-01 Tue 09:34]--[2022-11-01 Tue 10:01] =>  0:27
+    - State "PROGRESS"   from "STARTED"    [2022-10-31 Mon 15:12]
+    - State "STARTED"    from "NEXT"       [2022-10-31 Mon 13:02]
+    CLOCK: [2022-10-31 Mon 13:02]--[2022-10-31 Mon 15:12] =>  2:10
+    :END:
+    <2022-10-31 Mon>
 ** Plan: sh.wrap (project archive)                                    :@PLAN:
 
+*** DONE Fix project documentation not included in site generation
+    CLOSED: [2022-10-30 Sun 16:02] DEADLINE: <2022-10-30 Sun> SCHEDULED: <2022-10-30 Sun>
+    :PROPERTIES:
+    :Effort:   02:00
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2022-10-30 Sun 16:02]
+    - State "STARTED"    from "TODO"       [2022-10-30 Sun 12:29]
+    :END:
+    <2022-10-30 Sun>
+
 ** QA: sh.wrap (project archive)                                        :@QA:
+
+*** DONE Review pr#11
+    CLOSED: [2022-10-30 Sun 12:23]
+    :LOGBOOK:
+    - State "DONE"       from "TODO"       [2022-10-30 Sun 12:23]
+    :END:

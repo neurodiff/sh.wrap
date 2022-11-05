@@ -3,6 +3,12 @@
 #+OPTIONS: ^:nil toc:nil num:nil author:nil timestamp:nil
 #+COLUMNS: %50ITEM TODO %3PRIORITY %Effort %Effort(Effort Children){:} %10CLOCKSUM
 
+#+begin_export markdown
+---
+draft: true
+---
+
+#+end_export
 * Utility                                                          :noexport:
   :PROPERTIES:
   :header-args: :results output verbatim silent :wrap
@@ -55,14 +61,19 @@
                                `(("ps#" stuck "Stuck (sh.wrap)"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-stuck-projects
-                                    '("+#project-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+#task-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+learning-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+reading-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity/-TODO-DEPENDENCY-SOMEDAY-FROZEN-WAITING-DONE-COMPLETE-CANCELLED-TRY-READ-WRITE-WATCH-GOTO-BUY-TALK-CHAT-POST-MAIL-DAILY-WEEKLY-MONTHLY-PHONE-ACHIVED" ("NEXT" "STARTED" "PROGRESS") ("TODO") "\\<IGNORE\\>"))))
+                                    '("+#project-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+#task-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+learning-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity|+reading-#journal-#list-#habit-#stuck-#note-@mobile-ACTIVE-activity/-TODO-DEPENDENCY-SOMEDAY-FROZEN-WAITING-DONE-COMPLETE-CANCELLED-TRY-READ-WRITE-WATCH-GOTO-BUY-TALK-CHAT-POST-MAIL-PHONE-GOAL-PASS-FAIL-DAILY-WEEKLY-MONTHLY-ACHIVED" ("NEXT" "STARTED" "PROGRESS") ("TODO") "\\<IGNORE\\>"))))
                                  ("ps@@" agenda "Agenda (sh.wrap)"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "-@mobile" "-#backlog" "-#journal" "-#list" "-#note"))))
                                  ("ps@a" agenda "Active (sh.wrap agenda)"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "+ACTIVE" "-@mobile" "-#backlog" "-#journal" "-#list" "-#note"))))
+
                                  ;; ACTIVE (in work)
+                                 ("psAA" alltodo "Active (sh.wrap tasks)"
+                                  ((org-agenda-files (quote ,agenda-files))
+                                   (org-agenda-overriding-header "Active (sh.wrap tasks)")
+                                   (org-agenda-tag-filter-preset '("+sh.wrap" "+ACTIVE" "-@mobile" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))))
                                  ("psAo" alltodo "Active (sh.wrap orphan tasks)"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-overriding-header "Active (sh.wrap orphan tasks)")
@@ -83,6 +94,10 @@
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-overriding-header "Active (sh.wrap work tasks)")
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "+ACTIVE" "+@work" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))))
+                                 ("psAc" alltodo "Active (sh.wrap current tasks)"
+                                  ((org-agenda-files (quote ,agenda-files))
+                                   (org-agenda-overriding-header "Active (sh.wrap current tasks)")
+                                   (org-agenda-tag-filter-preset '("+sh.wrap" "+ACTIVE" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))))
                                  ("psAb" alltodo "Active (sh.wrap backlog tasks)"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-overriding-header "Active (sh.wrap backlog tasks)")
@@ -97,6 +112,11 @@
                                    (org-agenda-overriding-header "Active (sh.wrap scheduled tasks)")
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "+ACTIVE" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
                                    (org-agenda-skip-function '(org-agenda-skip-entry-if 'notscheduled))))
+                                 ("psA_" alltodo "Active (sh.wrap not deadlined tasks)"
+                                  ((org-agenda-files (quote ,agenda-files))
+                                   (org-agenda-overriding-header "Active (sh.wrap not deadlined tasks)")
+                                   (org-agenda-tag-filter-preset '("+sh.wrap" "+ACTIVE" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
+                                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline))))
                                  ("psA=" alltodo "Active (sh.wrap deadlined tasks)"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-overriding-header "Active (sh.wrap deadlined tasks)")
@@ -132,6 +152,14 @@
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "+#task" "+@work" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
                                    (org-agenda-overriding-header "Current (sh.wrap work tasks)")))
+                                 ("pscA" "Current (sh.wrap ACTIVE todo)" todo "NEXT|TODO|STARTED|PROGRESS|TRY|LEARN|READ|WRITE|WATCH|GOTO|BUY|TALK|CHAT|POST|MAIL|PHONE"
+                                  ((org-agenda-files (quote ,agenda-files))
+                                   (org-agenda-tag-filter-preset '("+sh.wrap" "+#task" "+ACTIVE" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
+                                   (org-agenda-overriding-header "Current (sh.wrap ACTIVE tasks)")))
+                                 ("pscn" "Current (sh.wrap NEXT todo)" todo "NEXT"
+                                  ((org-agenda-files (quote ,agenda-files))
+                                   (org-agenda-tag-filter-preset '("+sh.wrap" "+#task" "+ACTIVE" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
+                                   (org-agenda-overriding-header "Current (sh.wrap NEXT tasks)")))
                                  ("psc-" "Current (sh.wrap not scheduled todo)" todo "NEXT|TODO|STARTED|PROGRESS|TRY|LEARN|READ|WRITE|WATCH|GOTO|BUY|TALK|CHAT|POST|MAIL|PHONE"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "+#task" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
@@ -142,6 +170,11 @@
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "+#task" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
                                    (org-agenda-skip-function '(org-agenda-skip-entry-if 'notscheduled))
                                    (org-agenda-overriding-header "Current (sh.wrap scheduled tasks)")))
+                                 ("psc_" "Current (sh.wrap not deadlined todo)" todo "NEXT|TODO|STARTED|PROGRESS|TRY|LEARN|READ|WRITE|WATCH|GOTO|BUY|TALK|CHAT|POST|MAIL|PHONE"
+                                  ((org-agenda-files (quote ,agenda-files))
+                                   (org-agenda-tag-filter-preset '("+sh.wrap" "+#task" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
+                                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline))
+                                   (org-agenda-overriding-header "Current (sh.wrap not deadlined tasks)")))
                                  ("psc=" "Current (sh.wrap deadlined todo)" todo "NEXT|TODO|STARTED|PROGRESS|TRY|LEARN|READ|WRITE|WATCH|GOTO|BUY|TALK|CHAT|POST|MAIL|PHONE"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "+#task" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
@@ -155,7 +188,7 @@
                                  ;; NEXT (todo)
                                  ("psnn" "Next (sh.wrap todo)" todo "NEXT"
                                   ((org-agenda-files (quote ,agenda-files))
-                                   (org-agenda-tag-filter-preset '("+sh.wrap" "-@mobile" "-#backlog" "-#note" "-#list" "-#habit" "-#stuck" "-#journal"))
+                                   (org-agenda-tag-filter-preset '("+sh.wrap" "-@mobile" "-#note" "-#list" "-#habit" "-#stuck" "-#journal"))
                                    (org-agenda-overriding-header "Next (sh.wrap todo)")))
                                  ("psno" "Next (sh.wrap orphan todo)" todo "NEXT"
                                   ((org-agenda-files (quote ,agenda-files))
@@ -177,6 +210,10 @@
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "+@work" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
                                    (org-agenda-overriding-header "Next (sh.wrap work todo)")))
+                                 ("psnc" "Next (sh.wrap current todo)" todo "NEXT"
+                                  ((org-agenda-files (quote ,agenda-files))
+                                   (org-agenda-tag-filter-preset '("+sh.wrap" "-#backlog" "-@mobile" "-#note" "-#list" "-#habit" "-#stuck" "-#journal"))
+                                   (org-agenda-overriding-header "Next (sh.wrap current todo)")))
                                  ("psnb" "Next (sh.wrap backlog todo)" todo "NEXT"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "+#backlog" "-@mobile" "-#note" "-#list" "-#habit" "-#stuck" "-#journal"))
@@ -307,7 +344,7 @@
                                  ("pstA" alltodo "Active (sh.wrap tasks)"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-overriding-header "Active (sh.wrap tasks)")
-                                   (org-agenda-tag-filter-preset '("+sh.wrap" "+ACTIVE" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))))
+                                   (org-agenda-tag-filter-preset '("+sh.wrap" "+ACTIVE" "-@mobile" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))))
                                  ("pstc" alltodo "Current (sh.wrap tasks)"
                                   ((org-agenda-files (quote ,agenda-files))
                                    (org-agenda-tag-filter-preset '("+sh.wrap" "+#task" "-@mobile" "-#backlog" "-#journal" "-#list" "-#habit" "-#stuck" "-#note"))
