@@ -73,18 +73,6 @@ LAST_ERROR="hugo binary not found"
 LAST_ERROR="documentation directory not found"
 [[ -d "$site_dir" ]] || $live_or_die
 
-function org_to_md()
-{
-	local page="$1"
-	local clean="$2"
-	local extensions=""
-	if [[ "$clean" == 1 ]]; then
-		extensions="-raw_attribute-raw_html-header_attributes-bracketed_spans"
-	fi
-	extensions+="+hard_line_breaks"
-	pandoc -s "$page" -t markdown"$extensions" --wrap=none
-}
-
 # generate documentation
 echo '::group::Generate hugo site' | gh_echo
 # hugo run
