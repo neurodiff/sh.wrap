@@ -62,6 +62,7 @@ function org_to_md()
 		extensions="-raw_attribute-raw_html-header_attributes-bracketed_spans"
 	fi
 	extensions+="+hard_line_breaks"
+	extensions+="-yaml_metadata_block-pandoc_title_block"
 	pandoc -s "$page" -t markdown"$extensions" --wrap=none
 }
 
