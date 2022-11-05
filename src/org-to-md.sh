@@ -76,7 +76,8 @@ while IFS= read -d $'\0' -r path; do
 	file=$(basename "$path")
 
 	mkdir -p "$out_dir"/"$dir" || true 2> /dev/null
-	org_to_md "$file" 1 > "$out_dir"/"$dir"/"${file%.org}.md" || $live_or_die
+	org_to_md "$in_dir"/"$dir"/"$file" 1 > "$out_dir"/"$dir"/"${file%.org}.md" \
+		|| $live_or_die
 done < <(find "$in_dir" -name '*.org' -print0)
 echo '::endgroup::' | gh_echo
 
