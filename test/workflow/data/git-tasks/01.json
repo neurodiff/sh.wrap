@@ -1,0 +1,23 @@
+{
+  "ref": "${REF}",
+  "inputs":
+  {
+    "run_id": "${RUN_ID}",
+    "payload":
+    {
+      "dockerfile_template": "${DOCKERFILE_TEMPLATE}",
+      "dockerfile": "${DOCKERFILE}",
+      "work_dir": "${WORK_DIR}",
+      "script": "${SCRIPT}",
+      "gh_bin_source": "${GH_BIN_SOURCE}",
+      "gh_bin_dest": "${GH_BIN_DEST}",
+      "gh_bin_path": "${GH_BIN_PATH}",
+      "gh_repo": "${GH_REPO}",
+      "gh_hash": "${GH_HASH}",
+      "gh_build_args": "${GH_BUILD_ARGS}",
+      "git_repo": "${GIT_REPO}",
+      "git_branch": "${GIT_BRANCH}",
+      "git_commands": "${GIT_COMMANDS}"
+    }
+  }
+}

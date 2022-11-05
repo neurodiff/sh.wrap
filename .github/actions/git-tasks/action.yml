@@ -1,0 +1,38 @@
+name: "Git tasks (docker)"
+description: "Git tasks in repo (docker)"
+
+permissions:
+  contents: write
+
+inputs:
+  work_dir:
+    description: "Working directory"
+    default: "/github/workspace"
+  script:
+    description: "Run script"
+    default: "./_actions/src/git-tasks.sh"
+  gh_bin:
+    description: "gh binary"
+    default: "/go/gh"
+  git_repo:
+    description: "Git repository"
+    required: true
+  git_branch:
+    description: "Git branch"
+    default: true
+  git_commands:
+    description: "Git commands"
+    default: "git status"
+
+runs:
+  using: docker
+  image: "../../../../git-tasks.Dockerfile"
+  args:
+    - "${{ inputs.work_dir }}"
+    - "${{ inputs.script }}"
+    - "${{ inputs.gh_bin }}"
+    - "${{ inputs.git_repo }}"
+    - "${{ inputs.git_branch }}"
+    - "${{ inputs.git_commands }}"
+  env:
+    GH_MODE: 1
