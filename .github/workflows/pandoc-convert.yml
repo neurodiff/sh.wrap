@@ -1,0 +1,86 @@
+name: "Run: Convert documentation"
+
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-pandoc-convert-${{ github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  workflow_call:
+    inputs:
+      run_id:
+        description: "Run ID"
+        type: string
+        required: true
+      dockerfile_template:
+        description: "Dockerfile template file"
+        type: string
+        default: "./_actions/docker/pandoc-convert.Dockerfile"
+      dockerfile:
+        description: "Dockerfile to build and run"
+        type: string
+        default: "pandoc-convert.Dockerfile"
+      work_dir:
+        description: "Working directory"
+        type: string
+        default: "/github/workspace"
+      script:
+        description: "Run script"
+        type: string
+        default: "./_actions/src/org-to-md.sh"
+      in_dir:
+        description: "Source directory"
+        type: string
+        default: "./doc"
+      out_dir:
+        description: "Destination directory"
+        type: string
+        default: "./.doc-out"
+      pandoc_clean:
+        description: "With clean flags"
+        type: string
+        default: "1"
+      out_cache:
+        description: "Documentation cache"
+        type: string
+        default: "outcache"
+
+env:
+  DOCKERFILE_SCRIPTS_PATH: "./_actions/src"
+  RUN_ID: "${{ inputs.run_id }}"
+  DOCKERFILE_TEMPLATE: "${{ inputs.dockerfile_template }}"
+  DOCKERFILE: "${{ inputs.dockerfile }}"
+  WORK_DIR: "${{ inputs.work_dir }}"
+  SCRIPT: "${{ inputs.script }}"
+  IN_DIR: "${{ inputs.in_dir }}"
+  OUT_DIR: "${{ inputs.out_dir }}"
+  PANDOC_CLEAN: "${{ inputs.pandoc_clean }}"
+  OUT_CACHE: "${{ inputs.out_cache }}"
+
+jobs:
+  pandoc-convert:
+    concurrency:
+      group: "pandoc-convert/pandoc-convert-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: "Checkout actions"
+        uses: ekotik/sh.wrap@actions
+      - uses: ./_actions/.github/actions/prepare-dockerfile
+      - name: "Convert documentation"
+        uses: ./_actions/.github/actions/pandoc-convert
+        with:
+          script: "${{ inputs.script }}"
+          in_dir: "${{ inputs.in_dir }}"
+          out_dir: "${{ inputs.out_dir }}"
+          pandoc_clean: "${{ inputs.pandoc_clean }}"
+      - name: "Archive documentation"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "${{ inputs.out_cache }}"
+          path: "${{ inputs.out_dir }}"

@@ -41,6 +41,7 @@ jobs:
             ./test/workflow/data/gh-publish
             ./test/workflow/data/go-build
             ./test/workflow/data/hugo-site
+            ./test/workflow/data/pandoc-convert
             ./test/workflow/data/test-shellcheck
             ./test/workflow/data/update-submodules
         env:

@@ -1,0 +1,33 @@
+name: "Run: Convert documentation (docker)"
+description: "Convert documentation (docker)"
+
+permissions: {}
+
+inputs:
+  work_dir:
+    description: "Working directory"
+    default: "/github/workspace"
+  script:
+    description: "Run script"
+    default: "./_actions/src/org-to-md.sh"
+  in_dir:
+    description: "Source directory"
+    required: true
+  out_dir:
+    description: "Destination directory"
+    required: true
+  pandoc_clean:
+    description: "With clean flags"
+    required: true
+
+runs:
+  using: docker
+  image: "../../../../pandoc-convert.Dockerfile"
+  args:
+    - "${{ inputs.work_dir }}"
+    - "${{ inputs.script }}"
+    - "${{ inputs.in_dir }}"
+    - "${{ inputs.out_dir }}"
+    - "${{ inputs.pandoc_clean }}"
+  env:
+    GH_MODE: 1
