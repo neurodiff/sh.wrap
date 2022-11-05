@@ -35,3 +35,4 @@ jobs:
       out_dir: "${{ fromJson(inputs.payload).out_dir }}"
       pandoc_clean: "${{ fromJson(inputs.payload).pandoc_clean }}"
       out_cache: "${{ fromJson(inputs.payload).out_cache }}"
+      out_cache_dir: "${{ fromJson(inputs.payload).out_cache_dir }}"

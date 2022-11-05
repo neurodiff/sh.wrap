@@ -45,6 +45,10 @@ on:
         description: "Documentation cache"
         type: string
         default: "outcache"
+      out_cache_dir:
+        description: "Documentation cache directory"
+        type: string
+        default: "./.doc-out"
 
 env:
   DOCKERFILE_SCRIPTS_PATH: "./_actions/src"
@@ -83,4 +87,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: "${{ inputs.out_cache }}"
-          path: "${{ inputs.out_dir }}"
+          path: "${{ inputs.out_cache_dir }}"

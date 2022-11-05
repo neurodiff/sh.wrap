@@ -12,7 +12,8 @@
       "in_dir": "${IN_DIR}",
       "out_dir": "${OUT_DIR}",
       "pandoc_clean": "${PANDOC_CLEAN}",
-      "out_cache": "${OUT_CACHE}"
+      "out_cache": "${OUT_CACHE}",
+      "out_cache_dir": "${OUT_CACHE_DIR}"
     }
   }
 }
