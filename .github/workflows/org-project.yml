@@ -24,6 +24,7 @@ env:
   OUT_DIR: "./.doc-out/doc"
   PANDOC_CLEAN: "1"
   OUT_CACHE: "project-cache"
+  OUT_CACHE_DIR: "./.doc-out"
   GH_PAGES_REPO: "https://github.com/neurodiff/sh.wrap"
   GH_PAGES_BRANCH: "project"
   PUBLIC_DIR: "./.doc-out"
@@ -41,6 +42,7 @@ jobs:
       out_dir: "./.doc-out/doc"
       pandoc_clean: "1"
       out_cache: "project-cache"
+      out_cache_dir: "./.doc-out"
   gh-publish:
     permissions:
       contents: write
@@ -56,3 +58,19 @@ jobs:
       gh_pages_branch: "project"
       public_dir: "./.doc-out"
       public_cache: "project-cache"
+  tag-update:
+    permissions:
+      contents: write
+    concurrency:
+      group: "org-project/tag-update-${{ inputs.run_id }}"
+      cancel-in-progress: true
+    needs:
+      - gh-publish
+    uses: neurodiff/sh.wrap/.github/workflows/git-tasks.yml@dev/neurodiff/actions__git-tasks-action
+    with:
+      run_id: "org-project/tag-update"
+      git_repo: "https://github.com/neurodiff/sh.wrap"
+      git_branch: "project"
+      git_commands: |
+        git tag --force v0.0.0-project project
+        git push origin v0.0.0-project --force
