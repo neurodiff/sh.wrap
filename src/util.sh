@@ -70,7 +70,7 @@ function __shwrap_get_fd_random()
 		fi
 	done
 	if [[ "${fd}" == -1 ]]; then
-		__shwrap_log "__shwrap_get_fd: error: no free fd after ${maxtry} tries" >&2
+		__shwrap_log "__shwrap_get_fd: error: no free fd after '${maxtry}' tries" >&2
 	fi
 	echo "${fd}"
 }
@@ -88,7 +88,7 @@ function __shwrap_get_fd_sequential()
 		break
 	done
 	if [[ "${fd}" == -1 ]]; then
-		__shwrap_log "__shwrap_get_fd: error: no free fd after ${maxtry} tries" >&2
+		__shwrap_log "__shwrap_get_fd: error: no free fd between '${fdr_start}' and '${fdr_end}'" >&2
 	fi
 	echo "${fd}"
 }
