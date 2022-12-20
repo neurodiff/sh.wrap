@@ -109,8 +109,7 @@ function __shwrap__run()
 		exec {fd_scope_cap}<&-
 		eval "exec ${fd_out}>&-"
 	}
-	eval "exec {fd_scope}<&-"
-	eval "exec {fd_out}<&-"
+	eval "exec ${fd_scope}<&-"
 	unset '_shwrap_fds["${fd_scope}"]'
 	unset '_shwrap_fds["${fd_out}"]'
 
@@ -191,8 +190,7 @@ function __shwrap_cache()
 		exec {fd_scope_cap}<&-
 		eval "exec ${fd_out}>&-"
 	}
-	eval "exec {fd_scope}<&-"
-	eval "exec {fd_out}<&-"
+	eval "exec ${fd_scope}<&-"
 	unset '_shwrap_fds["${fd_scope}"]'
 	unset '_shwrap_fds["${fd_out}"]'
 
