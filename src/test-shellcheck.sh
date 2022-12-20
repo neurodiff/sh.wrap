@@ -68,7 +68,7 @@ done
 LAST_ERROR="no shell scripts for checking are found"
 [[ "${#files[@]}" != 0 ]] || $live_or_die
 {
-	ret=$( shellcheck -f gcc "${files[@]}" >&3
+	ret=$( shellcheck -x -f gcc "${files[@]}" >&3
 		   echo $? );
 } 3>&1
 
