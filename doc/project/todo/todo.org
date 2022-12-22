@@ -1,5 +1,5 @@
 #+CATEGORY: ░ SH.WRAP ░
-#+FILETAGS: #project #task sh.wrap
+#+FILETAGS: #project #task #sh_wrap
 #+OPTIONS: ^:nil toc:nil num:nil author:nil timestamp:nil
 #+COLUMNS: %50ITEM TODO %3PRIORITY %Effort %Effort(Effort Children){:} %10CLOCKSUM
 #+OPTIONS: H:1 prop:nil d:nil tags:nil p:t c:nil pri:t
@@ -30,16 +30,37 @@ url: /project/todo/todo.html
 
 *** Code: core (project tasks)
 
-**** NEXT [#A] Add PoC prototype with somewhat core functionality
-     DEADLINE: <2022-11-05 Sat> SCHEDULED: <2022-11-01 Tue>
+**** NEXT Check and fix unset for globally exported variables inside a module
+     DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
      :PROPERTIES:
-     :Effort:   08:00
+     :Effort:   03:00
      :END:
-     <2022-10-31 Mon>
-
+     <2022-12-20 Tue>
 ** Docs: sh.wrap (project tasks)                                      :@DOCS:
 
+*** NEXT Add "Getting started" page to documentation
+    DEADLINE: <2022-12-22 Thu> SCHEDULED: <2022-12-22 Thu>
+    :PROPERTIES:
+    :Effort:   02:00
+    :END:
+    <2022-12-20 Tue>
+*** NEXT Add "Usage" page to documentation
+    DEADLINE: <2022-12-22 Thu> SCHEDULED: <2022-12-22 Thu>
+    :PROPERTIES:
+    :Effort:   02:00
+    :END:
+    <2022-12-20 Tue>
 *** NEXT Add README
+    SCHEDULED: <2022-12-22 Thu>
+    :PROPERTIES:
+    :Effort:   02:00
+    :END:
+
+**** GOAL Minimal README.md contains
+     - [ ] project description
+     - [ ] installation notes
+     - [ ] example of usage
+     - [ ] links to project documentation
 
 *** NEXT Pass conversion options and command line arguments to pandoc-convert workflow
     <2022-11-05 Sat>
@@ -71,7 +92,11 @@ url: /project/todo/todo.html
     :sort: false
     :END:
 
-**** NEXT Create GH actions to use docker images from docker hub
+**** NEXT [#A] Create GH actions to use docker images from docker hub
+     DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
+     :PROPERTIES:
+     :Effort:   04:00
+     :END:
      <2022-10-31 Mon>
 ** Plan: sh.wrap (project tasks)                                      :@PLAN:
 
@@ -82,11 +107,26 @@ url: /project/todo/todo.html
 *** Plan: Roadmap (project tasks)
 
 **** NEXT Write requirements for milestone 0.0.1
+     DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
      <<wrfm001>>
 
 ** QA: sh.wrap (project tasks)                                          :@QA:
 
 *** NEXT [#B] Add issue/pr templates
+
+*** QA: sh.wrap testing environment (project backlog)
+
+**** NEXT Choose testing framework
+     DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
+     :PROPERTIES:
+     :Effort:   04:00
+     :END:
+     <2022-12-22 Thu>
+***** GOAL Satisfiable testing framework
+      - [ ] simple
+      - [ ] sutable for sh.wrap project testing
+
+*** QA: sh.wrap testing environment (project backlog)
 
 * sh.wrap (project backlog)                                        :#backlog:
   :PROPERTIES:
@@ -119,14 +159,30 @@ url: /project/todo/todo.html
 
 *** Code: core (project backlog)
 
-**** NEXT Add function to scope
+**** NEXT Add function with argument passing to import
+     <2022-12-22 Thu>
+**** COMPLETE Add function to scope
+     CLOSED: [2022-12-22 Thu 13:45]
+     :LOGBOOK:
+     - State "COMPLETE"   from "PROGRESS"   [2022-12-22 Thu 13:45]
+     - State "PROGRESS"   from "NEXT"       [2022-12-22 Thu 13:44] \\
+       function per modules are implemented in prototype
+     :END:
 
-**** NEXT Add script for bashrc
+**** COMPLETE Add script for bashrc
+     CLOSED: [2022-12-22 Thu 13:45]
+     :LOGBOOK:
+     - State "COMPLETE"   from "PROGRESS"   [2022-12-22 Thu 13:45]
+     - State "PROGRESS"   from "NEXT"       [2022-12-22 Thu 13:45] \\
+       init.sh added
+     :END:
 
 ** Docs: sh.wrap (project backlog)                                    :@DOCS:
 
 *** NEXT Add license
 
+*** NEXT Create project logo
+    <2022-12-20 Tue>
 *** NEXT Fix code blocks not colored properly with hugo renderer
    <2022-10-31 Mon>
 *** NEXT Rework gh-publish workflow
@@ -140,25 +196,35 @@ url: /project/todo/todo.html
     <2022-11-05 Sat>
 *** TODO Fix hugo bug with flickering project/docs tag
     <2022-11-05 Sat>
-*** WRITE Describe knowledge system for the project
+*** WRITE Describe knowledge system for the project                 :writing:
 
-*** WRITE Describe useful workflows on the project
+*** WRITE Describe useful workflows on the project                  :writing:
 
 *** Docs: Documentation system (project backlog)
 
-**** NEXT Describe documentation generation
+**** NEXT Describe documentation generation                         :writing:
      <2022-10-31 Mon>
+
+*** Docs: sh.wrap: Development documentation (project backlog)        :@DOCS:
+
+**** WRITE Write style guide for the project                        :writing:
 
 ** Infra: sh.wrap (project backlog)                                  :@INFRA:
 
 *** NEXT Add repository_dispatch action to generate documentation on the fly
     <2022-11-05 Sat>
+*** NEXT Create docker containers and GH action for workflow with bash versions passed
+    <<cdcagafwwbvp>>
+    <2022-12-22 Thu>
 *** TODO Add nodejs workflow
+    <<anw>>
     <2022-11-05 Sat>
-**** TODO Cache node_modules in docsy site generation
-     <2022-11-05 Sat>
 *** TODO Add spell checker action for project documentation
     <2022-05-22 Sun>
+
+*** TODO Cache node_modules in docsy site generation
+    <2022-11-05 Sat>
+**** DEPENDENCY [[anw][Add nodejs workflow]]
 
 *** TODO Make universal docker workflow and action
     <2022-11-05 Sat>
@@ -180,7 +246,7 @@ url: /project/todo/todo.html
 
 ** Plan: sh.wrap (project backlog)                                    :@PLAN:
 
-*** TODO Describe sh.wrap purpose and vision
+*** TODO Describe sh.wrap purpose and vision                        :writing:
     <<dswpav>>
 
 *** TODO Write project review/report templates
@@ -206,18 +272,32 @@ url: /project/todo/todo.html
 
 ** QA: sh.wrap (project backlog)                                        :@QA:
 
-*** NEXT Review pr#9
+*** NEXT Write tests for core functions                             :writing:
 
-*** NEXT Write tests for core functions
-
-*** TODO Describe GH issue/pr workflows (life-cycle)
+*** TODO Describe GH issue/pr workflows (life-cycle)                :writing:
     <2022-05-21 Sat>
 
-*** TODO Describe issue/test/release verification processes
+*** TODO Describe issue/test/release verification processes         :writing:
     <2022-05-21 Sat>
 
 *** TODO [#C] Exploratory testing of site generation action
     <2022-05-21 Sat>
+
+*** QA: sh.wrap testing environment (project backlog)
+:PROPERTIES:
+:sort: false
+:END:
+
+**** NEXT Create test matrix
+     <2022-12-22 Thu>
+***** DEPENDENCY [[cdcagafwwbvp][Create docker containers and GH action for workflow with bash versions passed]]
+
+*** CANCELLED Review pr#9
+    CLOSED: [2022-12-22 Thu 14:27]
+    :LOGBOOK:
+    - State "CANCELLED"  from "NEXT"       [2022-12-22 Thu 14:27] \\
+      lost its actuality
+    :END:
 
 * sh.wrap (project stuck)                                            :#stuck:
   :PROPERTIES:
@@ -280,6 +360,77 @@ url: /project/todo/todo.html
   :END:
 
 ** Code: sh.wrap (project archive)                                    :@CODE:
+
+*** DONE [#A] Add PoC prototype with somewhat core functionality
+    CLOSED: [2022-12-20 Tue 20:44] DEADLINE: <2022-11-05 Sat> SCHEDULED: <2022-11-01 Tue>
+    :PROPERTIES:
+    :Effort:   08:00
+    :sort:     false
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2022-12-20 Tue 20:44]
+    - State "STARTED"    from "NEXT"       [2022-11-07 Mon 06:01]
+    :END:
+    <2022-10-31 Mon>
+
+**** DONE Test old solution
+     CLOSED: [2022-11-28 Mon 21:26] DEADLINE: <2022-11-07 Mon> SCHEDULED: <2022-11-07 Mon>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2022-11-28 Mon 21:26]
+     - State "PROGRESS"   from "STARTED"    [2022-11-28 Mon 21:25] \\
+       well... it works somehow at least
+     CLOCK: [2022-11-28 Mon 01:42]--[2022-11-28 Mon 01:57] =>  0:15
+     CLOCK: [2022-11-07 Mon 07:11]--[2022-11-07 Mon 07:33] =>  0:22
+     CLOCK: [2022-11-07 Mon 06:01]--[2022-11-07 Mon 06:10] =>  0:09
+     CLOCK: [2022-11-06 Sun 09:04]--[2022-11-06 Sun 09:18] =>  0:14
+     :END:
+**** DONE Rework old prototype
+     CLOSED: [2022-12-07 Wed 03:13] DEADLINE: <2022-11-07 Mon> SCHEDULED: <2022-11-07 Mon>
+     :PROPERTIES:
+     :Effort:   02:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2022-12-07 Wed 03:13]
+     CLOCK: [2022-11-30 Wed 14:13]--[2022-11-30 Wed 14:27] =>  0:14
+     CLOCK: [2022-11-28 Mon 21:26]--[2022-11-28 Mon 21:42] =>  0:16
+     - State "STARTED"    from "TODO"       [2022-11-28 Mon 21:26]
+     :END:
+**** DONE Improve solution
+     CLOSED: [2022-12-17 Sat 08:16] DEADLINE: <2022-11-07 Mon> SCHEDULED: <2022-11-07 Mon>
+     :PROPERTIES:
+     :Effort:   03:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2022-12-17 Sat 08:16]
+     - State "PROGRESS"   from "PROGRESS"   [2022-12-17 Sat 08:15] \\
+       add module search path, partial module loading, etc
+     - State "PROGRESS"   from "TODO"       [2022-12-07 Wed 03:14] \\
+       add modules cache
+     :END:
+**** DONE Describe its functionality
+     CLOSED: [2022-12-20 Tue 20:43] DEADLINE: <2022-11-08 Tue> SCHEDULED: <2022-11-08 Tue>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2022-12-20 Tue 20:43]
+     - State "PROGRESS"   from "STARTED"    [2022-12-20 Tue 20:29] \\
+       re-assigned
+     - State "STARTED"    from "TODO"       [2022-12-17 Sat 08:16]
+     - Rescheduled from "[2022-11-07 Mon]" on [2022-11-07 Mon 06:01]
+     :END:
+**** PASS Ready for use/test PoC prototype implemented [1/2]
+     CLOSED: [2022-12-20 Tue 20:44]
+     :LOGBOOK:
+     - State "PASS"       from "PROGRESS"   [2022-12-20 Tue 20:44]
+     - State "PROGRESS"   from "GOAL"       [2022-12-20 Tue 20:43] \\
+       Documentation goal re-assigned to the DOCS team
+     :END:
+     - [X] shell module concept
+     - [ ] examples of usage
 
 ** Docs: sh.wrap (project archive)                                    :@DOCS:
 
@@ -354,7 +505,6 @@ url: /project/todo/todo.html
     CLOSED: [2022-11-05 Sat 18:18]
     :LOGBOOK:
     - State "DONE"       from "STARTED"    [2022-11-05 Sat 18:18]
-    CLOCK: [2022-11-05 Sat 15:00]
     :END:
 
 *** DONE Fix: title and date parameters not exposed in in org->md export
