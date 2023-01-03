@@ -1,0 +1,54 @@
+#+CATEGORY: ░ SH.WRAP ░
+#+FILETAGS: #project #milestone #task #sh_wrap
+#+OPTIONS: ^:nil toc:nil num:nil author:nil timestamp:nil
+#+COLUMNS: %50ITEM TODO %3PRIORITY %Effort %Effort(Effort Children){:} %10CLOCKSUM
+#+OPTIONS: H:1 prop:nil d:nil tags:nil p:t c:nil pri:t
+
+#+HUGO_BASE_DIR: ../site
+#+HUGO_SECTION: project
+#+HUGO_FRONT_MATTER_FORMAT: yaml
+#+HUGO_CUSTOM_FRONT_MATTER:
+#+HUGO_DRAFT: false
+
+#+begin_export markdown
+---
+title: Milestones
+date: 2023-01-04T01:29:01+03:00
+aliases:
+  - /project/milistone/milestone.md
+  - /project/milistone/milestone.org
+url: /project/milistone/milestone.html
+---
+#+end_export
+
+* sh.wrap milestone 0.0.1
+** Code                                                               :@CODE:
+*** Code: core [0/1]
+    - [ ] Fix unset for globally exported variables
+*** Code: sh.wrap development documentation [0/1]
+    - [ ] Choose documentation generation system
+*** Code: sh.wrap documentation [0/1]
+    - [ ] Add "Getting started" page
+** Docs                                                               :@DOCS:
+*** Docs: sh.wrap documentation [0/3]
+    - [ ] Add "Getting started" page
+    - [ ] Add "Usage" page
+    - [ ] Create "Development" page
+** Infra                                                             :@INFRA:
+*** Infra: sh.wrap CI [0/1]
+    - [ ] Use ready docker images from docker hub in GH actions
+*** Infra: sh.wrap testing environment [0/1]
+    - [ ] Create docker containers and GH actions for testing environment
+** Plan                                                               :@PLAN:
+*** Plan: sh.wrap documentation [0/1]
+    - [ ] Describe sh.wrap purpose and vision
+*** Plan: sh.wrap milestone 0.1.0 [0/2]
+    - [ ] Select/estimate/schedule tasks for Milestone 0.1.0
+    - [ ] Update roadmap for Milestone 0.1.0
+*** Plan: sh.wrap roadmap [0/1]
+    - [ ] Create roadmap diagram
+** QA                                                                   :@QA:
+*** QA: sh.wrap core [0/1]
+    - [ ] Write tests for core modules
+*** QA: sh.wrap testing environment [0/1]
+    - [ ] Automate test reports publishing
