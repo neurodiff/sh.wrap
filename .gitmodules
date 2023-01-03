@@ -2,3 +2,6 @@
 	path = doc/themes/docsy
 	url = https://github.com/ekotik/docsy.git
 	branch = v0.5.1
+[submodule "microspec"]
+	path = test/microspec
+	url = https://github.com/technocrime/microspec
