@@ -36,32 +36,21 @@ url: /project/todo/todo.html
      :Effort:   03:00
      :END:
      <2022-12-20 Tue>
+
 ** Docs: sh.wrap (project tasks)                                      :@DOCS:
 
-*** NEXT Add "Getting started" page to documentation
+*** NEXT Add "Getting started" page to documentation                :writing:
     DEADLINE: <2022-12-22 Thu> SCHEDULED: <2022-12-22 Thu>
     :PROPERTIES:
     :Effort:   02:00
     :END:
     <2022-12-20 Tue>
-*** NEXT Add "Usage" page to documentation
+*** NEXT Add "Usage" page to documentation                          :writing:
     DEADLINE: <2022-12-22 Thu> SCHEDULED: <2022-12-22 Thu>
     :PROPERTIES:
     :Effort:   02:00
     :END:
     <2022-12-20 Tue>
-*** NEXT Add README
-    SCHEDULED: <2022-12-22 Thu>
-    :PROPERTIES:
-    :Effort:   02:00
-    :END:
-
-**** GOAL Minimal README.md contains
-     - [ ] project description
-     - [ ] installation notes
-     - [ ] example of usage
-     - [ ] links to project documentation
-
 *** NEXT Pass conversion options and command line arguments to pandoc-convert workflow
     <2022-11-05 Sat>
 **** GOAL org-to-md.sh and pandoc-convert workflow [0/5]
@@ -82,6 +71,28 @@ url: /project/todo/todo.html
      :Effort:   04:00
      :END:
      <2022-10-31 Mon>
+*** DONE Add README
+    CLOSED: [2022-12-27 Tue 20:38] DEADLINE: <2022-12-22 Thu> SCHEDULED: <2022-12-22 Thu>
+    :PROPERTIES:
+    :Effort:   02:00
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2022-12-27 Tue 20:38]
+    CLOCK: [2022-12-22 Thu 15:36]--[2022-12-22 Thu 17:15] =>  1:39
+    CLOCK: [2022-12-22 Thu 15:06]--[2022-12-22 Thu 15:10] =>  0:04
+    - State "STARTED"    from "NEXT"       [2022-12-22 Thu 15:06]
+    :END:
+
+**** PASS Minimal README.md contains
+     CLOSED: [2022-12-27 Tue 20:38]
+     :LOGBOOK:
+     - State "PASS"       from "GOAL"       [2022-12-27 Tue 20:38]
+     :END:
+     - [X] project description
+     - [X] installation notes
+     - [X] example of usage
+     - [X] links to project documentation
+
 ** Infra: sh.wrap (project tasks)                                    :@INFRA:
 
 *** NEXT Add repository_dispatch events to trigger documentation rebuild
@@ -98,6 +109,7 @@ url: /project/todo/todo.html
      :Effort:   04:00
      :END:
      <2022-10-31 Mon>
+
 ** Plan: sh.wrap (project tasks)                                      :@PLAN:
 
 *** Plan: Milestone 0.0.1 (project tasks):
@@ -114,19 +126,16 @@ url: /project/todo/todo.html
 
 *** NEXT [#B] Add issue/pr templates
 
-*** QA: sh.wrap testing environment (project backlog)
+*** STARTED Write tests for core functions                    :coding:ACTIVE:
+    :LOGBOOK:
+    - State "STARTED"    from "NEXT"       [2023-01-03 Tue 14:57]
+    :END:
 
-**** NEXT Choose testing framework
-     DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
-     :PROPERTIES:
-     :Effort:   04:00
-     :END:
+*** QA: sh.wrap testing environment (project tasks)
+
+**** NEXT Create test matrix
      <2022-12-22 Thu>
-***** GOAL Satisfiable testing framework
-      - [ ] simple
-      - [ ] sutable for sh.wrap project testing
-
-*** QA: sh.wrap testing environment (project backlog)
+***** DEPENDENCY [[cdcagafwwbvp][Create docker containers and GH action for workflow with bash versions passed]]
 
 * sh.wrap (project backlog)                                        :#backlog:
   :PROPERTIES:
@@ -181,6 +190,8 @@ url: /project/todo/todo.html
 
 *** NEXT Add license
 
+*** NEXT Create "Development" documentation page
+    <2022-12-22 Thu>
 *** NEXT Create project logo
     <2022-12-20 Tue>
 *** NEXT Fix code blocks not colored properly with hugo renderer
@@ -202,12 +213,15 @@ url: /project/todo/todo.html
 
 *** Docs: Documentation system (project backlog)
 
+**** NEXT Chose documentation generation system
+     <2023-01-03 Tue>
+
 **** NEXT Describe documentation generation                         :writing:
      <2022-10-31 Mon>
 
 *** Docs: sh.wrap: Development documentation (project backlog)        :@DOCS:
 
-**** WRITE Write style guide for the project                        :writing:
+**** NEXT Write style guide for the project                         :writing:
 
 ** Infra: sh.wrap (project backlog)                                  :@INFRA:
 
@@ -272,8 +286,6 @@ url: /project/todo/todo.html
 
 ** QA: sh.wrap (project backlog)                                        :@QA:
 
-*** NEXT Write tests for core functions                             :writing:
-
 *** TODO Describe GH issue/pr workflows (life-cycle)                :writing:
     <2022-05-21 Sat>
 
@@ -288,16 +300,11 @@ url: /project/todo/todo.html
 :sort: false
 :END:
 
-**** NEXT Create test matrix
-     <2022-12-22 Thu>
-***** DEPENDENCY [[cdcagafwwbvp][Create docker containers and GH action for workflow with bash versions passed]]
+**** QA: Test reports (project backlog)
 
-*** CANCELLED Review pr#9
-    CLOSED: [2022-12-22 Thu 14:27]
-    :LOGBOOK:
-    - State "CANCELLED"  from "NEXT"       [2022-12-22 Thu 14:27] \\
-      lost its actuality
-    :END:
+***** NEXT Add ability to compare test reports
+
+***** NEXT Automate test reports publishing
 
 * sh.wrap (project stuck)                                            :#stuck:
   :PROPERTIES:
@@ -722,6 +729,32 @@ url: /project/todo/todo.html
 
 ** QA: sh.wrap (project archive)                                        :@QA:
 
+*** CANCELLED Review pr#9
+    CLOSED: [2022-12-22 Thu 14:27]
+    :LOGBOOK:
+    - State "CANCELLED"  from "NEXT"       [2022-12-22 Thu 14:27] \\
+      lost its actuality
+    :END:
+
+*** DONE Choose testing framework
+    CLOSED: [2023-01-03 Tue 14:10] DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
+    :PROPERTIES:
+    :Effort:   04:00
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2023-01-03 Tue 14:10]
+    - State "STARTED"    from "NEXT"       [2022-12-29 Thu 11:40]
+    :END:
+    <2022-12-22 Thu>
+**** PASS Satisfiable testing framework
+     CLOSED: [2023-01-03 Tue 14:10]
+     :LOGBOOK:
+     - State "PASS"       from "PROGRESS"   [2023-01-03 Tue 14:10]
+     - State "PROGRESS"   from "GOAL"       [2023-01-03 Tue 14:09] \\
+       microspec is chosen
+     :END:
+     - [X] simple
+     - [X] sutable for sh.wrap project testing
 *** DONE Review pr#11
     CLOSED: [2022-10-30 Sun 12:23]
     :LOGBOOK:
