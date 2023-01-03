@@ -95,6 +95,11 @@ url: /project/todo/todo.html
 
 ** Infra: sh.wrap (project tasks)                                    :@INFRA:
 
+*** Infra: sh.wrap testing environment (project tasks)
+
+**** NEXT Create docker containers and GH action for test harness
+     <2023-01-04 Wed>
+
 *** NEXT Add repository_dispatch events to trigger documentation rebuild
     <2022-10-30 Sun>
 
@@ -120,6 +125,9 @@ url: /project/todo/todo.html
 
 **** NEXT Write requirements for milestone 0.0.1
      DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
+     :PROPERTIES:
+     :Effort:   02:00
+     :END:
      <<wrfm001>>
 
 ** QA: sh.wrap (project tasks)                                          :@QA:
@@ -227,9 +235,12 @@ url: /project/todo/todo.html
 
 *** NEXT Add repository_dispatch action to generate documentation on the fly
     <2022-11-05 Sat>
-*** NEXT Create docker containers and GH action for workflow with bash versions passed
-    <<cdcagafwwbvp>>
-    <2022-12-22 Thu>
+
+*** Infra: sh.wrap testing environment (project backlog)
+
+**** NEXT Create docker containers and GH action for workflow with bash versions passed
+     <<cdcagafwwbvp>>
+     <2022-12-22 Thu>
 *** TODO Add nodejs workflow
     <<anw>>
     <2022-11-05 Sat>
@@ -260,7 +271,7 @@ url: /project/todo/todo.html
 
 ** Plan: sh.wrap (project backlog)                                    :@PLAN:
 
-*** TODO Describe sh.wrap purpose and vision                        :writing:
+*** WRITE Describe sh.wrap purpose and vision                       :writing:
     <<dswpav>>
 
 *** TODO Write project review/report templates
