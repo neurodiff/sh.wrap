@@ -52,7 +52,7 @@ body:
       label: Additional Information
       description: Add any additional information you feel may be relevant to this bug.
     validations:
-      required: true
+      required: false
   - type: input
     id: shell
     attributes:
