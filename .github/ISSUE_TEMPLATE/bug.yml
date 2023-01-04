@@ -1,0 +1,62 @@
+name: Bug report
+description: File a bug report
+title: "[component]: [summary]"
+labels: ["bug"]
+assignees:
+  - ekotik
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Expand on the Summary.
+      placeholder: Please be as specific as possible about what is wrong.
+      value: |
+        Bad example: Mozilla crashed. You suck!
+        Good example: After a crash which happened when I was sorting in the Bookmark Manager, all of my top-level bookmark folders beginning with the letters Q to Z are no longer present.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Describe how to reproduce the problem, step by step. Include any special setup steps.
+      render: shell
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Results
+      description: What happened after you performed the steps above?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Results
+      description: What should the software have done instead?
+    validations:
+      required: true
+  - type: textarea
+    id: information
+    attributes:
+      label: Additional Information
+      description: Add any additional information you feel may be relevant to this bug.
+    validations:
+      required: true
+  - type: input
+    id: shell
+    attributes:
+      label: Shell
+      description: What shell are you seeing the problem on?
+    validations:
+      required: true

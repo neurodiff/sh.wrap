@@ -1,0 +1,76 @@
+name: What's you problem?
+description: A you problem is a problem only pertaining to one person, specifically you not me.
+title: "[component]: [summary]"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Expand on the Summary.
+      placeholder: Please be as specific as possible about what is wrong with you.
+      value: |
+        All files deleted from computer.
+        I lost my job, wifi, and house.
+        All in one day! That is not cool, guys.
+        Give me my money back!!!!!!!!!!!
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Describe how to reproduce your problem, step by step.
+      render: shell
+      value: |
+        1. Well, I'm a man. Hmmm... Doesn't matter. Later.
+        2. As usually I started my day with quart size of creamy goo.
+           Cumitment! Cumpassion! And cumrodery!
+        3. Then I went outside to play a football match with my team. But...
+        4. Instead of helmets I was wearing bras and a little tin foil hat
+           (because, you know, it's "the future" and we shouldn't be so barbaric!)
+        5. When I tried to hug other players I got a head trauma
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Results
+      description: Describe why do you think "you problem" is "our problem"?
+      value: |
+        Well. It seems I'm so good at sucking I should work at a Thai massage parlor.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Results
+      description: What are your expectations from this bug report?
+      value: |
+        Oh, forget about this. Let's just hope nothing like this ever happens again.
+    validations:
+      required: true
+  - type: textarea
+    id: information
+    attributes:
+      label: Additional Information
+      description: Teach us, how to be so unlucky, please.
+      value: |
+        Being nice is about what's inside you!
+        When your enemy is nice to you you just be nice right back!
+        All my life I suck at being nice and polite.
+        That is why I'm here. No money, no job, no grilfriend, no house.
+        Lonely stupid NB transgender woman identified them-self as a gay-shark with headache.
+    validations:
+      required: true
+  - type: input
+    id: shell
+    attributes:
+      label: Shell
+      description: What shell are you seeing the problem on?
+    validations:
+      required: true
