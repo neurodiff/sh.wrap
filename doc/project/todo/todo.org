@@ -95,13 +95,13 @@ url: /project/todo/todo.html
 
 ** Infra: sh.wrap (project tasks)                                    :@INFRA:
 
+*** NEXT Add repository_dispatch events to trigger documentation rebuild
+    <2022-10-30 Sun>
+
 *** Infra: sh.wrap testing environment (project tasks)
 
 **** NEXT Create docker containers and GH action for test harness
      <2023-01-04 Wed>
-
-*** NEXT Add repository_dispatch events to trigger documentation rebuild
-    <2022-10-30 Sun>
 
 *** Use ready docker images in GH actions (project tasks)
     :PROPERTIES:
@@ -132,7 +132,10 @@ url: /project/todo/todo.html
 
 ** QA: sh.wrap (project tasks)                                          :@QA:
 
-*** NEXT [#B] Add issue/pr templates
+*** STARTED [#B] Add issue/pr templates                              :ACTIVE:
+    :LOGBOOK:
+    - State "STARTED"    from "NEXT"       [2023-01-04 Wed 07:36]
+    :END:
 
 *** STARTED Write tests for core functions                    :coding:ACTIVE:
     :LOGBOOK:
@@ -236,11 +239,6 @@ url: /project/todo/todo.html
 *** NEXT Add repository_dispatch action to generate documentation on the fly
     <2022-11-05 Sat>
 
-*** Infra: sh.wrap testing environment (project backlog)
-
-**** NEXT Create docker containers and GH action for workflow with bash versions passed
-     <<cdcagafwwbvp>>
-     <2022-12-22 Thu>
 *** TODO Add nodejs workflow
     <<anw>>
     <2022-11-05 Sat>
@@ -261,6 +259,11 @@ url: /project/todo/todo.html
 
 *** TODO Write script to sync working repositories with upstream
 
+*** Infra: sh.wrap testing environment (project backlog)
+
+**** NEXT Create docker containers and GH action for workflow with bash versions passed
+     <<cdcagafwwbvp>>
+     <2022-12-22 Thu>
 *** Use ready docker images in GH actions (project backlog)
     :PROPERTIES:
     :sort: false
@@ -271,10 +274,10 @@ url: /project/todo/todo.html
 
 ** Plan: sh.wrap (project backlog)                                    :@PLAN:
 
+*** TODO Write project review/report templates
+
 *** WRITE Describe sh.wrap purpose and vision                       :writing:
     <<dswpav>>
-
-*** TODO Write project review/report templates
 
 *** Plan: Milestone 0.0.1 (project backlog):
     :PROPERTIES:
