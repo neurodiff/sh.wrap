@@ -15,39 +15,42 @@
 title: Milestones
 date: 2023-01-04T01:29:01+03:00
 aliases:
-  - /project/milistone/milestone.md
-  - /project/milistone/milestone.org
-url: /project/milistone/milestone.html
+  - /project/milestone/milestone.md
+  - /project/milestone/milestone.org
+url: /project/milestone/milestone.html
 ---
 #+end_export
 
 * sh.wrap milestone 0.0.1
 ** Code                                                               :@CODE:
-*** Code: core [0/2]
-    - [ ] Fix set/unset for globally exported variables
-    - [ ] Fix __shwrap_log exit status
+*** Code: core [0/5]
+    - [ ] Fix [[https://github.com/ekotik/sh.wrap/issues/41][set]]/[[https://github.com/ekotik/sh.wrap/issues/38][unset]] for globally exported variables
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/37][Fix __shwrap_log exit status]]
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/50][Fix core: global variables are local when sh.wrap sourced inside a function]]
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/49][Fix init: sanity check for module loading is not passed for default installation]]
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/48][Fix core: SHWRAP_ID is the same for different shells]]
 *** Code: sh.wrap development documentation [0/1]
-    - [ ] Choose documentation generation system
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/42][Choose documentation generation system]]
 ** Docs                                                               :@DOCS:
 *** Docs: sh.wrap documentation [0/3]
-    - [ ] Add "Getting started" page
-    - [ ] Add "Usage" page
-    - [ ] Create "Development" page
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/41][Add "Getting started" page]]
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/41][Add "Usage" page]]
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/41][Create "Development" page]]
 ** Infra                                                             :@INFRA:
 *** Infra: sh.wrap CI [0/1]
-    - [ ] Use ready docker images from docker hub in GH actions
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/43][Use ready docker images from docker hub in GH actions]]
 *** Infra: sh.wrap testing environment [0/1]
-    - [ ] Create docker containers and GH actions for testing environment
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/44][Create docker containers and GH actions for testing environment]]
 ** Plan                                                               :@PLAN:
 *** Plan: sh.wrap documentation [0/1]
-    - [ ] Describe sh.wrap purpose and vision
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/47][Describe sh.wrap purpose and vision]]
 *** Plan: sh.wrap milestone 0.1.0 [0/2]
-    - [ ] Select/estimate/schedule tasks for Milestone 0.1.0
-    - [ ] Update roadmap for Milestone 0.1.0
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/47][Select/estimate/schedule tasks for Milestone 0.1.0]]
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/47][Update roadmap for Milestone 0.1.0]]
 *** Plan: sh.wrap roadmap [0/1]
-    - [ ] Create roadmap diagram
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/47][Create roadmap diagram]]
 ** QA                                                                   :@QA:
 *** QA: sh.wrap core [0/1]
-    - [ ] Write tests for core modules
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/45][Write tests for core functions and modules]]
 *** QA: sh.wrap testing environment [0/1]
-    - [ ] Automate test reports publishing
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/46][Automate test reports publishing]]
