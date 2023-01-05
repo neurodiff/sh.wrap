@@ -1,0 +1,47 @@
+name: Enhancement
+description: Request for an enhancement
+title: "[component]: [summary]"
+labels: ["enhancement"]
+assignees:
+  - ekotik
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this enhancement request!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Expand on the Summary.
+      placeholder: Please be as specific as possible about your enhancement request and a problem it solves.
+      value: |
+        Bad example: Return deleted feature. I used it. I need it. Fuck you.
+        Good example: The project documentation lacks "Getting started" and "Usage" pages, which could be a good way to start using the project by new users.
+    validations:
+      required: true
+  - type: textarea
+    id: goals
+    attributes:
+      label: A list of goals
+      description: Enumerate goals claimed by the enhancement to verify it is achieved.
+      value: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: information
+    attributes:
+      label: Additional Information
+      description: Add any additional information you feel may be relevant to this enhancement.
+    validations:
+      required: false
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Code compatibility and shell environment support
+      description: Describe compatibility issues that will likely be an impact on user code or sh.wrap code itself?
+    validations:
+      required: false
