@@ -23,12 +23,11 @@ url: /project/milistone/milestone.html
 
 * sh.wrap milestone 0.0.1
 ** Code                                                               :@CODE:
-*** Code: core [0/1]
-    - [ ] Fix unset for globally exported variables
+*** Code: core [0/2]
+    - [ ] Fix set/unset for globally exported variables
+    - [ ] Fix __shwrap_log exit status
 *** Code: sh.wrap development documentation [0/1]
     - [ ] Choose documentation generation system
-*** Code: sh.wrap documentation [0/1]
-    - [ ] Add "Getting started" page
 ** Docs                                                               :@DOCS:
 *** Docs: sh.wrap documentation [0/3]
     - [ ] Add "Getting started" page
