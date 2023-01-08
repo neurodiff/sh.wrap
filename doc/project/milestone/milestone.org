@@ -23,12 +23,13 @@ url: /project/milestone/milestone.html
 
 * sh.wrap milestone 0.0.1
 ** Code                                                               :@CODE:
-*** Code: core [0/5]
-    - [ ] Fix [[https://github.com/ekotik/sh.wrap/issues/41][set]]/[[https://github.com/ekotik/sh.wrap/issues/38][unset]] for globally exported variables
-    - [ ] [[https://github.com/ekotik/sh.wrap/issues/37][Fix __shwrap_log exit status]]
-    - [ ] [[https://github.com/ekotik/sh.wrap/issues/50][Fix core: global variables are local when sh.wrap sourced inside a function]]
-    - [ ] [[https://github.com/ekotik/sh.wrap/issues/49][Fix init: sanity check for module loading is not passed for default installation]]
-    - [ ] [[https://github.com/ekotik/sh.wrap/issues/48][Fix core: SHWRAP_ID is the same for different shells]]
+*** Code: core [6/6]
+    - [X] [[https://github.com/ekotik/sh.wrap/issues/37][Fix __shwrap_log exit status]]
+    - [X] [[https://github.com/ekotik/sh.wrap/issues/50][Fix core: global variables are local when sh.wrap sourced inside a function]]
+    - [X] [[https://github.com/ekotik/sh.wrap/issues/48][Fix core: SHWRAP_ID is the same for different shells]]
+    - [X] [[https://github.com/ekotik/sh.wrap/issues/49][Fix init: sanity check for module loading is not passed for default installation]]
+    - [X] [[https://github.com/ekotik/sh.wrap/issues/54][Fix initialization error when SHWRAP_INIT_DIR is not set]]
+    - [X] Fix [[https://github.com/ekotik/sh.wrap/issues/41][set]]/[[https://github.com/ekotik/sh.wrap/issues/38][unset]] for globally exported variables
 *** Code: sh.wrap development documentation [0/1]
     - [ ] [[https://github.com/ekotik/sh.wrap/issues/42][Choose documentation generation system]]
 ** Docs                                                               :@DOCS:
@@ -47,10 +48,11 @@ url: /project/milestone/milestone.html
 *** Plan: sh.wrap milestone 0.1.0 [0/2]
     - [ ] [[https://github.com/ekotik/sh.wrap/issues/47][Select/estimate/schedule tasks for Milestone 0.1.0]]
     - [ ] [[https://github.com/ekotik/sh.wrap/issues/47][Update roadmap for Milestone 0.1.0]]
-*** Plan: sh.wrap roadmap [0/1]
-    - [ ] [[https://github.com/ekotik/sh.wrap/issues/47][Create roadmap diagram]]
+*** Plan: sh.wrap roadmap [1/1]
+    - [X] [[https://github.com/ekotik/sh.wrap/issues/47][Create roadmap diagram]]
 ** QA                                                                   :@QA:
 *** QA: sh.wrap core [0/1]
     - [ ] [[https://github.com/ekotik/sh.wrap/issues/45][Write tests for core functions and modules]]
-*** QA: sh.wrap testing environment [0/1]
+*** QA: sh.wrap testing environment [0/2]
     - [ ] [[https://github.com/ekotik/sh.wrap/issues/46][Automate test reports publishing]]
+    - [ ] [[https://github.com/ekotik/sh.wrap/issues/44][Create test runner]]
