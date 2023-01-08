@@ -18,6 +18,7 @@ aliases:
   - /project/roadmap/roadmap.md
   - /project/roadmap/roadmap.org
 url: /project/roadmap/roadmap.html
+tags: ["roadmap", "milestone"]
 ---
 #+end_export
 
