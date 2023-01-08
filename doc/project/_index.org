@@ -18,3 +18,5 @@ url: /project/
 [[file:todo/todo.org][Pool of tasks]] in sh.wrap project. For now it's updated eventually.
 
 [[file:milestone/milestone.org][Milestones]] of sh.wrap project.
+
+[[file:roadmap/roadmap.org][Roadmap]] of sh.wrap project.

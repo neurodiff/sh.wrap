@@ -1,0 +1,126 @@
+#+CATEGORY: ░ SH.WRAP ░
+#+FILETAGS: #project #milestone #roadmap #task #sh_wrap
+#+OPTIONS: ^:nil toc:nil num:nil author:nil timestamp:nil
+#+COLUMNS: %50ITEM TODO %3PRIORITY %Effort %Effort(Effort Children){:} %10CLOCKSUM
+#+OPTIONS: H:1 prop:nil d:nil tags:nil p:t c:nil pri:t
+
+#+HUGO_BASE_DIR: ../site
+#+HUGO_SECTION: project
+#+HUGO_FRONT_MATTER_FORMAT: yaml
+#+HUGO_CUSTOM_FRONT_MATTER:
+#+HUGO_DRAFT: false
+
+#+begin_export markdown
+---
+title: Roadmap
+date: 2023-01-07T15:56:24+03:00
+aliases:
+  - /project/roadmap/roadmap.md
+  - /project/roadmap/roadmap.org
+url: /project/roadmap/roadmap.html
+---
+#+end_export
+
+* sh.wrap roadmap
+:PROPERTIES:
+:header-args: :results output verbatim silent wrap
+:header-args+: :noweb no-export
+:header-args+: :comments noweb
+:header-args+: :exports code
+:header-args+: :eval never-export
+:END:
+
+Major known features and milestones may be noted here.
+
+** January 2023
+
+*** [[../milestone/milestone.org][Milestone 0.0.1]]
+
+- [[https://github.com/ekotik/sh.wrap/issues/42][code:devdoc: choose documentation generation system]]
+- [[https://github.com/ekotik/sh.wrap/issues/45][code:test: write unit tests for core functions and modules]]
+- [[https://github.com/ekotik/sh.wrap/issues/41][docs:doc: documentation improvements for milestone 0.0.1]]
+- [[https://github.com/ekotik/sh.wrap/issues/44][infra:actions: create GH action for testing]]
+- [[https://github.com/ekotik/sh.wrap/issues/43][infra:actions: use prebuilt docker images from docker hub in GH actions]]
+- [[https://github.com/ekotik/sh.wrap/issues/47][plan:project: project improvements for milestone 0.0.1]]
+- [[https://github.com/ekotik/sh.wrap/issues/46][qa:test: automate test reports publishing]]
+- [[https://github.com/ekotik/sh.wrap/issues/44][qa:test: create test runner for testing]]
+- [[https://github.com/ekotik/sh.wrap/issues/45][qa:test: write functional tests for core functions and modules]]
+
+#+header: :export no
+#+begin_src plantuml :file milestone-0.0.1.png
+@startgantt
+printscale daily zoom 3
+hide footbox
+hide resources names
+hide resources footbox
+<style>
+ganttDiagram {
+	task {
+		FontSize 12
+		LineColor Green
+		BackGroundColor GreenYellow
+		unstarted {
+			BackGroundColor Fuchsia
+			LineColor FireBrick
+		}
+	}
+	milestone {
+		FontSize 12
+		BackGroundColor GreenYellow
+	}
+	arrow {
+		LineColor Gray
+	}
+	separator {
+		FontSize 12
+		LineColor transparent
+		BackGroundColor transparent
+	}
+	timeline {
+		BackgroundColor LightBlue
+	}
+}
+</style>
+Project starts 2023-01-07
+--
+[code:devdoc: documentation generation] as [code:devdoc:001] on {CODE:25%} starts 2023-01-08 and ends 2023-01-09
+[code:test: unit tests] as [code:test:001] on {CODE:50%} starts 2023-01-11 and ends 2023-01-12
+--
+[docs:doc: documentation improvements] as [docs:doc:001] on {DOCS:25%} starts 2023-01-10 and ends 2023-01-10
+--
+[infra:actions: GH action for testing] as [infra:actions:001] on {INFRA:25%} starts 2023-01-09 and ends 2023-01-09
+[infra:actions: prebuilt docker images] as [infra:actions:002] on {INFRA:25%} starts 2023-01-08 and ends 2023-01-08
+--
+[qa:test: test reports] as [qa:test:001] on {QA:25%} starts 2023-01-12 and ends 2023-01-12
+[qa:test: test runner] as [qa:test:002] on {QA:25%} starts 2023-01-09 and ends 2023-01-10
+[qa:test: functional tests] as [qa:test:003] on {QA:25%} starts 2023-01-11 and ends 2023-01-12
+--
+[plan:project: project improvements] as [plan:project:001] on {PLAN:25%} starts 2023-01-08 and ends 2023-01-13
+
+[infra:actions:001] --> [qa:test:001]
+[qa:test:002] --> [qa:test:001]
+--
+[code:devdoc:001] is 0% complete
+[code:test:001] is 0% complete
+[docs:doc:001] is 0% complete
+[infra:actions:001] is 0% complete
+[infra:actions:002] is 0% complete
+[plan:project:001] is 0% complete
+[qa:test:001] is 0% complete
+[qa:test:002] is 0% complete
+[qa:test:003] is 0% complete
+
+[Milestone 0.0.1] happens at [code:devdoc:001]'s end
+[Milestone 0.0.1] happens at [code:test:001]'s end
+[Milestone 0.0.1] happens at [docs:doc:001]'s end
+[Milestone 0.0.1] happens at [infra:actions:001]'s end
+[Milestone 0.0.1] happens at [infra:actions:002]'s end
+[Milestone 0.0.1] happens at [plan:project:001]'s end
+[Milestone 0.0.1] happens at [qa:test:001]'s end
+[Milestone 0.0.1] happens at [qa:test:002]'s end
+[Milestone 0.0.1] happens at [qa:test:003]'s end
+--
+@endgantt
+#+end_src
+
+[[./milestone-0.0.1.png][Milestone 0.0.1 diagram]]
