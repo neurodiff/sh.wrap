@@ -128,5 +128,5 @@ Project starts 2023-01-07
 #+end_export
 
 #+begin_export markdown
-![https://github.com/neurodiff/sh.wrap/blob/project-org/doc/project/roadmap/milestone-0.0.1.png?raw=true](Milestone 0.0.1 diagram)
+![Milestone 0.0.1 diagram](https://github.com/neurodiff/sh.wrap/blob/project-org/doc/project/roadmap/milestone-0.0.1.png?raw=true)
 #+end_export
