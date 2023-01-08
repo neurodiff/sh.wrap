@@ -28,29 +28,38 @@ url: /project/todo/todo.html
 
 ** Code: sh.wrap (project tasks)                                      :@CODE:
 
+*** Code: Documentation generation (project tasks)
+
+**** NEXT Chose documentation generation system               :milestone_001:
+     DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-08 Sun>
+     :PROPERTIES:
+     :Effort:   04:00
+     :END:
+     <2023-01-03 Tue>
+
 *** Code: core (project tasks)
 
-**** NEXT Check and fix unset for globally exported variables inside a module
-     DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
+**** NEXT Write unit tests for core functions          :coding:milestone_001:
+     DEADLINE: <2023-01-12 Thu> SCHEDULED: <2023-01-11 Wed>
+     :PROPERTIES:
+     :Effort:   08:00
+     :END:
+
+**** DONE Check and fix unset for globally exported variables inside a module :milestone_001:
+     CLOSED: [2023-01-07 Sat 15:52] DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
      :PROPERTIES:
      :Effort:   03:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2023-01-07 Sat 15:52]
+     - State "PROGRESS"   from "STARTED"    [2023-01-07 Sat 15:52] \\
+       fixed but not checked in real use cases
+     - State "STARTED"    from "NEXT"       [2023-01-07 Sat 15:52]
      :END:
      <2022-12-20 Tue>
 
 ** Docs: sh.wrap (project tasks)                                      :@DOCS:
 
-*** NEXT Add "Getting started" page to documentation                :writing:
-    DEADLINE: <2022-12-22 Thu> SCHEDULED: <2022-12-22 Thu>
-    :PROPERTIES:
-    :Effort:   02:00
-    :END:
-    <2022-12-20 Tue>
-*** NEXT Add "Usage" page to documentation                          :writing:
-    DEADLINE: <2022-12-22 Thu> SCHEDULED: <2022-12-22 Thu>
-    :PROPERTIES:
-    :Effort:   02:00
-    :END:
-    <2022-12-20 Tue>
 *** NEXT Pass conversion options and command line arguments to pandoc-convert workflow
     <2022-11-05 Sat>
 **** GOAL org-to-md.sh and pandoc-convert workflow [0/5]
@@ -64,6 +73,37 @@ url: /project/todo/todo.html
      - [ ] rest command line options (by user request)
      - [ ] rest pandoc extensions (by user request)
 
+*** Docs: Documentation (project tasks)
+
+**** NEXT Add "Getting started" page to documentation :writing:milestone_001:
+     DEADLINE: <2023-01-10 Sun> SCHEDULED: <2023-01-10 Sun>
+     :PROPERTIES:
+     :Effort:   02:00
+     :END:
+     :LOGBOOK:
+     - Rescheduled from "[2022-12-22 Thu]" on [2023-01-08 Sun 13:00] \\
+       rescheduled
+     :END:
+     <2022-12-20 Tue>
+
+**** NEXT Add "Usage" page to documentation           :writing:milestone_001:
+     DEADLINE: <2023-01-10 Sun> SCHEDULED: <2023-01-10 Sun>
+     :PROPERTIES:
+     :Effort:   02:00
+     :END:
+     :LOGBOOK:
+     - Rescheduled from "[2022-12-22 Thu]" on [2023-01-08 Sun 13:00] \\
+       rescheduled
+     :END:
+     <2022-12-20 Tue>
+
+**** NEXT Create user, development and project sections       :milestone_001:
+     DEADLINE: <2023-01-10 Tue> SCHEDULED: <2023-01-10 Tue>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+     <2022-12-22 Thu>
+
 *** Docs: Documentation system (project tasks)
 
 **** NEXT [#C] Describe documentation system
@@ -71,6 +111,7 @@ url: /project/todo/todo.html
      :Effort:   04:00
      :END:
      <2022-10-31 Mon>
+
 *** DONE Add README
     CLOSED: [2022-12-27 Tue 20:38] DEADLINE: <2022-12-22 Thu> SCHEDULED: <2022-12-22 Thu>
     :PROPERTIES:
@@ -98,55 +139,172 @@ url: /project/todo/todo.html
 *** NEXT Add repository_dispatch events to trigger documentation rebuild
     <2022-10-30 Sun>
 
-*** Infra: sh.wrap testing environment (project tasks)
-
-**** NEXT Create docker containers and GH action for test harness
-     <2023-01-04 Wed>
-
-*** Use ready docker images in GH actions (project tasks)
+*** Infra: Prebuilt docker images in GH actions (project tasks)
     :PROPERTIES:
     :sort: false
     :END:
 
-**** NEXT [#A] Create GH actions to use docker images from docker hub
-     DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
+**** NEXT [#A] Create GH actions to use docker images from docker hub :coding:milestone_001:
+     DEADLINE: <2023-01-08 Sun> SCHEDULED: <2023-01-08 Sun>
      :PROPERTIES:
      :Effort:   04:00
      :END:
+     :LOGBOOK:
+     - Rescheduled from "[2022-12-22 Thu]" on [2023-01-08 Sun 12:57] \\
+       rescheduled
+     :END:
      <2022-10-31 Mon>
+
+*** Infra: sh.wrap testing environment (project tasks)
+
+**** NEXT Create docker containers and GH action for test harness :milestone_001:
+     DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-09 Mon>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+     <2023-01-04 Wed>
 
 ** Plan: sh.wrap (project tasks)                                      :@PLAN:
 
-*** Plan: Milestone 0.0.1 (project tasks):
+*** Plan: Milestone 0.0.1 (project tasks)                     :milestone_001:
 
-**** NEXT Milestone 0.0.1: Select tasks from current active/backlog/stuck task pools
+**** TODO Milestone 0.0.1: Update roadmap
+     DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-08 Sun>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+
+***** DEPENDENCY [[wrfm001][Write requirements for milestone 0.0.1]]
+
+**** DONE Milestone 0.0.1: Estimate tasks effort
+     CLOSED: [2023-01-08 Sun 13:08]
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "NEXT"       [2023-01-08 Sun 13:08]
+     :END:
+
+**** DONE Milestone 0.0.1: Schedule tasks
+     CLOSED: [2023-01-08 Sun 13:50] DEADLINE: <2023-01-08 Sun> SCHEDULED: <2023-01-08 Sun>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2023-01-08 Sun 13:50]
+     CLOCK: [2023-01-08 Sun 13:43]--[2023-01-08 Sun 13:50] =>  0:07
+     CLOCK: [2023-01-08 Sun 13:08]--[2023-01-08 Sun 13:30] =>  0:22
+     - State "STARTED"    from "NEXT"       [2023-01-08 Sun 13:08]
+     :END:
+
+**** DONE Milestone 0.0.1: Select tasks from current active/backlog/stuck task pools
+     CLOSED: [2023-01-07 Sat 15:54]
+     :LOGBOOK:
+     - State "DONE"       from "NEXT"       [2023-01-07 Sat 15:54]
+     :END:
+
+
+*** Plan: Milestone 0.1.0 (project tasks)                     :milestone_010:
+
+**** NEXT Milestone 0.1.0: Estimate efforts
+     SCHEDULED: <2023-01-13 Fri>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+
+**** NEXT Milestone 0.1.0: Schedule tasks
+     SCHEDULED: <2023-01-13 Fri>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+
+**** NEXT Milestone 0.1.0: Select tasks
+     SCHEDULED: <2023-01-13 Fri>
+     :PROPERTIES:
+     :Effort:   02:00
+     :END:
+
+**** NEXT Milestone 0.1.0: Update roadmap
+     SCHEDULED: <2023-01-13 Fri>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
 
 *** Plan: Roadmap (project tasks)
 
-**** NEXT Write requirements for milestone 0.0.1
-     DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
+**** NEXT Describe sh.wrap purpose and vision                       :writing:
      :PROPERTIES:
      :Effort:   02:00
+     :END:
+
+**** STARTED Create roadmap diagram for milestone :planning:milestone_001:ACTIVE:
+     DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-08 Sun>
+     :PROPERTIES:
+     :Effort:   02:00
+     :END:
+     :LOGBOOK:
+     CLOCK: [2023-01-08 Sun 13:56]
+     - State "STARTED"    from "NEXT"       [2023-01-08 Sun 13:56]
+     :END:
+
+**** DONE Write requirements for milestone 0.0.1     :milestone_001:planning:
+     CLOSED: [2023-01-08 Sun 13:53] DEADLINE: <2023-01-08 Sun> SCHEDULED: <2023-01-08 Sun>
+     :PROPERTIES:
+     :Effort:   02:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2023-01-08 Sun 13:53]
+     - State "PROGRESS"   from "STARTED"    [2023-01-08 Sun 13:52] \\
+       GH issues created.
+       Milestone 0.0.1 page created.
+     CLOCK: [2023-01-08 Sun 13:51]--[2023-01-08 Sun 13:53] =>  0:02
+     - Rescheduled from "[2022-12-22 Thu]" on [2023-01-08 Sun 12:56] \\
+       reschedule
+     - State "STARTED"    from "NEXT"       [2023-01-08 Sun 06:25]
      :END:
      <<wrfm001>>
 
 ** QA: sh.wrap (project tasks)                                          :@QA:
 
-*** STARTED [#B] Add issue/pr templates                              :ACTIVE:
-    :LOGBOOK:
-    - State "STARTED"    from "NEXT"       [2023-01-04 Wed 07:36]
+*** STARTED Write functional tests for core modules :milestone_001:coding:ACTIVE:
+    DEADLINE: <2023-01-12 Thu> SCHEDULED: <2023-01-11 Wed>
+    :PROPERTIES:
+    :Effort:   8:00
     :END:
-
-*** STARTED Write tests for core functions                    :coding:ACTIVE:
     :LOGBOOK:
     - State "STARTED"    from "NEXT"       [2023-01-03 Tue 14:57]
     :END:
+
+*** PROGRESS [#B] Add issue/pr templates                             :ACTIVE:
+    :PROPERTIES:
+    :Effort:   02:00
+    :END:
+    :LOGBOOK:
+    - State "PROGRESS"   from "STARTED"    [2023-01-08 Sun 06:26] \\
+      added bug and feature issue templates
+    - State "STARTED"    from "NEXT"       [2023-01-04 Wed 07:36]
+    :END:
+
+*** QA: sh.wrap test reports (project tasks)
+
+**** NEXT Automate test reports publishing
+     DEADLINE: <2023-01-12 Thu> SCHEDULED: <2023-01-12 Thu>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
 
 *** QA: sh.wrap testing environment (project tasks)
 
 **** NEXT Create test matrix
      <2022-12-22 Thu>
 ***** DEPENDENCY [[cdcagafwwbvp][Create docker containers and GH action for workflow with bash versions passed]]
+
+**** NEXT Create test runner                           :coding:milestone_001:
+     DEADLINE: <2023-01-10 Tue> SCHEDULED: <2023-01-09 Mon>
+     :PROPERTIES:
+     :Effort:   02:00
+     :END:
+     <2023-01-08 Sun>
 
 * sh.wrap (project backlog)                                        :#backlog:
   :PROPERTIES:
@@ -177,6 +335,8 @@ url: /project/todo/todo.html
 
 **** TODO Implement profile module
 
+*** Code: Documentation generation (project backlog)
+
 *** Code: core (project backlog)
 
 **** NEXT Add function with argument passing to import
@@ -201,8 +361,6 @@ url: /project/todo/todo.html
 
 *** NEXT Add license
 
-*** NEXT Create "Development" documentation page
-    <2022-12-22 Thu>
 *** NEXT Create project logo
     <2022-12-20 Tue>
 *** NEXT Fix code blocks not colored properly with hugo renderer
@@ -223,9 +381,6 @@ url: /project/todo/todo.html
 *** WRITE Describe useful workflows on the project                  :writing:
 
 *** Docs: Documentation system (project backlog)
-
-**** NEXT Chose documentation generation system
-     <2023-01-03 Tue>
 
 **** NEXT Describe documentation generation                         :writing:
      <2022-10-31 Mon>
@@ -276,27 +431,17 @@ url: /project/todo/todo.html
 
 *** TODO Write project review/report templates
 
-*** WRITE Describe sh.wrap purpose and vision                       :writing:
-    <<dswpav>>
-
 *** Plan: Milestone 0.0.1 (project backlog):
     :PROPERTIES:
     :sort:     false
     :END:
 
-**** NEXT Milestone 0.0.1: Estimate tasks effort
-
-**** TODO Milestone 0.0.1: Schedule tasks
-
-**** TODO Milestone 0.0.1: Update roadmap
-
-***** DEPENDENCY [[wrfm001][Write requirements for milestone 0.0.1]]
+*** Plan: Milestone 0.1.0 (project tasks)                     :milestone_010:
+    :PROPERTIES:
+    :sort:     false
+    :END:
 
 *** Plan: Roadmap (project backlog)
-
-**** NEXT Create roadmap diagram
-
-**** DEPENDENCY [[dswpav][Describe sh.wrap purpose and vision]]
 
 ** QA: sh.wrap (project backlog)                                        :@QA:
 
@@ -309,16 +454,14 @@ url: /project/todo/todo.html
 *** TODO [#C] Exploratory testing of site generation action
     <2022-05-21 Sat>
 
+*** QA: sh.wrap test reports (project backlog)
+
+**** NEXT Add ability to compare test reports
+
 *** QA: sh.wrap testing environment (project backlog)
 :PROPERTIES:
 :sort: false
 :END:
-
-**** QA: Test reports (project backlog)
-
-***** NEXT Add ability to compare test reports
-
-***** NEXT Automate test reports publishing
 
 * sh.wrap (project stuck)                                            :#stuck:
   :PROPERTIES:
@@ -382,395 +525,10 @@ url: /project/todo/todo.html
 
 ** Code: sh.wrap (project archive)                                    :@CODE:
 
-*** DONE [#A] Add PoC prototype with somewhat core functionality
-    CLOSED: [2022-12-20 Tue 20:44] DEADLINE: <2022-11-05 Sat> SCHEDULED: <2022-11-01 Tue>
-    :PROPERTIES:
-    :Effort:   08:00
-    :sort:     false
-    :END:
-    :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2022-12-20 Tue 20:44]
-    - State "STARTED"    from "NEXT"       [2022-11-07 Mon 06:01]
-    :END:
-    <2022-10-31 Mon>
-
-**** DONE Test old solution
-     CLOSED: [2022-11-28 Mon 21:26] DEADLINE: <2022-11-07 Mon> SCHEDULED: <2022-11-07 Mon>
-     :PROPERTIES:
-     :Effort:   01:00
-     :END:
-     :LOGBOOK:
-     - State "DONE"       from "PROGRESS"   [2022-11-28 Mon 21:26]
-     - State "PROGRESS"   from "STARTED"    [2022-11-28 Mon 21:25] \\
-       well... it works somehow at least
-     CLOCK: [2022-11-28 Mon 01:42]--[2022-11-28 Mon 01:57] =>  0:15
-     CLOCK: [2022-11-07 Mon 07:11]--[2022-11-07 Mon 07:33] =>  0:22
-     CLOCK: [2022-11-07 Mon 06:01]--[2022-11-07 Mon 06:10] =>  0:09
-     CLOCK: [2022-11-06 Sun 09:04]--[2022-11-06 Sun 09:18] =>  0:14
-     :END:
-**** DONE Rework old prototype
-     CLOSED: [2022-12-07 Wed 03:13] DEADLINE: <2022-11-07 Mon> SCHEDULED: <2022-11-07 Mon>
-     :PROPERTIES:
-     :Effort:   02:00
-     :END:
-     :LOGBOOK:
-     - State "DONE"       from "STARTED"    [2022-12-07 Wed 03:13]
-     CLOCK: [2022-11-30 Wed 14:13]--[2022-11-30 Wed 14:27] =>  0:14
-     CLOCK: [2022-11-28 Mon 21:26]--[2022-11-28 Mon 21:42] =>  0:16
-     - State "STARTED"    from "TODO"       [2022-11-28 Mon 21:26]
-     :END:
-**** DONE Improve solution
-     CLOSED: [2022-12-17 Sat 08:16] DEADLINE: <2022-11-07 Mon> SCHEDULED: <2022-11-07 Mon>
-     :PROPERTIES:
-     :Effort:   03:00
-     :END:
-     :LOGBOOK:
-     - State "DONE"       from "PROGRESS"   [2022-12-17 Sat 08:16]
-     - State "PROGRESS"   from "PROGRESS"   [2022-12-17 Sat 08:15] \\
-       add module search path, partial module loading, etc
-     - State "PROGRESS"   from "TODO"       [2022-12-07 Wed 03:14] \\
-       add modules cache
-     :END:
-**** DONE Describe its functionality
-     CLOSED: [2022-12-20 Tue 20:43] DEADLINE: <2022-11-08 Tue> SCHEDULED: <2022-11-08 Tue>
-     :PROPERTIES:
-     :Effort:   01:00
-     :END:
-     :LOGBOOK:
-     - State "DONE"       from "PROGRESS"   [2022-12-20 Tue 20:43]
-     - State "PROGRESS"   from "STARTED"    [2022-12-20 Tue 20:29] \\
-       re-assigned
-     - State "STARTED"    from "TODO"       [2022-12-17 Sat 08:16]
-     - Rescheduled from "[2022-11-07 Mon]" on [2022-11-07 Mon 06:01]
-     :END:
-**** PASS Ready for use/test PoC prototype implemented [1/2]
-     CLOSED: [2022-12-20 Tue 20:44]
-     :LOGBOOK:
-     - State "PASS"       from "PROGRESS"   [2022-12-20 Tue 20:44]
-     - State "PROGRESS"   from "GOAL"       [2022-12-20 Tue 20:43] \\
-       Documentation goal re-assigned to the DOCS team
-     :END:
-     - [X] shell module concept
-     - [ ] examples of usage
-
 ** Docs: sh.wrap (project archive)                                    :@DOCS:
-
-*** DONE Add auto-generation of project documentation
-    CLOSED: [2022-11-05 Sat 16:12] DEADLINE: <2022-10-31 Mon> SCHEDULED: <2022-10-31 Mon>
-    :PROPERTIES:
-    :Effort:   01:00
-    :END:
-    :LOGBOOK:
-    - State "DONE"       from "PROGRESS"   [2022-11-05 Sat 16:12]
-    CLOCK: [2022-11-05 Sat 14:09]--[2022-11-05 Sat 15:00] =>  0:51
-    - State "PROGRESS"   from "STARTED"    [2022-11-05 Sat 13:28] \\
-      passed review
-    CLOCK: [2022-11-02 Wed 12:48]--[2022-11-02 Wed 13:56] =>  1:08
-    - State "STARTED"    from "NEXT"       [2022-11-02 Wed 12:48]
-    :END:
-    <2022-10-31 Mon>
-
-**** COMPLETE [[rotmsaw][Rework org to markdown scripts and workflows]]
-     CLOSED: [2022-11-05 Sat 14:09]
-     :LOGBOOK:
-     - State "COMPLETE"   from "DEPENDENCY" [2022-11-05 Sat 14:09]
-     :END:
-
-*** DONE Add basic hugo templates and site config
-    CLOSED: [2022-10-29 Sat 10:24] DEADLINE: <2022-05-21 Sat>
-    :LOGBOOK:
-    - State "DONE"       from "PROGRESS"   [2022-10-29 Sat 10:24]
-    - State "PROGRESS"   from "PROGRESS"   [2022-10-27 Thu 04:09] \\
-      project uses docsy hugo theme
-      ready for review
-    CLOCK: [2022-05-21 Sat 13:11]--[2022-05-21 Sat 13:37] =>  0:26
-    - State "PROGRESS"   from "PROGRESS"   [2022-05-21 Sat 13:04] \\
-      'project' section configured
-    CLOCK: [2022-05-21 Sat 12:35]--[2022-05-21 Sat 13:04] =>  0:29
-    - State "PROGRESS"   from "TODO"       [2022-05-21 Sat 12:27] \\
-      basic templates and config are taken from the hugo documentation
-    :END:
-    <2022-05-21 Sat>
-
-*** DONE Add styling for hugo site
-    CLOSED: [2022-10-31 Mon 05:17]
-    :LOGBOOK:
-    - State "DONE"       from "NEXT"       [2022-10-31 Mon 05:17]
-    :END:
-    <2022-05-21 Sat>
-
-*** DONE Choose and describe documentation system for the project
-    CLOSED: [2022-10-31 Mon 05:14] SCHEDULED: <2022-05-21 Sat>
-    :LOGBOOK:
-    - State "DONE"       from "PROGRESS"   [2022-10-31 Mon 05:14]
-    - State "PROGRESS"   from "PROGRESS"   [2022-10-06 Thu 19:25] \\
-      for project documentation we sort tasks by tag/name and remove CLOCK drawer
-    - State "PROGRESS"   from "NEXT"       [2022-05-21 Sat 02:02] \\
-      currently let it be
-      - pandoc for org->markdown conversion
-      - hugo for static site generation
-      - ?: how to stylize site
-    :END:
-
-*** DONE Delete org files from repositories
-    CLOSED: [2022-10-17 Mon 17:41] DEADLINE: <2022-10-17 Mon> SCHEDULED: <2022-10-17 Mon>
-    :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2022-10-17 Mon 17:41]
-    CLOCK: [2022-10-17 Mon 03:35]--[2022-10-17 Mon 04:17] =>  0:42
-    CLOCK: [2022-10-17 Mon 02:10]--[2022-10-17 Mon 03:19] =>  1:09
-    - State "STARTED"    from "TODO"       [2022-10-17 Mon 02:10]
-    :END:
-    <2022-10-17 Mon>
-
-*** DONE Fix org-to-md output directory not found
-    CLOSED: [2022-11-05 Sat 18:18]
-    :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2022-11-05 Sat 18:18]
-    :END:
-
-*** DONE Fix: title and date parameters not exposed in in org->md export
-    CLOSED: [2022-10-31 Mon 11:34]
-    :LOGBOOK:
-    - State "DONE"       from "TODO"       [2022-10-31 Mon 11:34]
-    :END:
-    <2022-05-21 Sat>
 
 ** Infra: sh.wrap (project archive)                                  :@INFRA:
 
-*** DONE Actions to export project documentation to GH pages
-    CLOSED: [2022-10-29 Sat 10:24] DEADLINE: <2022-05-21 Sat> SCHEDULED: <2022-05-21 Sat>
-    :PROPERTIES:
-    :Effort:   03:00
-    :END:
-    :LOGBOOK:
-    - State "DONE"       from "PROGRESS"   [2022-10-29 Sat 10:24]
-    - State "PROGRESS"   from "PROGRESS"   [2022-10-16 Sun 18:05] \\
-      actions are ready for review
-    CLOCK: [2022-10-13 Thu 21:53]--[2022-10-13 Thu 22:41] =>  0:48
-    CLOCK: [2022-10-13 Thu 16:19]--[2022-10-13 Thu 18:57] =>  2:38
-    CLOCK: [2022-10-04 Tue 19:16]--[2022-10-04 Tue 19:47] =>  0:31
-    CLOCK: [2022-10-04 Tue 18:40]--[2022-10-04 Tue 18:43] =>  0:03
-    - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:32] \\
-      org: renamed
-    - State "PROGRESS"   from "NEXT"       [2022-06-05 Sun 23:31] \\
-      Tested working in antirs/test-docker-action with antirs/antirs.github.io repositories.
-    :END:
-
-**** DONE Create GH docker action to build hugo binary
-     CLOSED: [2022-06-05 Sun 23:37] SCHEDULED: <2022-05-21 Sat>
-     :LOGBOOK:
-     - State "DONE"       from "PROGRESS"   [2022-06-05 Sun 23:37]
-     - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:37] \\
-       tested working
-     CLOCK: [2022-06-05 Sun 23:35]--[2022-06-05 Sun 23:37] =>  0:02
-     CLOCK: [2022-05-31 Tue 18:57]--[2022-05-31 Tue 18:57] =>  0:00
-     CLOCK: [2022-05-31 Tue 18:55]--[2022-05-31 Tue 18:55] =>  0:00
-     CLOCK: [2022-05-25 Wed 02:04]--[2022-05-25 Wed 02:05] =>  0:01
-     - State "PROGRESS"   from "PROGRESS"   [2022-05-22 Sun 20:38] \\
-       next:
-       - add cache
-       - add GH error/notice reporting
-     - State "PROGRESS"   from "PROGRESS"   [2022-05-22 Sun 16:24] \\
-       successfully building hugo binary with gh action
-     - State "PROGRESS"   from "STARTED"    [2022-05-22 Sun 14:40] \\
-       making improvements and testing actions-shellcheck to merge with actions-hugo-*
-     CLOCK: [2022-05-22 Sun 14:40]--[2022-05-22 Sun 16:24] =>  1:44
-     CLOCK: [2022-05-22 Sun 10:58]--[2022-05-22 Sun 13:58] =>  3:00
-     CLOCK: [2022-05-22 Sun 00:02]--[2022-05-22 Sun 00:23] =>  0:21
-     CLOCK: [2022-05-21 Sat 22:08]--[2022-05-22 Sun 00:02] =>  1:54
-     CLOCK: [2022-05-21 Sat 20:49]--[2022-05-21 Sat 21:41] =>  0:52
-     CLOCK: [2022-05-21 Sat 16:41]--[2022-05-21 Sat 19:13] =>  2:32
-     - State "STARTED"    from "TODO"       [2022-05-21 Sat 20:48]
-     :END:
-
-***** DONE Add cache to hugo build action
-      CLOSED: [2022-06-05 Sun 23:37]
-      :LOGBOOK:
-      - State "DONE"       from "PROGRESS"   [2022-06-05 Sun 23:37]
-      - State "PROGRESS"   from "TODO"       [2022-06-05 Sun 23:37] \\
-        tested working
-      :END:
-
-**** DONE Create GH docker action to generate documentation
-     CLOSED: [2022-06-05 Sun 23:37] SCHEDULED: <2022-05-21 Sat>
-     :LOGBOOK:
-     - State "DONE"       from "PROGRESS"   [2022-06-05 Sun 23:37]
-     - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:37] \\
-       tested working
-     CLOCK: [2022-05-31 Tue 18:57]--[2022-05-31 Tue 18:57] =>  0:00
-     CLOCK: [2022-05-24 Tue 18:10]--[2022-05-24 Tue 18:11] =>  0:01
-     - State "PROGRESS"   from "TODO"       [2022-05-22 Sun 20:57] \\
-       done:
-       - composition of hugo build and hugo site generation steps in one action
-       - generation of site
-       next:
-       - publishing to site portal
-     :END:
-
-**** DONE Create a branch for GH docker action to build hugo binary
-     CLOSED: [2022-06-05 Sun 23:29] SCHEDULED: <2022-05-21 Sat>
-     :LOGBOOK:
-     - State "DONE"       from "PROGRESS"   [2022-06-05 Sun 23:29]
-     - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:29] \\
-       Let all actions are in the source repository.
-     - State "PROGRESS"   from "TODO"       [2022-05-22 Sun 20:59] \\
-       testing solution in the other repository
-     :END:
-
-**** DONE Create a branch for GH docker action to generate documentation
-     CLOSED: [2022-06-05 Sun 23:28] SCHEDULED: <2022-05-21 Sat>
-     :LOGBOOK:
-     - State "DONE"       from "PROGRESS"   [2022-06-05 Sun 23:28]
-     - State "PROGRESS"   from "PROGRESS"   [2022-06-05 Sun 23:27] \\
-       Let all actions are in the source repository.
-     - State "PROGRESS"   from "STARTED"    [2022-05-22 Sun 18:41] \\
-       testing solution in the other repository
-     CLOCK: [2022-05-22 Sun 17:48]--[2022-05-22 Sun 19:58] =>  2:10
-     CLOCK: [2022-05-22 Sun 16:26]--[2022-05-22 Sun 17:07] =>  0:41
-     - State "STARTED"    from "TODO"       [2022-05-22 Sun 16:26]
-     :END:
-
-*** DONE Add actions docker images to docker hub
-    CLOSED: [2022-11-02 Wed 10:51] DEADLINE: <2022-11-01 Tue> SCHEDULED: <2022-10-31 Mon>
-    :PROPERTIES:
-    :Effort:   02:00
-    :END:
-    :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2022-11-02 Wed 10:51]
-    - State "STARTED"    from "NEXT"       [2022-11-01 Tue 11:29]
-    CLOCK: [2022-11-01 Tue 11:29]--[2022-11-01 Tue 13:32] =>  2:03
-    :END:
-    <2022-10-31 Mon>
-
-*** DONE Add docker image for hugo site generation
-    CLOSED: [2022-10-29 Sat 10:24] DEADLINE: <2022-05-21 Sat>
-    :LOGBOOK:
-    - State "DONE"       from "PROGRESS"   [2022-10-29 Sat 10:24]
-    CLOCK: [2022-05-21 Sat 11:55]--[2022-05-21 Sat 12:24] =>  0:29
-    CLOCK: [2022-05-21 Sat 02:34]--[2022-05-21 Sat 03:21] =>  0:47
-    - State "PROGRESS"   from "NEXT"       [2022-05-21 Sat 02:12] \\
-      basic images with hugo and pandoc for site generation are added
-    :END:
-    <2022-05-21 Sat>
-
-*** DONE Check scripts and images in docker.org file                 :ACTIVE:
-    CLOSED: [2022-10-30 Sun 16:02] DEADLINE: <2022-10-30 Sun> SCHEDULED: <2022-10-30 Sun>
-    :PROPERTIES:
-    :Effort:   01:00
-    :END:
-    :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2022-10-30 Sun 16:02]
-    - State "STARTED"    from "NEXT"       [2022-10-30 Sun 12:50]
-    :END:
-    <2022-10-30 Sun>
-
-*** DONE Create a branch for project tracking
-    CLOSED: [2022-05-13 Fri 22:42] SCHEDULED: <2022-05-13 Fri>
-    :LOGBOOK:
-    - State "DONE"       from "PROGRESS"   [2022-05-13 Fri 22:42]
-    - State "PROGRESS"   from "STARTED"    [2022-05-13 Fri 22:42] \\
-      ekotik/project branch created
-    CLOCK: [2022-05-13 Fri 19:43]--[2022-05-13 Fri 21:10] =>  1:27
-    CLOCK: [2022-05-13 Fri 19:34]--[2022-05-13 Fri 19:35] =>  0:01
-    - State "STARTED"    from "NEXT"       [2022-05-13 Fri 19:27]
-    :END:
-
-*** DONE Create infra account on docker hub
-    CLOSED: [2022-11-01 Tue 10:01] DEADLINE: <2022-11-01 Tue> SCHEDULED: <2022-10-31 Mon>
-    :PROPERTIES:
-    :Effort:   01:00
-    :END:
-    :LOGBOOK:
-    - State "DONE"       from "PROGRESS"   [2022-11-01 Tue 10:01]
-    CLOCK: [2022-11-01 Tue 09:34]--[2022-11-01 Tue 10:01] =>  0:27
-    - State "PROGRESS"   from "STARTED"    [2022-10-31 Mon 15:12]
-    - State "STARTED"    from "NEXT"       [2022-10-31 Mon 13:02]
-    CLOCK: [2022-10-31 Mon 13:02]--[2022-10-31 Mon 15:12] =>  2:10
-    :END:
-    <2022-10-31 Mon>
-*** DONE Rework org to markdown scripts and workflows <<rotmsaw>>
-    CLOSED: [2022-11-05 Sat 14:05] DEADLINE: <2022-10-31 Mon> SCHEDULED: <2022-10-31 Mon>
-    :PROPERTIES:
-    :Effort:   03:00
-    :END:
-    :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2022-11-05 Sat 14:05]
-    CLOCK: [2022-11-03 Thu 00:04]--[2022-11-03 Thu 02:52] =>  2:48
-    CLOCK: [2022-11-02 Wed 13:58]--[2022-11-02 Wed 14:10] =>  0:12
-    - State "STARTED"    from "NEXT"       [2022-11-02 Wed 13:58]
-    :END:
-    <2022-10-31 Mon>
-
-**** PASS Convert documentation from org to markdown [4/6]
-     CLOSED: [2022-11-05 Sat 14:05]
-     :LOGBOOK:
-     - State "PASS"       from "PROGRESS"   [2022-11-05 Sat 14:05]
-     - State "PROGRESS"   from "GOAL"       [2022-11-05 Sat 14:03] \\
-       partially complete
-     :END:
-    - [X] convert whole directory
-    - [-] pass wanted default convertion options
-      - [X] clean
-      - [ ] raw
-    - [ ] pass additional convertion options as rest arguments
-    - [X] docker image for pandoc conversions
-    - [X] GH reusable workflow that wraps this script
-    - [X] Change existing GH workflows to use new script
-
-**** DONE Remove conversion funcs from hugo-site workflow and script
-     CLOSED: [2022-11-05 Sat 13:58] SCHEDULED: <2022-11-05 Sat> DEADLINE: <2022-11-05 Sat>
-     :PROPERTIES:
-     :Effort:   00:30
-     :END:
-     :LOGBOOK:
-     - State "DONE"       from "STARTED"    [2022-11-05 Sat 13:58]
-     CLOCK: [2022-11-05 Sat 13:38]--[2022-11-05 Sat 13:58] =>  0:20
-     - State "STARTED"    from "NEXT"       [2022-11-05 Sat 13:38]
-     :END:
-     <2022-11-05 Sat>
 ** Plan: sh.wrap (project archive)                                    :@PLAN:
 
-*** DONE Fix project documentation not included in site generation
-    CLOSED: [2022-10-30 Sun 16:02] DEADLINE: <2022-10-30 Sun> SCHEDULED: <2022-10-30 Sun>
-    :PROPERTIES:
-    :Effort:   02:00
-    :END:
-    :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2022-10-30 Sun 16:02]
-    - State "STARTED"    from "TODO"       [2022-10-30 Sun 12:29]
-    :END:
-    <2022-10-30 Sun>
-
 ** QA: sh.wrap (project archive)                                        :@QA:
-
-*** CANCELLED Review pr#9
-    CLOSED: [2022-12-22 Thu 14:27]
-    :LOGBOOK:
-    - State "CANCELLED"  from "NEXT"       [2022-12-22 Thu 14:27] \\
-      lost its actuality
-    :END:
-
-*** DONE Choose testing framework
-    CLOSED: [2023-01-03 Tue 14:10] DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
-    :PROPERTIES:
-    :Effort:   04:00
-    :END:
-    :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2023-01-03 Tue 14:10]
-    - State "STARTED"    from "NEXT"       [2022-12-29 Thu 11:40]
-    :END:
-    <2022-12-22 Thu>
-**** PASS Satisfiable testing framework
-     CLOSED: [2023-01-03 Tue 14:10]
-     :LOGBOOK:
-     - State "PASS"       from "PROGRESS"   [2023-01-03 Tue 14:10]
-     - State "PROGRESS"   from "GOAL"       [2023-01-03 Tue 14:09] \\
-       microspec is chosen
-     :END:
-     - [X] simple
-     - [X] sutable for sh.wrap project testing
-*** DONE Review pr#11
-    CLOSED: [2022-10-30 Sun 12:23]
-    :LOGBOOK:
-    - State "DONE"       from "TODO"       [2022-10-30 Sun 12:23]
-    :END:
