@@ -123,4 +123,10 @@ Project starts 2023-01-07
 @endgantt
 #+end_src
 
+#+begin_export org
 [[./milestone-0.0.1.png][Milestone 0.0.1 diagram]]
+#+end_export
+
+#+begin_export markdown
+![https://github.com/neurodiff/sh.wrap/blob/project-org/doc/project/roadmap/milestone-0.0.1.png?raw=true](Milestone 0.0.1 diagram)
+#+end_export
