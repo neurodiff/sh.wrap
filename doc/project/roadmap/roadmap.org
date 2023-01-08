@@ -46,8 +46,7 @@ Major known features and milestones may be noted here.
 - [[https://github.com/ekotik/sh.wrap/issues/44][qa:test: create test runner for testing]]
 - [[https://github.com/ekotik/sh.wrap/issues/45][qa:test: write functional tests for core functions and modules]]
 
-#+header: :export no
-#+begin_src plantuml :file milestone-0.0.1.png
+#+begin_src plantuml :file milestone-0.0.1.png :exports none
 @startgantt
 printscale daily zoom 3
 hide footbox
