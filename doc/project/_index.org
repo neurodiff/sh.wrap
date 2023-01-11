@@ -6,14 +6,16 @@
 
 #+begin_export markdown
 ---
-title: Planning documentation
+title: Project documentation
 date: 2022-10-28T01:26:35+03:00
 weight: 1
 url: /project/
+tags: ["project"]
+weight: 30
 ---
 #+end_export
 
-* Planning documentation                                             :ignore:
+* Project documentation                                              :ignore:
 
 [[file:todo/todo.org][Pool of tasks]] in sh.wrap project. For now it's updated eventually.
 

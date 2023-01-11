@@ -1,5 +1,5 @@
 #+CATEGORY: ░ SH.WRAP ░
-#+FILETAGS: #project #milestone #roadmap #task #sh_wrap
+#+FILETAGS: #project #milestone #roadmap #sh_wrap
 #+OPTIONS: ^:nil toc:nil num:nil author:nil timestamp:nil
 #+COLUMNS: %50ITEM TODO %3PRIORITY %Effort %Effort(Effort Children){:} %10CLOCKSUM
 #+OPTIONS: H:1 prop:nil d:nil tags:nil p:t c:nil pri:t
@@ -18,7 +18,7 @@ aliases:
   - /project/roadmap/roadmap.md
   - /project/roadmap/roadmap.org
 url: /project/roadmap/roadmap.html
-tags: ["roadmap", "milestone"]
+tags: ["milestone", "project", "roadmap"]
 ---
 #+end_export
 

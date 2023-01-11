@@ -18,6 +18,7 @@ aliases:
   - /project/todo/todo.md
   - /project/todo/todo.org
 url: /project/todo/todo.html
+tags: ["project", "task"]
 ---
 #+end_export
 
@@ -30,12 +31,46 @@ url: /project/todo/todo.html
 
 *** Code: Documentation generation (project tasks)
 
-**** NEXT Chose documentation generation system               :milestone_001:
+**** PROGRESS Chose documentation generation system    :milestone_001:ACTIVE:
      DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-08 Sun>
      :PROPERTIES:
      :Effort:   04:00
      :END:
+     :LOGBOOK:
+     - State "PROGRESS"   from "STARTED"    [2023-01-11 Wed 08:03] \\
+       Markdown prefixed with ## + simple grep function for now
+       To be replaced later.
+     CLOCK: [2023-01-11 Wed 07:15]--[2023-01-11 Wed 08:03] =>  0:48
+     CLOCK: [2023-01-10 Tue 18:45]--[2023-01-10 Tue 18:55] =>  0:10
+     - State "STARTED"    from "NEXT"       [2023-01-08 Sun 16:10]
+     :END:
      <2023-01-03 Tue>
+
+***** STARTED Integrate documentation generation into documentation pipeline :ACTIVE:
+      DEADLINE: <2023-01-11 Wed> SCHEDULED: <2023-01-11 Wed>
+      :LOGBOOK:
+      CLOCK: [2023-01-11 Wed 14:52]--[2023-01-11 Wed 14:59] =>  0:07
+      - State "STARTED"    from "TODO"       [2023-01-11 Wed 14:52]
+      :END:
+      <2023-01-11 Wed>
+
+***** DONE Document existing code base
+      CLOSED: [2023-01-11 Wed 13:18] DEADLINE: <2023-01-11 Wed> SCHEDULED: <2023-01-11 Wed>
+      :LOGBOOK:
+      - State "DONE"       from "STARTED"    [2023-01-11 Wed 13:18]
+      CLOCK: [2023-01-11 Wed 12:24]--[2023-01-11 Wed 13:18] =>  0:54
+      CLOCK: [2023-01-11 Wed 10:45]--[2023-01-11 Wed 12:00] =>  1:15
+      CLOCK: [2023-01-11 Wed 08:59]--[2023-01-11 Wed 10:45] =>  1:46
+      CLOCK: [2023-01-11 Wed 08:07]--[2023-01-11 Wed 08:08] =>  0:01
+      - State "STARTED"    from "TODO"       [2023-01-11 Wed 08:05]
+      :END:
+      <2023-01-11 Wed>
+
+*** Code: Repository maintenance (project tasks)
+
+**** NEXT Migrate to actions 0.0.1 with prebuilt docker images
+     DEADLINE: <2023-01-12 Thu> SCHEDULED: <2023-01-12 Thu>
+     <2023-01-10 Tue>
 
 *** Code: core (project tasks)
 
@@ -97,10 +132,14 @@ url: /project/todo/todo.html
      :END:
      <2022-12-20 Tue>
 
-**** NEXT Create user, development and project sections       :milestone_001:
+**** STARTED Create user, development and project sections :milestone_001:ACTIVE:
      DEADLINE: <2023-01-10 Tue> SCHEDULED: <2023-01-10 Tue>
      :PROPERTIES:
      :Effort:   01:00
+     :END:
+     :LOGBOOK:
+     CLOCK: [2023-01-11 Wed 15:26]
+     - State "STARTED"    from "NEXT"       [2023-01-11 Wed 15:26]
      :END:
      <2022-12-22 Thu>
 
@@ -139,42 +178,97 @@ url: /project/todo/todo.html
 *** NEXT Add repository_dispatch events to trigger documentation rebuild
     <2022-10-30 Sun>
 
+*** PROGRESS Update docker.org in actions-org with actual documentation :ACTIVE:
+    :LOGBOOK:
+    - State "PROGRESS"   from "STARTED"    [2023-01-09 Mon 10:46] \\
+      ... don't want to talk about it
+    CLOCK: [2023-01-09 Mon 06:01]--[2023-01-09 Mon 10:45] =>  4:44
+    CLOCK: [2023-01-08 Sun 18:35]--[2023-01-08 Sun 18:49] =>  0:14
+    - State "STARTED"    from "TODO"       [2023-01-08 Sun 18:35]
+    :END:
+    <2023-01-08 Sun>
+
+*** Infra: Documentation generation (project backlog)
+
+**** DONE Add script and GH action for documentation generation system
+     CLOSED: [2023-01-11 Wed 14:49] DEADLINE: <2023-01-11 Wed> SCHEDULED: <2023-01-11 Wed>
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2023-01-11 Wed 14:49]
+     - State "PROGRESS"   from "STARTED"    [2023-01-11 Wed 14:49] \\
+       merged
+     CLOCK: [2023-01-11 Wed 14:16]--[2023-01-11 Wed 14:49] =>  0:33
+     CLOCK: [2023-01-11 Wed 13:24]--[2023-01-11 Wed 14:11] =>  0:47
+     - State "STARTED"    from "TODO"       [2023-01-11 Wed 13:24]
+     :END:
+     <2023-01-11 Wed>
+
 *** Infra: Prebuilt docker images in GH actions (project tasks)
     :PROPERTIES:
     :sort: false
     :END:
 
-**** NEXT [#A] Create GH actions to use docker images from docker hub :coding:milestone_001:
-     DEADLINE: <2023-01-08 Sun> SCHEDULED: <2023-01-08 Sun>
+**** DONE [#A] Create GH actions to use docker images from docker hub :coding:milestone_001:
+     CLOSED: [2023-01-10 Tue 09:53] DEADLINE: <2023-01-08 Sun> SCHEDULED: <2023-01-08 Sun>
      :PROPERTIES:
      :Effort:   04:00
      :END:
      :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2023-01-10 Tue 09:53]
+     CLOCK: [2023-01-10 Tue 04:14]--[2023-01-10 Tue 05:38] =>  1:24
+     - State "PROGRESS"   from "STARTED"    [2023-01-10 Tue 04:13] \\
+       almost done
+     CLOCK: [2023-01-10 Tue 03:34]--[2023-01-10 Tue 04:13] =>  0:39
+     CLOCK: [2023-01-10 Tue 01:47]--[2023-01-10 Tue 02:20] =>  0:33
+     CLOCK: [2023-01-09 Mon 17:33]--[2023-01-09 Mon 20:58] =>  3:25
+     CLOCK: [2023-01-09 Mon 13:48]--[2023-01-09 Mon 16:13] =>  2:25
+     CLOCK: [2023-01-09 Mon 10:47]--[2023-01-09 Mon 12:56] =>  2:09
+     CLOCK: [2023-01-08 Sun 16:31]--[2023-01-08 Sun 16:57] =>  0:26
+     - State "STARTED"    from "NEXT"       [2023-01-08 Sun 16:09]
      - Rescheduled from "[2022-12-22 Thu]" on [2023-01-08 Sun 12:57] \\
        rescheduled
      :END:
      <2022-10-31 Mon>
 
+***** DONE Fix test-workflows-hub permission denied
+      CLOSED: [2023-01-10 Tue 09:48] DEADLINE: <2023-01-12 Thu> SCHEDULED: <2023-01-10 Tue>
+      :LOGBOOK:
+      - State "DONE"       from "PROGRESS"   [2023-01-10 Tue 09:48]
+      - State "PROGRESS"   from "STARTED"    [2023-01-10 Tue 09:47] \\
+        bug founded and fixed
+      CLOCK: [2023-01-10 Tue 09:42]--[2023-01-10 Tue 09:48] =>  0:06
+      - State "STARTED"    from "TODO"       [2023-01-10 Tue 09:42]
+      :END:
+      <2023-01-10 Tue>
+
 *** Infra: sh.wrap testing environment (project tasks)
 
-**** NEXT Create docker containers and GH action for test harness :milestone_001:
-     DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-09 Mon>
+**** DONE Create docker containers and GH action for test harness :milestone_001:
+     CLOSED: [2023-01-10 Tue 18:30] DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-09 Mon>
      :PROPERTIES:
      :Effort:   01:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2023-01-10 Tue 18:30]
+     CLOCK: [2023-01-10 Tue 18:19]--[2023-01-10 Tue 18:30] =>  0:11
+     - State "PROGRESS"   from "PROGRESS"   [2023-01-10 Tue 18:19] \\
+       merged
+     CLOCK: [2023-01-10 Tue 18:11]--[2023-01-10 Tue 18:19] =>  0:08
+     - State "PROGRESS"   from "PROGRESS"   [2023-01-10 Tue 18:11] \\
+       on review
+     CLOCK: [2023-01-10 Tue 17:13]--[2023-01-10 Tue 18:05] =>  0:52
+     CLOCK: [2023-01-10 Tue 15:04]--[2023-01-10 Tue 16:15] =>  1:11
+     - State "PROGRESS"   from "STARTED"    [2023-01-10 Tue 13:22] \\
+       GH actions stub created
+     CLOCK: [2023-01-10 Tue 12:51]--[2023-01-10 Tue 13:22] =>  0:31
+     CLOCK: [2023-01-10 Tue 10:35]--[2023-01-10 Tue 10:39] =>  0:04
+     CLOCK: [2023-01-10 Tue 09:54]--[2023-01-10 Tue 10:30] =>  0:36
+     - State "STARTED"    from "NEXT"       [2023-01-10 Tue 09:54]
      :END:
      <2023-01-04 Wed>
 
 ** Plan: sh.wrap (project tasks)                                      :@PLAN:
 
 *** Plan: Milestone 0.0.1 (project tasks)                     :milestone_001:
-
-**** TODO Milestone 0.0.1: Update roadmap
-     DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-08 Sun>
-     :PROPERTIES:
-     :Effort:   01:00
-     :END:
-
-***** DEPENDENCY [[wrfm001][Write requirements for milestone 0.0.1]]
 
 **** DONE Milestone 0.0.1: Estimate tasks effort
      CLOSED: [2023-01-08 Sun 13:08]
@@ -202,6 +296,21 @@ url: /project/todo/todo.html
      :LOGBOOK:
      - State "DONE"       from "NEXT"       [2023-01-07 Sat 15:54]
      :END:
+
+**** DONE Milestone 0.0.1: Update roadmap
+     CLOSED: [2023-01-09 Mon 10:48] DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-08 Sun>
+     :PROPERTIES:
+     :Effort:   01:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "TODO"       [2023-01-09 Mon 10:48]
+     :END:
+
+***** COMPLETE [[wrfm001][Write requirements for milestone 0.0.1]]
+      CLOSED: [2023-01-09 Mon 10:48]
+      :LOGBOOK:
+      - State "COMPLETE"   from "DEPENDENCY" [2023-01-09 Mon 10:48]
+      :END:
 
 
 *** Plan: Milestone 0.1.0 (project tasks)                     :milestone_010:
@@ -237,13 +346,13 @@ url: /project/todo/todo.html
      :Effort:   02:00
      :END:
 
-**** STARTED Create roadmap diagram for milestone :planning:milestone_001:ACTIVE:
-     DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-08 Sun>
+**** DONE Create roadmap diagram for milestone       :planning:milestone_001:
+     CLOSED: [2023-01-08 Sun 16:09] DEADLINE: <2023-01-09 Mon> SCHEDULED: <2023-01-08 Sun>
      :PROPERTIES:
      :Effort:   02:00
      :END:
      :LOGBOOK:
-     CLOCK: [2023-01-08 Sun 13:56]
+     - State "DONE"       from "STARTED"    [2023-01-08 Sun 16:09]
      - State "STARTED"    from "NEXT"       [2023-01-08 Sun 13:56]
      :END:
 
@@ -299,10 +408,18 @@ url: /project/todo/todo.html
      <2022-12-22 Thu>
 ***** DEPENDENCY [[cdcagafwwbvp][Create docker containers and GH action for workflow with bash versions passed]]
 
-**** NEXT Create test runner                           :coding:milestone_001:
-     DEADLINE: <2023-01-10 Tue> SCHEDULED: <2023-01-09 Mon>
+**** DONE Create test runner                           :coding:milestone_001:
+     CLOSED: [2023-01-10 Tue 15:04] DEADLINE: <2023-01-10 Tue> SCHEDULED: <2023-01-09 Mon>
      :PROPERTIES:
      :Effort:   02:00
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "PROGRESS"   [2023-01-10 Tue 15:04]
+     - State "PROGRESS"   from "STARTED"    [2023-01-10 Tue 15:03] \\
+       simple wrapper around microspec
+     CLOCK: [2023-01-10 Tue 14:09]--[2023-01-10 Tue 15:03] =>  0:54
+     CLOCK: [2023-01-10 Tue 13:22]--[2023-01-10 Tue 13:58] =>  0:36
+     - State "STARTED"    from "NEXT"       [2023-01-10 Tue 13:22]
      :END:
      <2023-01-08 Sun>
 
@@ -313,6 +430,13 @@ url: /project/todo/todo.html
 
 ** Code: sh.wrap (project backlog)                                    :@CODE:
 
+*** TODO Fix find in test-workflows
+    :PROPERTIES:
+    :url:      https://github.com/antirs/sh.wrap/actions/runs/3883377145/jobs/6624613563
+    :END:
+    <2023-01-10 Tue>
+*** TODO Fix trap rewriten error is scripts
+    <2023-01-09 Mon>
 *** TODO Implement ccache module
 
 *** TODO Implement cert module
@@ -335,7 +459,11 @@ url: /project/todo/todo.html
 
 **** TODO Implement profile module
 
+*** TODO Rename actions.yml to site
+    <2023-01-10 Tue>
 *** Code: Documentation generation (project backlog)
+
+*** Code: Repository maintenance (project backlog)
 
 *** Code: core (project backlog)
 
@@ -363,22 +491,28 @@ url: /project/todo/todo.html
 
 *** NEXT Create project logo
     <2022-12-20 Tue>
-*** NEXT Fix code blocks not colored properly with hugo renderer
-   <2022-10-31 Mon>
-*** NEXT Rework gh-publish workflow
-    <2022-11-05 Sat>
-**** GOAL Add features to gh-publish script [0/3]
-     - [ ] pass commit message as argument
-     - [ ] add option to keep commits history
-     - [ ] add tag to commit
-
 *** TODO Add option to exclude path patterns from conversion in pandoc-convert workflow
-    <2022-11-05 Sat>
-*** TODO Fix hugo bug with flickering project/docs tag
     <2022-11-05 Sat>
 *** WRITE Describe knowledge system for the project                 :writing:
 
 *** WRITE Describe useful workflows on the project                  :writing:
+
+*** Docs: Documentation (project backlog)
+
+**** NEXT Fix code blocks not colored properly with hugo renderer
+    <2022-10-31 Mon>
+
+**** NEXT Rework gh-publish workflow
+     <2022-11-05 Sat>
+***** GOAL Add features to gh-publish script [0/3]
+      - [ ] pass commit message as argument
+      - [ ] add option to keep commits history
+      - [ ] add tag to commit
+
+**** TODO Fix hugo bug with flickering project/docs tag
+     <2022-11-05 Sat>
+**** TODO Fix images not copied to documentation with pandoc-convert GH action
+     <2023-01-08 Sun>
 
 *** Docs: Documentation system (project backlog)
 
@@ -414,12 +548,7 @@ url: /project/todo/todo.html
 
 *** TODO Write script to sync working repositories with upstream
 
-*** Infra: sh.wrap testing environment (project backlog)
-
-**** NEXT Create docker containers and GH action for workflow with bash versions passed
-     <<cdcagafwwbvp>>
-     <2022-12-22 Thu>
-*** Use ready docker images in GH actions (project backlog)
+*** Infra: Use ready docker images in GH actions (project backlog)
     :PROPERTIES:
     :sort: false
     :END:
@@ -427,6 +556,11 @@ url: /project/todo/todo.html
 **** NEXT Create GH actions to generate and push docker images
      <2022-10-31 Mon>
 
+*** Infra: sh.wrap testing environment (project backlog)
+
+**** NEXT Create docker containers and GH action for workflow with bash versions passed
+     <<cdcagafwwbvp>>
+     <2022-12-22 Thu>
 ** Plan: sh.wrap (project backlog)                                    :@PLAN:
 
 *** TODO Write project review/report templates
@@ -436,7 +570,7 @@ url: /project/todo/todo.html
     :sort:     false
     :END:
 
-*** Plan: Milestone 0.1.0 (project tasks)                     :milestone_010:
+*** Plan: Milestone 0.1.0 (project backlog)                   :milestone_010:
     :PROPERTIES:
     :sort:     false
     :END:
