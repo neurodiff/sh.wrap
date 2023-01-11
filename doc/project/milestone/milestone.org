@@ -19,6 +19,7 @@ aliases:
   - /project/milestone/milestone.org
 url: /project/milestone/milestone.html
 tags: ["milestone", "project"]
+weight: 32
 ---
 #+end_export
 

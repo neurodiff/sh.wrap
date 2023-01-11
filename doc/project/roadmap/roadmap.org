@@ -19,6 +19,7 @@ aliases:
   - /project/roadmap/roadmap.org
 url: /project/roadmap/roadmap.html
 tags: ["milestone", "project", "roadmap"]
+weight: 33
 ---
 #+end_export
 
