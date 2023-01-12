@@ -30,6 +30,20 @@ weight: 31
 
 ** Code: sh.wrap (project tasks)                                      :@CODE:
 
+*** PROGRESS Create workflow to run tests on push, PR                :ACTIVE:
+    DEADLINE: <2023-01-11 Wed> SCHEDULED: <2023-01-11 Wed>
+    :LOGBOOK:
+    - State "PROGRESS"   from "STARTED"    [2023-01-11 Wed 21:28] \\
+      test-runner added to ci
+    CLOCK: [2023-01-11 Wed 21:03]--[2023-01-11 Wed 21:28] =>  0:25
+    - State "STARTED"    from "TODO"       [2023-01-11 Wed 21:03]
+    :END:
+    <2023-01-11 Wed>
+
+**** NEXT Migrate to actions 0.0.1 with prebuilt docker images
+     DEADLINE: <2023-01-12 Thu> SCHEDULED: <2023-01-12 Thu>
+     <2023-01-10 Tue>
+
 *** Code: Documentation generation (project tasks)
 
 **** PROGRESS Chose documentation generation system    :milestone_001:ACTIVE:
@@ -47,9 +61,12 @@ weight: 31
      :END:
      <2023-01-03 Tue>
 
-***** STARTED Integrate documentation generation into documentation pipeline :ACTIVE:
+***** PROGRESS Integrate documentation generation into documentation pipeline :ACTIVE:
       DEADLINE: <2023-01-11 Wed> SCHEDULED: <2023-01-11 Wed>
       :LOGBOOK:
+      - State "PROGRESS"   from "STARTED"    [2023-01-11 Wed 20:35] \\
+        GH action tested
+      CLOCK: [2023-01-11 Wed 17:24]--[2023-01-11 Wed 20:35] =>  3:11
       CLOCK: [2023-01-11 Wed 14:52]--[2023-01-11 Wed 14:59] =>  0:07
       - State "STARTED"    from "TODO"       [2023-01-11 Wed 14:52]
       :END:
@@ -69,10 +86,6 @@ weight: 31
 
 *** Code: Repository maintenance (project tasks)
 
-**** NEXT Migrate to actions 0.0.1 with prebuilt docker images
-     DEADLINE: <2023-01-12 Thu> SCHEDULED: <2023-01-12 Thu>
-     <2023-01-10 Tue>
-
 *** Code: core (project tasks)
 
 **** NEXT Write unit tests for core functions          :coding:milestone_001:
@@ -80,6 +93,27 @@ weight: 31
      :PROPERTIES:
      :Effort:   08:00
      :END:
+
+**** PROGRESS Fix busybox realpath is different                      :ACTIVE:
+     DEADLINE: <2023-01-12 Thu> SCHEDULED: <2023-01-11 Wed>
+     :LOGBOOK:
+     - State "PROGRESS"   from "STARTED"    [2023-01-12 Thu 09:39] \\
+       somewhat fixed
+     CLOCK: [2023-01-12 Thu 07:54]--[2023-01-12 Thu 08:42] =>  0:48
+     CLOCK: [2023-01-12 Thu 07:00]--[2023-01-12 Thu 07:12] =>  0:12
+     CLOCK: [2023-01-12 Thu 06:00]--[2023-01-12 Thu 06:40] =>  0:40
+     - State "STARTED"    from "TODO"       [2023-01-11 Wed 21:53]
+     :END:
+     <2023-01-11 Wed>
+**** Docs: Milestone 0.0.1 (project tasks)
+
+***** NEXT Update Changelog
+      DEADLINE: <2023-01-13 Fri> SCHEDULED: <2023-01-13 Fri>
+      <2023-01-12 Thu>
+
+***** NEXT Update README.md
+      DEADLINE: <2023-01-13 Fri> SCHEDULED: <2023-01-13 Fri>
+      <2023-01-12 Thu>
 
 **** DONE Check and fix unset for globally exported variables inside a module :milestone_001:
      CLOSED: [2023-01-07 Sat 15:52] DEADLINE: <2022-12-31 Sat> SCHEDULED: <2022-12-22 Thu>
@@ -93,6 +127,15 @@ weight: 31
      - State "STARTED"    from "NEXT"       [2023-01-07 Sat 15:52]
      :END:
      <2022-12-20 Tue>
+
+**** DONE Fix bash 5.0 unset _shwrap_fds["${fd_scope}"]: bad array subscript
+     CLOSED: [2023-01-12 Thu 10:26]
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2023-01-12 Thu 10:26]
+     CLOCK: [2023-01-12 Thu 10:17]--[2023-01-12 Thu 10:26] =>  0:09
+     - State "STARTED"    from "TODO"       [2023-01-12 Thu 10:17]
+     :END:
+     <2023-01-12 Thu>
 
 ** Docs: sh.wrap (project tasks)                                      :@DOCS:
 
@@ -133,13 +176,15 @@ weight: 31
      :END:
      <2022-12-20 Tue>
 
-**** STARTED Create user, development and project sections :milestone_001:ACTIVE:
+**** PROGRESS Create user, development and project sections :milestone_001:ACTIVE:
      DEADLINE: <2023-01-10 Tue> SCHEDULED: <2023-01-10 Tue>
      :PROPERTIES:
      :Effort:   01:00
      :END:
      :LOGBOOK:
-     CLOCK: [2023-01-11 Wed 16:54]
+     - State "PROGRESS"   from "STARTED"    [2023-01-11 Wed 17:23] \\
+       sections created
+     CLOCK: [2023-01-11 Wed 16:54]--[2023-01-11 Wed 17:23] =>  0:29
      CLOCK: [2023-01-11 Wed 15:26]--[2023-01-11 Wed 16:00] =>  0:34
      - State "STARTED"    from "NEXT"       [2023-01-11 Wed 15:26]
      :END:
@@ -406,7 +451,14 @@ weight: 31
 
 *** QA: sh.wrap testing environment (project tasks)
 
-**** NEXT Create test matrix
+**** PROGRESS Create test matrix                                     :ACTIVE:
+     :LOGBOOK:
+     - State "PROGRESS"   from "STARTED"    [2023-01-12 Thu 10:41] \\
+       for now we suppor linux, bash-{4.4-5.2}
+     CLOCK: [2023-01-12 Thu 10:26]--[2023-01-12 Thu 10:41] =>  0:15
+     CLOCK: [2023-01-11 Wed 21:28]--[2023-01-11 Wed 21:39] =>  0:11
+     - State "STARTED"    from "NEXT"       [2023-01-11 Wed 21:28]
+     :END:
      <2022-12-22 Thu>
 ***** DEPENDENCY [[cdcagafwwbvp][Create docker containers and GH action for workflow with bash versions passed]]
 
@@ -464,6 +516,10 @@ weight: 31
 *** TODO Rename actions.yml to site
     <2023-01-10 Tue>
 *** Code: Documentation generation (project backlog)
+
+*** Code: Repository maintenance (project backlog)
+
+**** TODO Protect GH branches
 
 *** Code: Repository maintenance (project backlog)
 
